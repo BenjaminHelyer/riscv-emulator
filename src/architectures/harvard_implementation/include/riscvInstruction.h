@@ -13,7 +13,7 @@ namespace riscv_emulator {
  * Example: the processor can be made to halt or raise an error if it encounters a zero instruction.
  */
 class RiscvInstruction {
-    private:
+    protected:
         bool contents[32] = { }; // RISC-V has no instructions that are entirely zero, which allows for quickly recognizing empty instructions
         int opcode; // make an integer opcode for easy readability, despite the contents being in binary
         char type;

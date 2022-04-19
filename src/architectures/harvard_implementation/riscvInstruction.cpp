@@ -6,7 +6,7 @@ namespace riscv_emulator {
 
 void RiscvInstruction::set_opcode() {
     for (int i = 0; i < 7; i++) {
-        opcode += this->contents[i]*std::pow(2,i);
+        this->opcode += this->contents[i]*std::pow(2,i);
     }
 }
 

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Apr 19 12:19:28 2022
+# Make data base, printed on Tue Apr 19 15:43:52 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = C:\Users\Benjamin\AppData\Roaming\Code\CachedData\dfd34e8260c270da74b5c2d86d61aee4b6d56977
 # makefile (from 'makefile', line 9)
-_DEPS = data.h riscvInstruction.h processor.h
+_DEPS = data.h riscvInstruction.h rTypeInstruction.h processor.h
 # environment
 LANG = C
 # default
@@ -207,8 +207,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\Benjamin\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\798786b66550c88988d6cee99 
-9f3c212-1.66.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\798786b66550c88988d6cee999f3c212-1.66.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -220,7 +219,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # makefile (from 'makefile', line 12)
-_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\data.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o
+_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\data.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\rTypeInstruction.o architectures\harvard_implementation\processor.o
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -238,7 +237,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650385525): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650401013): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -285,8 +284,9 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o
-#  Implicit rule search has not been done.
+mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\rTypeInstruction.o .\src/architectures\harvard_implementation\processor.o
+#  Implicit rule search has n 
+ot been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 19):
@@ -301,12 +301,18 @@ mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_impl
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-19 12:19:24
+#  Last modified 2022-04-19 15:43:27
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 .\src/architectures\harvard_implementation\processor.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.\src/architectures\harvard_implementation\rTypeInstruction.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -317,19 +323,19 @@ makefile:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/29=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 331 B / avg = 15 B
-# current buf: size = 8174 B / used = 331 B / count = 22 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 393 B / avg = 17 B
+# current buf: size = 8174 B / used = 393 B / count = 23 / avg = 17 B
 
-# strcache performance: lookups = 30 / hit rate = 26%
+# strcache performance: lookups = 31 / hit rate = 25%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Tue Apr 19 12:19:28 2022
+# Load=23/8192=0%, Rehash=0, Collisions=0/31=0%
+# Finished Make data base on Tue Apr 19 15:43:52 2022
 
  

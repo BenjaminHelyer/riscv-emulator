@@ -68,6 +68,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classriscv__emulator_1_1_riscv_instruction-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">riscv_emulator::RiscvInstruction Class Reference</div></div>
 </div><!--header-->
@@ -77,6 +79,15 @@ $(function() {
  <a href="classriscv__emulator_1_1_riscv_instruction.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="riscv_instruction_8h_source.html">riscvInstruction.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for riscv_emulator::RiscvInstruction:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classriscv__emulator_1_1_riscv_instruction.png" usemap="#riscv_5Femulator::RiscvInstruction_map" alt=""/>
+  <map id="riscv_5Femulator::RiscvInstruction_map" name="riscv_5Femulator::RiscvInstruction_map">
+<area href="classriscv__emulator_1_1_r_type_instruction.html" title="R-Type instruction sub class. Includes rd, funct3, rs1, rs2, and funct7 as codes within the instructi..." alt="riscv_emulator::RTypeInstruction" shape="rect" coords="0,56,195,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -89,6 +100,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a7ab3e6cf5db07d86bb5856fcb2438acb">get_type</a> ()</td></tr>
 <tr class="memdesc:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the given instruction as a character.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a7ab3e6cf5db07d86bb5856fcb2438acb">More...</a><br /></td></tr>
 <tr class="separator:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:acad7669210d466ef8fd03cbacba129e7"><td class="memItemLeft" align="right" valign="top"><a id="acad7669210d466ef8fd03cbacba129e7" name="acad7669210d466ef8fd03cbacba129e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_opcode</b> ()</td></tr>
+<tr class="separator:acad7669210d466ef8fd03cbacba129e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ad7994b83412c60c1f8cdc90e707dca"><td class="memItemLeft" align="right" valign="top"><a id="a5ad7994b83412c60c1f8cdc90e707dca" name="a5ad7994b83412c60c1f8cdc90e707dca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_type</b> ()</td></tr>
+<tr class="separator:a5ad7994b83412c60c1f8cdc90e707dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a6750c85e577551be03bc7bba01143c81"><td class="memItemLeft" align="right" valign="top"><a id="a6750c85e577551be03bc7bba01143c81" name="a6750c85e577551be03bc7bba01143c81"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>contents</b> [32] = { }</td></tr>
+<tr class="separator:a6750c85e577551be03bc7bba01143c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd268529d286484602f98e5ff7b507b"><td class="memItemLeft" align="right" valign="top"><a id="adcd268529d286484602f98e5ff7b507b" name="adcd268529d286484602f98e5ff7b507b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
+<tr class="separator:adcd268529d286484602f98e5ff7b507b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab589396ce2895dcf6666daa4af4cd3"><td class="memItemLeft" align="right" valign="top"><a id="a9ab589396ce2895dcf6666daa4af4cd3" name="a9ab589396ce2895dcf6666daa4af4cd3"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a9ab589396ce2895dcf6666daa4af4cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for RISC-V instruction. </p>

@@ -9,6 +9,12 @@ Base class for RISC-\/V instruction.
 
 {\ttfamily \#include $<$riscv\+Instruction.\+h$>$}
 
+Inheritance diagram for riscv\+\_\+emulator\+::Riscv\+Instruction\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classriscv__emulator_1_1_riscv_instruction}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +24,27 @@ int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41ca
 \begin{DoxyCompactList}\small\item\em Gets the opcode of the given instruction as an integer. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}{get\+\_\+type}} ()
 \begin{DoxyCompactList}\small\item\em Gets the type of the given instruction as a character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_acad7669210d466ef8fd03cbacba129e7}\label{classriscv__emulator_1_1_riscv_instruction_acad7669210d466ef8fd03cbacba129e7}} 
+void {\bfseries set\+\_\+opcode} ()
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a5ad7994b83412c60c1f8cdc90e707dca}\label{classriscv__emulator_1_1_riscv_instruction_a5ad7994b83412c60c1f8cdc90e707dca}} 
+void {\bfseries set\+\_\+type} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a6750c85e577551be03bc7bba01143c81}\label{classriscv__emulator_1_1_riscv_instruction_a6750c85e577551be03bc7bba01143c81}} 
+bool {\bfseries contents} \mbox{[}32\mbox{]} = \{ \}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_adcd268529d286484602f98e5ff7b507b}\label{classriscv__emulator_1_1_riscv_instruction_adcd268529d286484602f98e5ff7b507b}} 
+int {\bfseries opcode}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a9ab589396ce2895dcf6666daa4af4cd3}\label{classriscv__emulator_1_1_riscv_instruction_a9ab589396ce2895dcf6666daa4af4cd3}} 
+char {\bfseries type}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

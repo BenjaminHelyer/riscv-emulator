@@ -7,7 +7,7 @@
 \DoxyCodeLine{4 \textcolor{keyword}{namespace }riscv\_emulator \{}
 \DoxyCodeLine{5 }
 \DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} \{}
-\DoxyCodeLine{16     \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{keyword}{protected}:}
 \DoxyCodeLine{17         \textcolor{keywordtype}{bool} contents[32] = \{ \}; \textcolor{comment}{// RISC-\/V has no instructions that are entirely zero, which allows for quickly recognizing empty instructions}}
 \DoxyCodeLine{18         \textcolor{keywordtype}{int} opcode; \textcolor{comment}{// make an integer opcode for easy readability, despite the contents being in binary}}
 \DoxyCodeLine{19         \textcolor{keywordtype}{char} type;}

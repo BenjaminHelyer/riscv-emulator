@@ -1,4 +1,5 @@
 #include "../architectures/harvard_implementation/include/riscvInstruction.h"
+#include "../architectures/harvard_implementation/include/rTypeInstruction.h"
 #include "../architectures/harvard_implementation/include/data.h"
 #include "../architectures/harvard_implementation/include/processor.h"
 
@@ -29,6 +30,15 @@ void instruction_tests() {
     else {
         std::cout << "Opcode test failed." << std::endl;
     }
+
+    std::cout << "Trying to set an R-Type instruction to all ones..." << std::endl;
+
+    riscv_emulator::RTypeInstruction myRType;
+    myRType.set_contents(all_ones);
+
+    int my_rd = myRType.get_rd();
+    std::cout << "rd seen as: " << my_rd << std::endl;
+
 
 }
 
