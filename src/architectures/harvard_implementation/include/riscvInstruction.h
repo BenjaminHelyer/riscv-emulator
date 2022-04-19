@@ -38,6 +38,11 @@ class RiscvInstruction {
         * Returns the type so that the opcode doesn't have to be checked to determine the type each time.
         */
         int get_type() {return type; }
+        /*! \brief Copies the contents of the instruction into an array, the pointer of which is passed as an argument.
+        *
+        * This is instead of returning the pointer to the private contents array.
+        */
+        void copy_contents(bool input_array[32]);
         RiscvInstruction();
 };
 

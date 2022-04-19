@@ -30,6 +30,21 @@ void instruction_tests() {
         std::cout << "Opcode test failed." << std::endl;
     }
 
+    bool testArray[32] = { };
+
+    std::cout << "Original array seen as: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << testArray[i];
+    }
+    std::cout << std::endl;
+
+    myInstruction.copy_contents(testArray);
+    std::cout << "New array seen as: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << testArray[i];
+    }
+    std::cout << std::endl;
+
 }
 
 int main() {
