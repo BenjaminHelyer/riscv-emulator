@@ -9,7 +9,7 @@ ODIR=.\src
 _DEPS = data.h riscvInstruction.h rTypeInstruction.h processor.h
 DPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\data.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\rTypeInstruction.o architectures\harvard_implementation\processor.o
+_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\data.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
