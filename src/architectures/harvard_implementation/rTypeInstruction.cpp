@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+#include <iostream>
+
 namespace riscv_emulator {
 
 void RTypeInstruction::set_rd() {
@@ -37,6 +39,7 @@ void RTypeInstruction::set_funct7() {
 void RTypeInstruction::set_contents(bool updated_contents[32]) {
     for (int i = 0; i < 32; i++) {
         this->contents[i] = updated_contents[i];
+        std::cout << "R-type contents[" << i << "] are: " << this->contents[i] << std::endl;
     }
     this->set_opcode();
     this->set_type();
@@ -45,6 +48,17 @@ void RTypeInstruction::set_contents(bool updated_contents[32]) {
     this->set_rs1();
     this->set_rs2();
     this->set_funct7();
+}
+
+RTypeInstruction::RTypeInstruction(bool given_contents[32]) {
+    std::cout << "IN NON-DEFAULT CONSTRUCTOR FOR RTYPE INSTRUCION" << std::endl;
+    this->set_contents(given_contents);
+}
+
+RTypeInstruction::RTypeInstruction() {
+    std::cout << "IN DEFAULT CONSTRUCTOR FOR RTYPE INSTRUCION" << std::endl;
+    bool all_zeroes[32] = { };
+    this->set_contents(all_zeroes);
 }
 
 } // namespace riscv_emulator

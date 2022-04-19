@@ -33,6 +33,8 @@ class RTypeInstruction: public RiscvInstruction {
         int get_rs2() {return rs2;}
         int get_funct7() {return funct7;}
 
+        RTypeInstruction(bool given_contents[32]);
+        RTypeInstruction();
 };
 
 } // namespace riscv_emulator

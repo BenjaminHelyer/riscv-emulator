@@ -34,6 +34,7 @@ void instruction_tests() {
     std::cout << "Trying to set an R-Type instruction to all ones..." << std::endl;
 
     riscv_emulator::RTypeInstruction myRType;
+    std::cout << "Successfully instantiated R-Type object from default constructor." << std::endl;
     myRType.set_contents(all_ones);
 
     int my_rd = myRType.get_rd();
