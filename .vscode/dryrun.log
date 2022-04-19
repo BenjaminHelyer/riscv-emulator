@@ -1,10 +1,12 @@
-make.exe --dry-run --always-make --keep-going --print-directory
+make.exe --dry-run --keep-going --print-directory
 make: Entering directory 'c:/Users/Benjamin/Documents/GitHub/riscv-emulator'
 g++    -c -o .\src/testing\testbench_development_1.o .\src/testing\testbench_development_1.cpp
  
 g++    -c -o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\data.cpp
-g++    -c -o .\src/architectures\harvard_implementation\instructions.o .\src/architectures\harvard_implementation\instructions.cpp
+ 
+g++    -c -o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\riscvInstruction.cpp
+ 
 g++    -c -o .\src/architectures\harvard_implementation\processor.o .\src/architectures\harvard_implementation\processor.cpp
-g++ -o mymake .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\instructions.o .\src/architectures\harvard_implementation\processor.o -Isrc\architectures\harvard_implementation\include 
+g++ -o mymake .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o -Isrc\architectures\harvard_implementation\include 
 make: Leaving directory 'c:/Users/Benjamin/Documents/GitHub/riscv-emulator'
  

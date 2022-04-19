@@ -1,0 +1,63 @@
+\hypertarget{classriscv__emulator_1_1_riscv_instruction}{}\doxysection{riscv\+\_\+emulator\+::Riscv\+Instruction Class Reference}
+\label{classriscv__emulator_1_1_riscv_instruction}\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+
+
+Base class for RISC-\/V instruction.  
+
+
+
+
+{\ttfamily \#include $<$riscv\+Instruction.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}{set\+\_\+contents}} (bool updated\+\_\+contents\mbox{[}32\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sets the contents of the given instruction to a 32-\/bit binary array. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}{get\+\_\+opcode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the opcode of the given instruction as an integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}{get\+\_\+type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the given instruction as a character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for RISC-\/V instruction. 
+
+The RISC-\/V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.\+g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-\/V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example\+: the processor can be made to halt or raise an error if it encounters a zero instruction. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}\label{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_opcode@{get\_opcode}}
+\index{get\_opcode@{get\_opcode}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{get\_opcode()}{get\_opcode()}}
+{\footnotesize\ttfamily int riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::get\+\_\+opcode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the opcode of the given instruction as an integer. 
+
+Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}\label{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily int riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the type of the given instruction as a character. 
+
+Returns the type so that the opcode doesn\textquotesingle{}t have to be checked to determine the type each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}\label{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!set\_contents@{set\_contents}}
+\index{set\_contents@{set\_contents}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{set\_contents()}{set\_contents()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::set\+\_\+contents (\begin{DoxyParamCaption}\item[{bool}]{updated\+\_\+contents\mbox{[}32\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Sets the contents of the given instruction to a 32-\/bit binary array. 
+
+The only way to update an instruction is to set all of its contents. Setting only a part of the contents might lead to erroneous behavior and an invalid instruction. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+riscv\+Instruction.\+h\end{DoxyCompactItemize}
