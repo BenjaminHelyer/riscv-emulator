@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Apr 19 18:46:01 2022
+# Make data base, printed on Tue Apr 19 22:32:53 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ USERPROFILE = C:\Users\Benjamin
 # environment
 LOCALAPPDATA = C:\Users\Benjamin\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ae053c1d-7a83-4c88-8cd0-228a49dd5be4-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-159bd967-0a76-4319-a7eb-bce6547b3ea8-sock
 # environment
 VSCODE_CWD = C:\Users\Benjamin\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19804_OTULOBJSYYIVPOMR
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19048_RSNCFPAHRQKAAXEC
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -55,7 +55,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = C:\Users\Benjamin\AppData\Roaming\Code\CachedData\dfd34e8260c270da74b5c2d86d61aee4b6d56977
 # makefile (from 'makefile', line 9)
-_DEPS = data.h riscvInstruction.h rTypeInstruction.h processor.h
+_DEPS = dataMemory.h riscvInstruction.h rTypeInstruction.h processor.h
 # environment
 LANG = C
 # default
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 19804
+VSCODE_PID = 19048
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -219,7 +219,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # makefile (from 'makefile', line 12)
-_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\data.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o
+_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -237,7 +237,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650411864): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650413236): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -284,7 +284,7 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\data.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o
+mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\dataMemory.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -292,21 +292,22 @@ mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_impl
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 # Not a target:
-.\src/architectures\harvard_implementation\data.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-19 18:45:57
+#  Last modified 2022-04-19 22:32:52
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 .\src/architectures\harvard_implementation\processor.o:
 #  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.\src/architectures\harvard_implementation\dataMemory.o:
+#  Implicit rule search has not been do 
+ne.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -323,13 +324,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 331 B / avg = 15 B
-# current buf: size = 8174 B / used = 331 B / count = 22 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 337 B / avg = 15 B
+# current buf: size = 8174 B / used = 337 B / count = 22 / avg = 15 B
 
-# strcache performance: look 
-ups = 30 / hit rate = 26%
+# strcache performance: lookups = 30 / hit rate = 26%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Tue Apr 19 18:46:01 2022
+# Finished Make data base on Tue Apr 19 22:32:53 2022
 
  

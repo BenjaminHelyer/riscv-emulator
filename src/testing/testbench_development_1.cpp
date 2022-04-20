@@ -1,5 +1,5 @@
 #include "../architectures/harvard_implementation/include/riscvInstruction.h"
-#include "../architectures/harvard_implementation/include/data.h"
+#include "../architectures/harvard_implementation/include/dataMemory.h"
 #include "../architectures/harvard_implementation/include/processor.h"
 
 #include <iostream>
@@ -62,9 +62,41 @@ void instruction_tests() {
 
 }
 
+void data_mem_tests() {
+    std::cout << "Beginning data memory tests..." << std::endl;
+
+    bool all_ones[CACHE_BITS_PER_ADDRESS];
+    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+        all_ones[i] = 1;
+    }
+    int myAddress = 30;
+
+    std::cout << "Setting contents of memory at address " << myAddress << " to: ";
+    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+        std::cout << all_ones[i];
+    }
+    std::cout << std::endl;
+
+    riscv_emulator::DataMemory myData;
+    std::cout << "CONTENTS[" << myAddress << "] before memory set: " << myData.get_cache_val(myAddress) << std::endl;
+
+    myData.set_cache_val(myAddress, all_ones);
+
+    std::cout << "CONTENTS[" << myAddress << "] after memory set: ";
+    bool copied_array[CACHE_BITS_PER_ADDRESS] = { };
+    myData.copy_cache_val(myAddress, copied_array);
+    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+        std::cout << copied_array[i];
+    }
+    std::cout << std::endl;
+    
+}
+
 int main() {
 
     instruction_tests();
+
+    data_mem_tests();
 
     return 0;
 }

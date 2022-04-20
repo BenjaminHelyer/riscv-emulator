@@ -1,0 +1,33 @@
+\hypertarget{classriscv__emulator_1_1_data_memory}{}\doxysection{riscv\+\_\+emulator\+::Data\+Memory Class Reference}
+\label{classriscv__emulator_1_1_data_memory}\index{riscv\_emulator::DataMemory@{riscv\_emulator::DataMemory}}
+
+
+Class for the data (non-\/instruction) memory of the system.  
+
+
+
+
+{\ttfamily \#include $<$data\+Memory.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_data_memory_a765959eb25821410dbac7f45fe05726e}\label{classriscv__emulator_1_1_data_memory_a765959eb25821410dbac7f45fe05726e}} 
+void {\bfseries set\+\_\+cache\+\_\+val} (int address, bool val\mbox{[}CACHE\+\_\+\+BITS\+\_\+\+PER\+\_\+\+ADDRESS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sets the cache value at a given address to a given value in a boolean string format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_data_memory_a1a43c6c22f6f434023dfa95b1eb71d0e}\label{classriscv__emulator_1_1_data_memory_a1a43c6c22f6f434023dfa95b1eb71d0e}} 
+int {\bfseries get\+\_\+cache\+\_\+val} (int address)
+\begin{DoxyCompactList}\small\item\em Gets the cache value at a given address. Returns the value as an int. Distinct from copy\+\_\+cache\+\_\+val, which copies the value into an array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_data_memory_a545e7ab38b72c777345e111ed3fd8067}\label{classriscv__emulator_1_1_data_memory_a545e7ab38b72c777345e111ed3fd8067}} 
+void {\bfseries copy\+\_\+cache\+\_\+val} (int addres, bool given\+\_\+array\mbox{[}CACHE\+\_\+\+BITS\+\_\+\+PER\+\_\+\+ADDRESS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the cache value at a given address into a given array. Distinct from get\+\_\+cache\+\_\+val, which returns the value as an integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the data (non-\/instruction) memory of the system. 
+
+This class currently only contains basic array for a cache as well as basic get and set functions. Will likely later be updated to include a more realistic cache as well as more realistic buses. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+data\+Memory.\+h\end{DoxyCompactItemize}
