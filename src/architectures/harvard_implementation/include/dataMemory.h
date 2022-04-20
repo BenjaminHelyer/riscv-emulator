@@ -19,10 +19,12 @@ class DataMemory {
         *
         */
         void set_cache_val(int address, bool val[CACHE_BITS_PER_ADDRESS]);
-        /*! \brief Gets the cache value at a given address. Returns the value as an int. Distinct from copy_cache_val, which copies the value into an array.
-        * 
+        /*! \brief Gets the cache value at a given address. Returns the value as an unsigned long. Distinct from copy_cache_val, which copies the value into an array.
+        *
+        * This function is currently more dangerous than copy_cache_val, since the bits per address *might* be larger than an unsigned long.
+        * This scenario is unlikely,however, so it's not of huge concern. 
         */
-        int get_cache_val(int address);
+        unsigned long get_cache_val(int address);
         /*! \brief Copies the cache value at a given address into a given array. Distinct from get_cache_val, which returns the value as an integer.
         *
         */

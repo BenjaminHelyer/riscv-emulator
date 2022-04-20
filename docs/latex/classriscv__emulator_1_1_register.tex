@@ -1,0 +1,33 @@
+\hypertarget{classriscv__emulator_1_1_register}{}\doxysection{riscv\+\_\+emulator\+::Register Class Reference}
+\label{classriscv__emulator_1_1_register}\index{riscv\_emulator::Register@{riscv\_emulator::Register}}
+
+
+Simple class for registers. For now, will handle distinctions at the processor level.  
+
+
+
+
+{\ttfamily \#include $<$register.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_register_a207d5b0d905ebe41c080756ddff00e9f}\label{classriscv__emulator_1_1_register_a207d5b0d905ebe41c080756ddff00e9f}} 
+void {\bfseries set\+\_\+contents} (bool updated\+\_\+contents\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sets the contents of a register via a boolean array. For RV32I, the array length will be 32, but for other implementations this may change. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_register_a78680c9d3ccf94b7073fc9430c38fc4c}\label{classriscv__emulator_1_1_register_a78680c9d3ccf94b7073fc9430c38fc4c}} 
+unsigned long {\bfseries get\+\_\+contents} ()
+\begin{DoxyCompactList}\small\item\em Gets the contents of a register and returns them as an unsigned long, since register values are normally \texorpdfstring{$>$}{>} 16 bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_register_a3dd02ee32a15af2ab3aa43158d1d4c78}\label{classriscv__emulator_1_1_register_a3dd02ee32a15af2ab3aa43158d1d4c78}} 
+void {\bfseries copy\+\_\+contents} (bool given\+\_\+array\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the contents of a register into a given array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple class for registers. For now, will handle distinctions at the processor level. 
+
+Alternatives for future improvement include defining distinct classes for x0 and PC. This would add complexity, however, and right now it\textquotesingle{}s not clear what it would add to the system. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+register.\+h\end{DoxyCompactItemize}

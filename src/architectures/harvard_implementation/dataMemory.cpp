@@ -1,5 +1,7 @@
 #include "include/dataMemory.h"
 
+#include <math.h>
+
 #include <iostream>
 
 namespace riscv_emulator {
@@ -10,10 +12,10 @@ void DataMemory::set_cache_val(int address, bool val[CACHE_BITS_PER_ADDRESS]) {
     }
 }
 
-int DataMemory::get_cache_val(int address) {
-    int val = 0;
+unsigned long DataMemory::get_cache_val(int address) {
+    unsigned long val = 0;
     for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
-        val += this->Cache[address][i];
+        val += this->Cache[address][i]*std::pow(2,i);
     }
     return val;
 }

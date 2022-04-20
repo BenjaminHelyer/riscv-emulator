@@ -4,25 +4,25 @@
 \DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef DATAMEMORY\_H}}
 \DoxyCodeLine{2 \textcolor{preprocessor}{\#define DATAMEMORY\_H}}
 \DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{keyword}{const} \textcolor{keywordtype}{int} CACHE\_NUM\_ADDRESSES = 4000;}
-\DoxyCodeLine{5 \textcolor{keyword}{const} \textcolor{keywordtype}{int} CACHE\_BITS\_PER\_ADDRESS = 16;}
-\DoxyCodeLine{6 }
-\DoxyCodeLine{7 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{4 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{const} \textcolor{keywordtype}{int} CACHE\_NUM\_ADDRESSES = 4000;}
+\DoxyCodeLine{7 \textcolor{keyword}{const} \textcolor{keywordtype}{int} CACHE\_BITS\_PER\_ADDRESS = 16;}
 \DoxyCodeLine{8 }
 \DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} \{}
 \DoxyCodeLine{15     \textcolor{keyword}{private}:}
 \DoxyCodeLine{16         \textcolor{keywordtype}{bool} Cache[CACHE\_NUM\_ADDRESSES][CACHE\_BITS\_PER\_ADDRESS];}
 \DoxyCodeLine{17     \textcolor{keyword}{public}:}
 \DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_data_memory_a765959eb25821410dbac7f45fe05726e}{set\_cache\_val}}(\textcolor{keywordtype}{int} address, \textcolor{keywordtype}{bool} val[CACHE\_BITS\_PER\_ADDRESS]);}
-\DoxyCodeLine{25         \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_data_memory_a1a43c6c22f6f434023dfa95b1eb71d0e}{get\_cache\_val}}(\textcolor{keywordtype}{int} address);}
-\DoxyCodeLine{29        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_data_memory_a545e7ab38b72c777345e111ed3fd8067}{copy\_cache\_val}}(\textcolor{keywordtype}{int} addres, \textcolor{keywordtype}{bool} given\_array[CACHE\_BITS\_PER\_ADDRESS]);}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31        \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}}();}
+\DoxyCodeLine{27         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{classriscv__emulator_1_1_data_memory_aeaf48180f79e1289a7919f2fd21a647d}{get\_cache\_val}}(\textcolor{keywordtype}{int} address);}
+\DoxyCodeLine{31        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_data_memory_a545e7ab38b72c777345e111ed3fd8067}{copy\_cache\_val}}(\textcolor{keywordtype}{int} addres, \textcolor{keywordtype}{bool} given\_array[CACHE\_BITS\_PER\_ADDRESS]);}
 \DoxyCodeLine{32 }
-\DoxyCodeLine{33 \};}
+\DoxyCodeLine{33        \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}}();}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{35 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{35 \};}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

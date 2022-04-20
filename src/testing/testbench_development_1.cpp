@@ -1,6 +1,7 @@
 #include "../architectures/harvard_implementation/include/riscvInstruction.h"
 #include "../architectures/harvard_implementation/include/dataMemory.h"
 #include "../architectures/harvard_implementation/include/processor.h"
+#include "../architectures/harvard_implementation/include/register.h"
 
 #include <iostream>
 
@@ -89,7 +90,43 @@ void data_mem_tests() {
         std::cout << copied_array[i];
     }
     std::cout << std::endl;
+
+    std::cout << "CONTENTS[" << myAddress << "] as an integer after memory set: " << myData.get_cache_val(myAddress) << std::endl;
     
+}
+
+void reg_tests () {
+    std::cout << "Beginning register tests..." << std::endl;
+
+    bool all_ones[riscv_emulator::REGISTER_BITS];
+    for (int i = 0; i < riscv_emulator::REGISTER_BITS; i++) {
+        all_ones[i] = 1;
+    }
+
+    std::cout << "Setting contents of register to: ";
+    for (int i = 0; i < riscv_emulator::REGISTER_BITS; i++) {
+        std::cout << all_ones[i];
+    }
+    std::cout << std::endl;
+
+    riscv_emulator::Register myRegister;
+    std::cout << "CONTENTS[myRegister] before set: " << myRegister.get_contents() << std::endl;
+
+    myRegister.set_contents(all_ones);
+
+    bool copied_array[riscv_emulator::REGISTER_BITS];
+    std::cout << "CONTENTS[myRegister] after set: ";
+    myRegister.copy_contents(copied_array);
+    for (int i = 0; i < riscv_emulator::REGISTER_BITS; i++) {
+        std::cout << copied_array[i];
+    }
+    std::cout << std::endl;
+
+    unsigned long reg_val;
+    reg_val = myRegister.get_contents();
+    std::cout << "CONTENTS[myRegister] as a long after set: " << reg_val << std::endl;
+
+
 }
 
 int main() {
@@ -97,6 +134,8 @@ int main() {
     instruction_tests();
 
     data_mem_tests();
+
+    reg_tests();
 
     return 0;
 }

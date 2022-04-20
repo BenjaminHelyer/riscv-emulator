@@ -84,10 +84,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_cache_val</b> (int address, bool val[CACHE_BITS_PER_ADDRESS])</td></tr>
 <tr class="memdesc:a765959eb25821410dbac7f45fe05726e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the cache value at a given address to a given value in a boolean string format. <br /></td></tr>
 <tr class="separator:a765959eb25821410dbac7f45fe05726e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a43c6c22f6f434023dfa95b1eb71d0e"><td class="memItemLeft" align="right" valign="top"><a id="a1a43c6c22f6f434023dfa95b1eb71d0e" name="a1a43c6c22f6f434023dfa95b1eb71d0e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_cache_val</b> (int address)</td></tr>
-<tr class="memdesc:a1a43c6c22f6f434023dfa95b1eb71d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the cache value at a given address. Returns the value as an int. Distinct from copy_cache_val, which copies the value into an array. <br /></td></tr>
-<tr class="separator:a1a43c6c22f6f434023dfa95b1eb71d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf48180f79e1289a7919f2fd21a647d"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_data_memory.html#aeaf48180f79e1289a7919f2fd21a647d">get_cache_val</a> (int address)</td></tr>
+<tr class="memdesc:aeaf48180f79e1289a7919f2fd21a647d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the cache value at a given address. Returns the value as an unsigned long. Distinct from copy_cache_val, which copies the value into an array.  <a href="classriscv__emulator_1_1_data_memory.html#aeaf48180f79e1289a7919f2fd21a647d">More...</a><br /></td></tr>
+<tr class="separator:aeaf48180f79e1289a7919f2fd21a647d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a545e7ab38b72c777345e111ed3fd8067"><td class="memItemLeft" align="right" valign="top"><a id="a545e7ab38b72c777345e111ed3fd8067" name="a545e7ab38b72c777345e111ed3fd8067"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>copy_cache_val</b> (int addres, bool given_array[CACHE_BITS_PER_ADDRESS])</td></tr>
 <tr class="memdesc:a545e7ab38b72c777345e111ed3fd8067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the cache value at a given address into a given array. Distinct from get_cache_val, which returns the value as an integer. <br /></td></tr>
@@ -96,7 +95,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>copy_cache_val</b> (i
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class for the data (non-instruction) memory of the system. </p>
 <p >This class currently only contains basic array for a cache as well as basic get and set functions. Will likely later be updated to include a more realistic cache as well as more realistic buses. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aeaf48180f79e1289a7919f2fd21a647d" name="aeaf48180f79e1289a7919f2fd21a647d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf48180f79e1289a7919f2fd21a647d">&#9670;&nbsp;</a></span>get_cache_val()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long riscv_emulator::DataMemory::get_cache_val </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the cache value at a given address. Returns the value as an unsigned long. Distinct from copy_cache_val, which copies the value into an array. </p>
+<p >This function is currently more dangerous than copy_cache_val, since the bits per address <em>might</em> be larger than an unsigned long. This scenario is unlikely,however, so it's not of huge concern. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="data_memory_8h_source.html">dataMemory.h</a></li>
 </ul>
 </div><!-- contents -->
