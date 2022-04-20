@@ -13,17 +13,23 @@
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}} \{}
 \DoxyCodeLine{12     \textcolor{keyword}{public}:}
-\DoxyCodeLine{13         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
-\DoxyCodeLine{14         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{15         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{16         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32] = \{ \textcolor{keyword}{nullptr} \};}
-\DoxyCodeLine{17         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
-\DoxyCodeLine{18         }
-\DoxyCodeLine{26         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
-\DoxyCodeLine{27 \};}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \} \textcolor{comment}{// namespace riscv\_emulator}}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{16         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}{increment\_pc}}();}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_increment[REGISTER\_BITS]);}
+\DoxyCodeLine{29        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\_to\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_add[REGISTER\_BITS], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} immediate);}
+\DoxyCodeLine{30         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
+\DoxyCodeLine{31         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{32         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{33         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32] = \{ \textcolor{keyword}{nullptr} \};}
+\DoxyCodeLine{34         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
+\DoxyCodeLine{35         }
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}}();}
+\DoxyCodeLine{46         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{\string~ControlUnit}}();}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

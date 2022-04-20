@@ -76,6 +76,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a6ebe6090821473bb5dc5db224f89c6a0"><td class="memItemLeft" align="right" valign="top"><a id="a6ebe6090821473bb5dc5db224f89c6a0" name="a6ebe6090821473bb5dc5db224f89c6a0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>increment_pc</b> ()</td></tr>
+<tr class="memdesc:a6ebe6090821473bb5dc5db224f89c6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the PC by copying the contents of the PC then incrementing the resulting boolean array. <br /></td></tr>
+<tr class="separator:a6ebe6090821473bb5dc5db224f89c6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ad9eb3588a84a01c8e5a3edc804036eb0">increment_bool</a> (bool bool_to_increment[REGISTER_BITS])</td></tr>
+<tr class="memdesc:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for incrementing a boolean array. Note that this function alters the array that is passed to it.  <a href="classriscv__emulator_1_1_control_unit.html#ad9eb3588a84a01c8e5a3edc804036eb0">More...</a><br /></td></tr>
+<tr class="separator:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#aa2b9ec244bb6a3b0eeea3102f98a1b57">add_to_bool</a> (bool bool_to_add[REGISTER_BITS], unsigned int immediate)</td></tr>
+<tr class="memdesc:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it.  <a href="classriscv__emulator_1_1_control_unit.html#aa2b9ec244bb6a3b0eeea3102f98a1b57">More...</a><br /></td></tr>
+<tr class="separator:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">execute_instruction</a> (<a class="el" href="classriscv__emulator_1_1_riscv_instruction.html">RiscvInstruction</a> ctrlInstruction)</td></tr>
 <tr class="memdesc:ab0ad7748b0c86b046aea42526d31eb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to call by which the control unit executes an instruction.  <a href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">More...</a><br /></td></tr>
 <tr class="separator:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,6 +103,37 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aa617354a072835f013c399f0bb9f11ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa2b9ec244bb6a3b0eeea3102f98a1b57" name="aa2b9ec244bb6a3b0eeea3102f98a1b57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b9ec244bb6a3b0eeea3102f98a1b57">&#9670;&nbsp;</a></span>add_to_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::ControlUnit::add_to_bool </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool_to_add</em>[REGISTER_BITS], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>immediate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. </p>
+<p >Recursively increments the boolean array rather than converting to an int then converting back again. Implemented in this manner for the same reasons we implemented increment_bool in its manner. </p>
+
+</div>
+</div>
 <a id="ab0ad7748b0c86b046aea42526d31eb6f" name="ab0ad7748b0c86b046aea42526d31eb6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0ad7748b0c86b046aea42526d31eb6f">&#9670;&nbsp;</a></span>execute_instruction()</h2>
 
@@ -111,6 +152,27 @@ Public Attributes</h2></td></tr>
 
 <p>The function to call by which the control unit executes an instruction. </p>
 <p >Expected usage: processor hands the control unit an instruction via execute_instruction. The control unit then handles setting the program counter for the next instruction The control unit does not adjust the instruction memory; it is only handed one instruction at a time by the processor. The control unit can affect the data memory, program counter, and all the other registers. </p>
+
+</div>
+</div>
+<a id="ad9eb3588a84a01c8e5a3edc804036eb0" name="ad9eb3588a84a01c8e5a3edc804036eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9eb3588a84a01c8e5a3edc804036eb0">&#9670;&nbsp;</a></span>increment_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::ControlUnit::increment_bool </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool_to_increment</em>[REGISTER_BITS]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function for incrementing a boolean array. Note that this function alters the array that is passed to it. </p>
+<p >Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array. In fact, for converting a boolean array to an int, the runtime would consistently be the length of the array. Thus, the runtime for converting an array to an int and back again would be twice the worst-case runtime for addition in this method. </p>
 
 </div>
 </div>

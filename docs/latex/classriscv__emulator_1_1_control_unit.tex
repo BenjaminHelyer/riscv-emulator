@@ -3,6 +3,13 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}\label{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}} 
+void {\bfseries increment\+\_\+pc} ()
+\begin{DoxyCompactList}\small\item\em Increments the PC by copying the contents of the PC then incrementing the resulting boolean array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\+\_\+bool}} (bool bool\+\_\+to\+\_\+increment\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function for incrementing a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\+\_\+to\+\_\+bool}} (bool bool\+\_\+to\+\_\+add\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, unsigned int immediate)
+\begin{DoxyCompactList}\small\item\em Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\+\_\+instruction}} (\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} ctrl\+Instruction)
 \begin{DoxyCompactList}\small\item\em The function to call by which the control unit executes an instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -20,7 +27,17 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046ae
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}\label{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}} 
+\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!add\_to\_bool@{add\_to\_bool}}
+\index{add\_to\_bool@{add\_to\_bool}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+\doxysubsubsection{\texorpdfstring{add\_to\_bool()}{add\_to\_bool()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Control\+Unit\+::add\+\_\+to\+\_\+bool (\begin{DoxyParamCaption}\item[{bool}]{bool\+\_\+to\+\_\+add\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]},  }\item[{unsigned int}]{immediate }\end{DoxyParamCaption})}
+
+
+
+Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. 
+
+Recursively increments the boolean array rather than converting to an int then converting back again. Implemented in this manner for the same reasons we implemented increment\+\_\+bool in its manner. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
 \index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!execute\_instruction@{execute\_instruction}}
 \index{execute\_instruction@{execute\_instruction}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
 \doxysubsubsection{\texorpdfstring{execute\_instruction()}{execute\_instruction()}}
@@ -30,7 +47,17 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046ae
 
 The function to call by which the control unit executes an instruction. 
 
-Expected usage\+: processor hands the control unit an instruction via execute\+\_\+instruction. The control unit then handles setting the program counter for the next instruction The control unit does not adjust the instruction memory; it is only handed one instruction at a time by the processor. The control unit can affect the data memory, program counter, and all the other registers. 
+Expected usage\+: processor hands the control unit an instruction via execute\+\_\+instruction. The control unit then handles setting the program counter for the next instruction The control unit does not adjust the instruction memory; it is only handed one instruction at a time by the processor. The control unit can affect the data memory, program counter, and all the other registers. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}\label{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}} 
+\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!increment\_bool@{increment\_bool}}
+\index{increment\_bool@{increment\_bool}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+\doxysubsubsection{\texorpdfstring{increment\_bool()}{increment\_bool()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Control\+Unit\+::increment\+\_\+bool (\begin{DoxyParamCaption}\item[{bool}]{bool\+\_\+to\+\_\+increment\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function for incrementing a boolean array. Note that this function alters the array that is passed to it. 
+
+Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array. In fact, for converting a boolean array to an int, the runtime would consistently be the length of the array. Thus, the runtime for converting an array to an int and back again would be twice the worst-\/case runtime for addition in this method. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
