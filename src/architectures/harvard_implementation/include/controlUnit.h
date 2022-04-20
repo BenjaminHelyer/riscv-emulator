@@ -10,6 +10,11 @@ namespace riscv_emulator {
 
 class ControlUnit {
     private:
+        /*! \brief Gets the extended opcode for a boolean array representing an instruction.
+        *
+        * Not implemented in RiscvInstruction class since not all instructions have an extended opcode.
+        * Once the processor sees that this instruction is of a type with an extended opcode, it gets the extended opcode.
+        */
         int get_opcode_extend(bool instr_bool[32]);
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
