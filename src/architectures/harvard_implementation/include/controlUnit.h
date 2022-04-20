@@ -9,6 +9,8 @@
 namespace riscv_emulator {
 
 class ControlUnit {
+    private:
+        int get_opcode_extend(bool instr_bool[32]);
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
         *
