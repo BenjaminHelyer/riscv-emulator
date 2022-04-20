@@ -27,7 +27,11 @@ void Register::copy_contents(bool given_array[REGISTER_BITS]) {
 }
 
 Register::Register() {
-    // can add a default constructor later if needed
+    // set value of register to all zero by default
+    // still valid for zero register so this works
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        this->contents[i] = 0;
+    }
 }
 
 
