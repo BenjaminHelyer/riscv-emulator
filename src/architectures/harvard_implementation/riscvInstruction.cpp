@@ -12,16 +12,11 @@ void RiscvInstruction::set_opcode() {
     }
 }
 
-void RiscvInstruction::set_type() {
-    // do nothing for now, will later set type based on opcode
-}
-
 void RiscvInstruction::set_contents(bool updated_contents[32]) {
     for (int i = 0; i < 32; i++) {
         this->contents[i] = updated_contents[i];
     }
     this->set_opcode();
-    this->set_type();
 }
 
 void RiscvInstruction::copy_contents(bool input_array[32]) {

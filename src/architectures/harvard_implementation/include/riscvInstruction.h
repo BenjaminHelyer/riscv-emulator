@@ -16,11 +16,9 @@ class RiscvInstruction {
     protected:
         bool contents[32] = { }; // RISC-V has no instructions that are entirely zero, which allows for quickly recognizing empty instructions
         int opcode; // make an integer opcode for easy readability, despite the contents being in binary
-        char type;
         
         // don't want to be able to set the opcode or type unless the contents themselves are changed
         void set_opcode(); 
-        void set_type();
     public:
         /*! \brief Sets the contents of the given instruction to a 32-bit binary array.
         *
@@ -33,11 +31,6 @@ class RiscvInstruction {
         * Returned as an integer for easy comparison purposes. Prevents iterating over an array each time.
         */
         int get_opcode() {return opcode; }
-        /*! \brief Gets the type of the given instruction as a character.
-        *
-        * Returns the type so that the opcode doesn't have to be checked to determine the type each time.
-        */
-        int get_type() {return type; }
         /*! \brief Copies the contents of the instruction into an array, the pointer of which is passed as an argument.
         *
         * This is instead of returning the pointer to the private contents array.
