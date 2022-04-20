@@ -33,6 +33,10 @@ class RiscvInstruction {
         * Returned as an integer for easy comparison purposes. Prevents iterating over an array each time.
         */
         int get_opcode() {return opcode; }
+        /*! \brief Gets the contents of the instruction and returns it as an unsigned long.
+        *
+        */
+        unsigned long get_contents();
         /*! \brief Copies the contents of the instruction into an array.
         *
         * This is instead of returning the pointer to the private contents array.

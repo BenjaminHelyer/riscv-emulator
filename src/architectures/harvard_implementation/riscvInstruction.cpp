@@ -31,6 +31,14 @@ void RiscvInstruction::copy_nonopcode_fields(bool input_array[25]) {
     }
 }
 
+unsigned long RiscvInstruction::get_contents() {
+    unsigned long val = 0;
+    for (int i = 0; i < 32; i++) {
+        val += this->contents[i]*std::pow(2,i);
+    }
+    return val;
+}
+
 RiscvInstruction::RiscvInstruction() {
     // add in default constructor specifications later if needed
 }
