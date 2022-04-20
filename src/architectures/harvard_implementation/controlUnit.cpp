@@ -7,6 +7,13 @@ namespace riscv_emulator {
 
 void ControlUnit::increment_pc() {
     bool pc_val[REGISTER_BITS];
+    // copy the contents of the object pointed to by the ctrlPC pointer
+    this->ctrlPC->copy_contents(pc_val);
+
+    // now we increment the PC by one
+    this->increment_bool(pc_val);
+
+    this->ctrlPC->set_contents(pc_val);
 }
 
 void ControlUnit::increment_bool(bool bool_to_increment[REGISTER_BITS]) {
@@ -47,6 +54,12 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
 
 ControlUnit::ControlUnit() {
     // can add default constructor later
+}
+
+ControlUnit::~ControlUnit() {
+    delete ctrlDataMem;
+    delete ctrlPC;
+    delete ctrlRegisters;
 }
 
 } // namespace riscv_emulator

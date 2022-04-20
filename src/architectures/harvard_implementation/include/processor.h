@@ -12,6 +12,7 @@ namespace riscv_emulator {
 class Processor {
     // strictly speaking, a struct should probably be used here since everything is public, but classes have been used for everything else, so we'll stick with a class
     public:
+        ControlUnit processorCtrl;
         InstructionMemory instrMem;
         DataMemory dataMem;
         Register pc;

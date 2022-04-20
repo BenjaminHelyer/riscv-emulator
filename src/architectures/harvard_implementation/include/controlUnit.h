@@ -9,9 +9,11 @@
 namespace riscv_emulator {
 
 class ControlUnit {
-    private:
-        void increment_pc();
     public:
+        /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
+        *
+        */
+        void increment_pc();
         /*! \brief Function for incrementing a boolean array. Note that this function alters the array that is passed to it.
         *
         * Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array.
@@ -41,6 +43,7 @@ class ControlUnit {
         void execute_instruction(RiscvInstruction ctrlInstruction);
 
         ControlUnit();
+        ~ControlUnit();
 };
 
 } // namespace riscv_emulator

@@ -245,7 +245,6 @@ void control_unit_tests() {
         std::cout << myBool[i];
     }
     std::cout << std::endl;
-
 }
 
 int main() {
