@@ -170,6 +170,82 @@ void instr_mem_tests() {
         }
         std::cout << std::endl;
     }
+
+    std::cout << "Ending instruction memory tests." << std::endl;
+}
+
+void control_unit_tests() {
+    std::cout << "Beginning control unit tests..." << std::endl;
+
+    riscv_emulator::ControlUnit myCtrlUnit;
+
+    bool myBool[32] = { };
+    
+    std::cout << "bool[32] before incrementing: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    myCtrlUnit.increment_bool(myBool);
+
+    std::cout << "bool[32] after incrementing: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    myCtrlUnit.increment_bool(myBool);
+
+    std::cout << "bool[32] after incrementing: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    myCtrlUnit.increment_bool(myBool);
+
+    std::cout << "bool[32] after incrementing: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    myCtrlUnit.increment_bool(myBool);
+
+    std::cout << "bool[32] after incrementing: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    unsigned int immediate = 5;
+    myCtrlUnit.add_to_bool(myBool, immediate);
+
+    std::cout << "Adding " << immediate << " to bool[32] yields: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    immediate = 6;
+    myCtrlUnit.add_to_bool(myBool, immediate);
+
+    std::cout << "Adding " << immediate << " to bool[32] yields: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
+    immediate = 32;
+    myCtrlUnit.add_to_bool(myBool, immediate);
+
+    std::cout << "Adding " << immediate << " to bool[32] yields: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << myBool[i];
+    }
+    std::cout << std::endl;
+
 }
 
 int main() {
@@ -181,6 +257,8 @@ int main() {
     reg_tests();
 
     instr_mem_tests();
+
+    control_unit_tests();
 
     return 0;
 }

@@ -10,6 +10,20 @@ namespace riscv_emulator {
 
 class ControlUnit {
     public:
+        /*! \brief Function for incrementing a boolean array. Note that this function alters the array that is passed to it.
+        *
+        * Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array.
+        * In fact, for converting a boolean array to an int, the runtime would consistently be the length of the array.
+        * Thus, the runtime for converting an array to an int and back again would be twice the worst-case runtime for addition in this method.
+        */
+        void increment_bool(bool bool_to_increment[32]);
+        /*! \brief Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it.
+        *
+        * Recursively increments the boolean array rather than converting to an int then converting back again.
+        * Implemented in this manner for the same reasons we implemented increment_bool in its manner.
+        */
+       void add_to_bool(bool bool_to_add[32], unsigned int immediate);
+    //public:
         // the control unit has pointers to all these so it can access them directly
         DataMemory *ctrlDataMem = nullptr;
         Register *ctrlPC = nullptr;
@@ -24,6 +38,8 @@ class ControlUnit {
         * The control unit can affect the data memory, program counter, and all the other registers.
         */
         void execute_instruction(RiscvInstruction ctrlInstruction);
+
+        ControlUnit();
 };
 
 } // namespace riscv_emulator
