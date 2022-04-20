@@ -1,5 +1,33 @@
 \hypertarget{processor_8h_source}{}\doxysection{processor.\+h}
 
 \begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PROCESSOR\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PROCESSOR\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}instructionMemory.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}register.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}riscvInstruction.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}dataMemory.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}controlUnit.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}} \{}
+\DoxyCodeLine{13     \textcolor{comment}{// strictly speaking, a struct should probably be used here since everything is public, but classes have been used for everything else, so we'll stick with a class}}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{InstructionMemory}} instrMem;}
+\DoxyCodeLine{16         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} dataMem;}
+\DoxyCodeLine{17         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} pc;}
+\DoxyCodeLine{18         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} registers[32]; \textcolor{comment}{// holds all registers other than the pc, including the zero register}}
+\DoxyCodeLine{19         \textcolor{comment}{// may want to find a way to hold the zero register value as constant or static at some point}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} run\_processor();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}}();}
+\DoxyCodeLine{24 \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

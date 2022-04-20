@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Apr 20 11:12:24 2022
+# Make data base, printed on Wed Apr 20 11:48:54 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = C:\Users\Benjamin\AppData\Roaming\Code\CachedData\dfd34e8260c270da74b5c2d86d61aee4b6d56977
 # makefile (from 'makefile', line 9)
-_DEPS = dataMemory.h riscvInstruction.h rTypeInstruction.h processor.h register.h instructionMemory.h
+_DEPS = dataMemory.h riscvInstruction.h rTypeInstruction.h processor.h register.h instructionMemory.h controlUnit.h
 # environment
 LANG = C
 # default
@@ -219,7 +219,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # makefile (from 'makefile', line 12)
-_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o architectures\harvard_implementation\register.o architectures\harvard_implementation\instructionMemory.o
+_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o architectures\harvard_implementation\register.o architectures\harvard_implementation\instructionMemory.o architectures\harvard_implementation\controlUnit.o
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -237,7 +237,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650468628): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650473294): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -272,6 +272,12 @@ clean:
 	del -f src\architectures\harvard_implementation\*.o
 
 # Not a target:
+.\src/architectures\harvard_implementation\controlUnit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -290,7 +296,7 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\dataMemory.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o .\src/architectures\harvard_implementation\register.o .\src/architectures\harvard_implementation\instructionMemory.o
+mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_implementation\dataMemory.o .\src/architectures\harvard_implementation\riscvInstruction.o .\src/architectures\harvard_implementation\processor.o .\src/architectures\harvard_implementation\register.o .\src/architectures\harvard_implementation\instructionMemory.o .\src/architectures\harvard_implementation\controlUnit.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -300,7 +306,7 @@ mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_impl
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-20 11:12:21
+#  Last modified 2022-04-20 11:48:50
 #  File has been updated.
 #  Successfully updated.
 
@@ -323,24 +329,25 @@ makefile:
 #  File has not been updated.
 
 .PHONY: clean
-#  Implicit rule search has not been done.
+#  Implic 
+it rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/31=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/33=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 454 B / avg = 18 B
-# current buf: size = 8174 B / used = 454 B / count = 24 / avg = 18 B
+# strcache buffers: 1 (0) / strings = 25 / storage = 511 B / avg = 20 B
+# current buf: size = 8174 B / used = 511 B / count = 25 / avg = 20 B
 
-# strcache performance: lookups = 32 / hit rate = 25%
+# strcache performance: lookups = 33 / hit rate = 24%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Wed Apr 20 11:12:24 2022
+# Load=25/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Wed Apr 20 11:48:54 2022
 
  

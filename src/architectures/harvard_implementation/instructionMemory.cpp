@@ -1,5 +1,4 @@
 #include "include/instructionMemory.h"
-#include "include/riscvInstruction.h"
 
 namespace riscv_emulator {
 
