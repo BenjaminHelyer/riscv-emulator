@@ -30,7 +30,7 @@ class ControlUnit {
         // the control unit has pointers to all these so it can access them directly
         DataMemory *ctrlDataMem = nullptr;
         Register *ctrlPC = nullptr;
-        Register *ctrlRegisters[32] = { nullptr };
+        Register *ctrlRegisters[32];
         // the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter
         
         /*! \brief The function to call by which the control unit executes an instruction.
