@@ -245,6 +245,8 @@ void control_unit_tests() {
         std::cout << myBool[i];
     }
     std::cout << std::endl;
+
+    // NEED TO TEST increment_pc()
 }
 
 int main() {
@@ -258,6 +260,8 @@ int main() {
     instr_mem_tests();
 
     control_unit_tests();
+
+    // NEED TO TEST increment_pc()
 
     return 0;
 }
