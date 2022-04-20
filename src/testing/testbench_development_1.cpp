@@ -2,6 +2,7 @@
 #include "../architectures/harvard_implementation/include/dataMemory.h"
 #include "../architectures/harvard_implementation/include/processor.h"
 #include "../architectures/harvard_implementation/include/register.h"
+#include "../architectures/harvard_implementation/include/instructionMemory.h"
 
 #include <iostream>
 
@@ -129,6 +130,46 @@ void reg_tests () {
 
 }
 
+void instr_mem_tests() {
+    std::cout << "Beginning instruction memory tests..." << std::endl;
+
+    riscv_emulator::InstructionMemory myInstrMem;
+
+    std::cout << "Contents of the first twenty instructions before setting the instruction memory:" << std::endl;
+    for (int i = 0; i < 20; i++) {
+        riscv_emulator::RiscvInstruction myInstruction;
+        bool curr_instruction[32];
+        myInstruction = myInstrMem.get_instruction(i);
+        myInstruction.copy_contents(curr_instruction);
+        std::cout << "InstructionMemory[" << i << "]: ";
+        for (int j = 0; j < 32; j++) {
+            std::cout << curr_instruction[j];
+        }
+        std::cout << std::endl;
+    }
+
+    for (int i = 0; i < 10; i++) {
+        riscv_emulator::RiscvInstruction myInstruction;
+        bool curr_instruction[32] = { };
+        curr_instruction[i] = 1;
+        myInstruction.set_contents(curr_instruction);
+        myInstrMem.set_instruction(i, myInstruction);
+    }
+
+    std::cout << "Contents of the first twenty instructions after setting the instruction memory:" << std::endl;
+    for (int i = 0; i < 20; i++) {
+        riscv_emulator::RiscvInstruction myInstruction;
+        bool curr_instruction[32];
+        myInstruction = myInstrMem.get_instruction(i);
+        myInstruction.copy_contents(curr_instruction);
+        std::cout << "InstructionMemory[" << i << "]: ";
+        for (int j = 0; j < 32; j++) {
+            std::cout << curr_instruction[j];
+        }
+        std::cout << std::endl;
+    }
+}
+
 int main() {
 
     instruction_tests();
@@ -136,6 +177,8 @@ int main() {
     data_mem_tests();
 
     reg_tests();
+
+    instr_mem_tests();
 
     return 0;
 }

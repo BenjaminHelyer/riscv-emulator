@@ -1,0 +1,31 @@
+\hypertarget{classriscv__emulator_1_1_instruction_memory}{}\doxysection{riscv\+\_\+emulator\+::Instruction\+Memory Class Reference}
+\label{classriscv__emulator_1_1_instruction_memory}\index{riscv\_emulator::InstructionMemory@{riscv\_emulator::InstructionMemory}}
+
+
+Class for the instruction memory, which holds \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} objects and is of a certain size.  
+
+
+
+
+{\ttfamily \#include $<$instruction\+Memory.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_instruction_memory_a54d3ccfcf24ea279c8efada86738c72a}\label{classriscv__emulator_1_1_instruction_memory_a54d3ccfcf24ea279c8efada86738c72a}} 
+void {\bfseries set\+\_\+instruction} (int address, \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} updated\+\_\+instruction)
+\begin{DoxyCompactList}\small\item\em Sets an instruction based on a given address and given \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_instruction_memory_a98472dbe6231d86c243a128eef9e9f6b}\label{classriscv__emulator_1_1_instruction_memory_a98472dbe6231d86c243a128eef9e9f6b}} 
+\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} {\bfseries get\+\_\+instruction} (int address)
+\begin{DoxyCompactList}\small\item\em Returns an instruction at a particular address as a \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_instruction_memory_a6f3fd6769eb00b8667acf992e488f399}\label{classriscv__emulator_1_1_instruction_memory_a6f3fd6769eb00b8667acf992e488f399}} 
+{\bfseries Instruction\+Memory} ()
+\begin{DoxyCompactList}\small\item\em The default constructor zeroes out all the instructions. This is valid because RISC-\/V does not have instructions equal to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the instruction memory, which holds \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} objects and is of a certain size. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+instruction\+Memory.\+h\end{DoxyCompactItemize}

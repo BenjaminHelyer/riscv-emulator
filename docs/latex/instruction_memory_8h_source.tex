@@ -1,0 +1,26 @@
+\hypertarget{instruction_memory_8h_source}{}\doxysection{instruction\+Memory.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INSTRUCTIONMEMORY\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define INSTRUCTIONMEMORY\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}riscvInstruction.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{int} INSTRUCTION\_MEMORY\_SIZE = 1000;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{InstructionMemory}} \{}
+\DoxyCodeLine{14     \textcolor{keyword}{private}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instructions[INSTRUCTION\_MEMORY\_SIZE];}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory_a54d3ccfcf24ea279c8efada86738c72a}{set\_instruction}}(\textcolor{keywordtype}{int} address, \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} updated\_instruction);}
+\DoxyCodeLine{24         \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory_a98472dbe6231d86c243a128eef9e9f6b}{get\_instruction}}(\textcolor{keywordtype}{int} address);}
+\DoxyCodeLine{28         \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory_a6f3fd6769eb00b8667acf992e488f399}{InstructionMemory}}();}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

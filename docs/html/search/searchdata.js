@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "cdgrs",
-  1: "dr",
-  2: "cgs"
+  0: "cdgirs",
+  1: "dir",
+  2: "cgis"
 };
 
 var indexSectionNames =
