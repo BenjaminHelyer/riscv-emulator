@@ -5,12 +5,16 @@
 
 namespace riscv_emulator {
 
-void ControlUnit::increment_bool(bool bool_to_increment[32]) {
+void ControlUnit::increment_pc() {
+    bool pc_val[REGISTER_BITS];
+}
+
+void ControlUnit::increment_bool(bool bool_to_increment[REGISTER_BITS]) {
     int index = 0;
-    while (bool_to_increment[index] != 0 && index < 32) {
+    while (bool_to_increment[index] != 0 && index < REGISTER_BITS) {
         index++;
     }
-    if (index >= 32 ) {
+    if (index >= REGISTER_BITS ) {
         throw std::invalid_argument("boolean array already at it's maximum value!");
     }
     else if (index == 0) {
@@ -24,7 +28,7 @@ void ControlUnit::increment_bool(bool bool_to_increment[32]) {
     }
 }
 
-void ControlUnit::add_to_bool(bool bool_to_add[32], unsigned int immediate) {
+void ControlUnit::add_to_bool(bool bool_to_add[REGISTER_BITS], unsigned int immediate) {
     unsigned int index = 0;
     if (immediate == 0) {
         return;

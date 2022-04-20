@@ -179,7 +179,7 @@ void control_unit_tests() {
 
     riscv_emulator::ControlUnit myCtrlUnit;
 
-    bool myBool[32] = { };
+    bool myBool[riscv_emulator::REGISTER_BITS] = { };
     
     std::cout << "bool[32] before incrementing: ";
     for (int i = 0; i < 32; i++) {
