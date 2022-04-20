@@ -246,7 +246,25 @@ void control_unit_tests() {
     }
     std::cout << std::endl;
 
-    // NEED TO TEST increment_pc()
+    riscv_emulator::Register testPC;
+    bool pc_bool[riscv_emulator::REGISTER_BITS] = { };
+    testPC.set_contents(pc_bool);
+
+    std::cout << "testPC before incrementing: " << testPC.get_contents() << std::endl;
+
+    myCtrlUnit.ctrlPC = &testPC;
+
+    myCtrlUnit.increment_pc();
+
+    std::cout << "testPC after incrementing: " << testPC.get_contents() << std::endl;
+
+    myCtrlUnit.increment_pc();
+
+    std::cout << "testPC after incrementing: " << testPC.get_contents() << std::endl;
+
+    myCtrlUnit.increment_pc();
+
+    std::cout << "testPC after incrementing: " << testPC.get_contents() << std::endl;
 }
 
 int main() {
