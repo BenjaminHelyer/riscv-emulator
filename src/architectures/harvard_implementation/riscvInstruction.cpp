@@ -25,6 +25,12 @@ void RiscvInstruction::copy_contents(bool input_array[32]) {
     }
 }
 
+void RiscvInstruction::copy_nonopcode_fields(bool input_array[25]) {
+    for (int i = 0; i < 25; i++) {
+        input_array[i] = this->contents[i];
+    }
+}
+
 RiscvInstruction::RiscvInstruction() {
     // add in default constructor specifications later if needed
 }

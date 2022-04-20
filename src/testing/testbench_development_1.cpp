@@ -45,6 +45,21 @@ void instruction_tests() {
     }
     std::cout << std::endl;
 
+    bool testSmallerArray[25] = { };
+
+    std::cout << "Smaller original array seen as: ";
+    for (int i = 0; i < 25; i++) {
+        std::cout << testSmallerArray[i];
+    }
+    std::cout << std::endl;
+
+    myInstruction.copy_contents(testSmallerArray);
+    std::cout << "Smaller new array seen as: ";
+    for (int i = 0; i < 25; i++) {
+        std::cout << testSmallerArray[i];
+    }
+    std::cout << std::endl;
+
 }
 
 int main() {

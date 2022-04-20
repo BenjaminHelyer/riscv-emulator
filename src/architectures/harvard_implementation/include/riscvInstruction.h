@@ -31,11 +31,16 @@ class RiscvInstruction {
         * Returned as an integer for easy comparison purposes. Prevents iterating over an array each time.
         */
         int get_opcode() {return opcode; }
-        /*! \brief Copies the contents of the instruction into an array, the pointer of which is passed as an argument.
+        /*! \brief Copies the contents of the instruction into an array.
         *
         * This is instead of returning the pointer to the private contents array.
         */
         void copy_contents(bool input_array[32]);
+        /*! \brief Copies the non-opcode fields of the instruction into an array.
+        *
+        * This may not be used much or at all by the processor, but it's nice to have and minimally difficult to use.
+        */
+       void copy_nonopcode_fields(bool input_array[25]);
         RiscvInstruction();
 };
 
