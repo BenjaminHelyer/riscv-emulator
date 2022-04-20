@@ -65,14 +65,14 @@ void instruction_tests() {
 void data_mem_tests() {
     std::cout << "Beginning data memory tests..." << std::endl;
 
-    bool all_ones[CACHE_BITS_PER_ADDRESS];
-    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+    bool all_ones[riscv_emulator::CACHE_BITS_PER_ADDRESS];
+    for (int i = 0; i < riscv_emulator::CACHE_BITS_PER_ADDRESS; i++) {
         all_ones[i] = 1;
     }
     int myAddress = 30;
 
     std::cout << "Setting contents of memory at address " << myAddress << " to: ";
-    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+    for (int i = 0; i < riscv_emulator::CACHE_BITS_PER_ADDRESS; i++) {
         std::cout << all_ones[i];
     }
     std::cout << std::endl;
@@ -83,9 +83,9 @@ void data_mem_tests() {
     myData.set_cache_val(myAddress, all_ones);
 
     std::cout << "CONTENTS[" << myAddress << "] after memory set: ";
-    bool copied_array[CACHE_BITS_PER_ADDRESS] = { };
+    bool copied_array[riscv_emulator::CACHE_BITS_PER_ADDRESS] = { };
     myData.copy_cache_val(myAddress, copied_array);
-    for (int i = 0; i < CACHE_BITS_PER_ADDRESS; i++) {
+    for (int i = 0; i < riscv_emulator::CACHE_BITS_PER_ADDRESS; i++) {
         std::cout << copied_array[i];
     }
     std::cout << std::endl;

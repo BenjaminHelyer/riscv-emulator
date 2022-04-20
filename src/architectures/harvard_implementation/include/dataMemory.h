@@ -1,10 +1,10 @@
 #ifndef DATAMEMORY_H
 #define DATAMEMORY_H
 
+namespace riscv_emulator {
+
 const int CACHE_NUM_ADDRESSES = 4000;
 const int CACHE_BITS_PER_ADDRESS = 16;
-
-namespace riscv_emulator {
 
 /*! \brief Class for the data (non-instruction) memory of the system.
 *

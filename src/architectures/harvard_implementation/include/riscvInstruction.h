@@ -3,6 +3,8 @@
 
 namespace riscv_emulator {
 
+// global constant for instruction length is not defined since changing the instruction length would change the essence of the ISA
+
 /*! \brief Base class for RISC-V instruction.
  *
  *
