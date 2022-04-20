@@ -9,12 +9,6 @@ Base class for RISC-\/V instruction.
 
 {\ttfamily \#include $<$riscv\+Instruction.\+h$>$}
 
-Inheritance diagram for riscv\+\_\+emulator\+::Riscv\+Instruction\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{classriscv__emulator_1_1_riscv_instruction}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,16 +16,15 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f
 \begin{DoxyCompactList}\small\item\em Sets the contents of the given instruction to a 32-\/bit binary array. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}{get\+\_\+opcode}} ()
 \begin{DoxyCompactList}\small\item\em Gets the opcode of the given instruction as an integer. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}{get\+\_\+type}} ()
-\begin{DoxyCompactList}\small\item\em Gets the type of the given instruction as a character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}{copy\+\_\+contents}} (bool input\+\_\+array\mbox{[}32\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the contents of the instruction into an array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}{copy\+\_\+nonopcode\+\_\+fields}} (bool input\+\_\+array\mbox{[}25\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the non-\/opcode fields of the instruction into an array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_acad7669210d466ef8fd03cbacba129e7}\label{classriscv__emulator_1_1_riscv_instruction_acad7669210d466ef8fd03cbacba129e7}} 
 void {\bfseries set\+\_\+opcode} ()
-\item 
-\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a5ad7994b83412c60c1f8cdc90e707dca}\label{classriscv__emulator_1_1_riscv_instruction_a5ad7994b83412c60c1f8cdc90e707dca}} 
-void {\bfseries set\+\_\+type} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -41,9 +34,6 @@ bool {\bfseries contents} \mbox{[}32\mbox{]} = \{ \}
 \item 
 \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_adcd268529d286484602f98e5ff7b507b}\label{classriscv__emulator_1_1_riscv_instruction_adcd268529d286484602f98e5ff7b507b}} 
 int {\bfseries opcode}
-\item 
-\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a9ab589396ce2895dcf6666daa4af4cd3}\label{classriscv__emulator_1_1_riscv_instruction_a9ab589396ce2895dcf6666daa4af4cd3}} 
-char {\bfseries type}
 \end{DoxyCompactItemize}
 
 
@@ -53,7 +43,27 @@ Base class for RISC-\/V instruction.
 The RISC-\/V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.\+g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-\/V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example\+: the processor can be made to halt or raise an error if it encounters a zero instruction. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}\label{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}} 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}\label{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!copy\_contents@{copy\_contents}}
+\index{copy\_contents@{copy\_contents}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{copy\_contents()}{copy\_contents()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::copy\+\_\+contents (\begin{DoxyParamCaption}\item[{bool}]{input\+\_\+array\mbox{[}32\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Copies the contents of the instruction into an array. 
+
+This is instead of returning the pointer to the private contents array. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}\label{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!copy\_nonopcode\_fields@{copy\_nonopcode\_fields}}
+\index{copy\_nonopcode\_fields@{copy\_nonopcode\_fields}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{copy\_nonopcode\_fields()}{copy\_nonopcode\_fields()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::copy\+\_\+nonopcode\+\_\+fields (\begin{DoxyParamCaption}\item[{bool}]{input\+\_\+array\mbox{[}25\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Copies the non-\/opcode fields of the instruction into an array. 
+
+This may not be used much or at all by the processor, but it\textquotesingle{}s nice to have and minimally difficult to use. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}\label{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}} 
 \index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_opcode@{get\_opcode}}
 \index{get\_opcode@{get\_opcode}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
 \doxysubsubsection{\texorpdfstring{get\_opcode()}{get\_opcode()}}
@@ -63,17 +73,7 @@ The RISC-\/V instruction class includes the basic tools needed to operate on an 
 
 Gets the opcode of the given instruction as an integer. 
 
-Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}\label{classriscv__emulator_1_1_riscv_instruction_a7ab3e6cf5db07d86bb5856fcb2438acb}} 
-\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_type@{get\_type}}
-\index{get\_type@{get\_type}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
-\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
-{\footnotesize\ttfamily int riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Gets the type of the given instruction as a character. 
-
-Returns the type so that the opcode doesn\textquotesingle{}t have to be checked to determine the type each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}\label{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}} 
+Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}\label{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}} 
 \index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!set\_contents@{set\_contents}}
 \index{set\_contents@{set\_contents}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
 \doxysubsubsection{\texorpdfstring{set\_contents()}{set\_contents()}}

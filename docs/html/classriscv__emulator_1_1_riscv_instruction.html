@@ -79,15 +79,6 @@ $(function() {
  <a href="classriscv__emulator_1_1_riscv_instruction.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="riscv_instruction_8h_source.html">riscvInstruction.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for riscv_emulator::RiscvInstruction:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classriscv__emulator_1_1_riscv_instruction.png" usemap="#riscv_5Femulator::RiscvInstruction_map" alt=""/>
-  <map id="riscv_5Femulator::RiscvInstruction_map" name="riscv_5Femulator::RiscvInstruction_map">
-<area href="classriscv__emulator_1_1_r_type_instruction.html" title="R-Type instruction sub class. Includes rd, funct3, rs1, rs2, and funct7 as codes within the instructi..." alt="riscv_emulator::RTypeInstruction" shape="rect" coords="0,56,195,80"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -97,18 +88,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a70d6cfa1e3e41cacc907efe72c89633e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a70d6cfa1e3e41cacc907efe72c89633e">get_opcode</a> ()</td></tr>
 <tr class="memdesc:a70d6cfa1e3e41cacc907efe72c89633e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the opcode of the given instruction as an integer.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a70d6cfa1e3e41cacc907efe72c89633e">More...</a><br /></td></tr>
 <tr class="separator:a70d6cfa1e3e41cacc907efe72c89633e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a7ab3e6cf5db07d86bb5856fcb2438acb">get_type</a> ()</td></tr>
-<tr class="memdesc:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the given instruction as a character.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a7ab3e6cf5db07d86bb5856fcb2438acb">More...</a><br /></td></tr>
-<tr class="separator:a7ab3e6cf5db07d86bb5856fcb2438acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e20be297b8fc1053d48b69f966db220"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a4e20be297b8fc1053d48b69f966db220">copy_contents</a> (bool input_array[32])</td></tr>
+<tr class="memdesc:a4e20be297b8fc1053d48b69f966db220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the contents of the instruction into an array.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a4e20be297b8fc1053d48b69f966db220">More...</a><br /></td></tr>
+<tr class="separator:a4e20be297b8fc1053d48b69f966db220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa626a82fe39d2049148c4f4c5094d35b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">copy_nonopcode_fields</a> (bool input_array[25])</td></tr>
+<tr class="memdesc:aa626a82fe39d2049148c4f4c5094d35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the non-opcode fields of the instruction into an array.  <a href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">More...</a><br /></td></tr>
+<tr class="separator:aa626a82fe39d2049148c4f4c5094d35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:acad7669210d466ef8fd03cbacba129e7"><td class="memItemLeft" align="right" valign="top"><a id="acad7669210d466ef8fd03cbacba129e7" name="acad7669210d466ef8fd03cbacba129e7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_opcode</b> ()</td></tr>
 <tr class="separator:acad7669210d466ef8fd03cbacba129e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ad7994b83412c60c1f8cdc90e707dca"><td class="memItemLeft" align="right" valign="top"><a id="a5ad7994b83412c60c1f8cdc90e707dca" name="a5ad7994b83412c60c1f8cdc90e707dca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_type</b> ()</td></tr>
-<tr class="separator:a5ad7994b83412c60c1f8cdc90e707dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -118,14 +109,53 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>contents</b> [32] = {
 <tr class="memitem:adcd268529d286484602f98e5ff7b507b"><td class="memItemLeft" align="right" valign="top"><a id="adcd268529d286484602f98e5ff7b507b" name="adcd268529d286484602f98e5ff7b507b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 <tr class="separator:adcd268529d286484602f98e5ff7b507b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab589396ce2895dcf6666daa4af4cd3"><td class="memItemLeft" align="right" valign="top"><a id="a9ab589396ce2895dcf6666daa4af4cd3" name="a9ab589396ce2895dcf6666daa4af4cd3"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
-<tr class="separator:a9ab589396ce2895dcf6666daa4af4cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for RISC-V instruction. </p>
 <p >The RISC-V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example: the processor can be made to halt or raise an error if it encounters a zero instruction. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4e20be297b8fc1053d48b69f966db220" name="a4e20be297b8fc1053d48b69f966db220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e20be297b8fc1053d48b69f966db220">&#9670;&nbsp;</a></span>copy_contents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::RiscvInstruction::copy_contents </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>input_array</em>[32]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies the contents of the instruction into an array. </p>
+<p >This is instead of returning the pointer to the private contents array. </p>
+
+</div>
+</div>
+<a id="aa626a82fe39d2049148c4f4c5094d35b" name="aa626a82fe39d2049148c4f4c5094d35b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa626a82fe39d2049148c4f4c5094d35b">&#9670;&nbsp;</a></span>copy_nonopcode_fields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::RiscvInstruction::copy_nonopcode_fields </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>input_array</em>[25]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies the non-opcode fields of the instruction into an array. </p>
+<p >This may not be used much or at all by the processor, but it's nice to have and minimally difficult to use. </p>
+
+</div>
+</div>
 <a id="a70d6cfa1e3e41cacc907efe72c89633e" name="a70d6cfa1e3e41cacc907efe72c89633e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70d6cfa1e3e41cacc907efe72c89633e">&#9670;&nbsp;</a></span>get_opcode()</h2>
 
@@ -151,34 +181,6 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 
 <p>Gets the opcode of the given instruction as an integer. </p>
 <p >Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. </p>
-
-</div>
-</div>
-<a id="a7ab3e6cf5db07d86bb5856fcb2438acb" name="a7ab3e6cf5db07d86bb5856fcb2438acb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ab3e6cf5db07d86bb5856fcb2438acb">&#9670;&nbsp;</a></span>get_type()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int riscv_emulator::RiscvInstruction::get_type </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the type of the given instruction as a character. </p>
-<p >Returns the type so that the opcode doesn't have to be checked to determine the type each time. </p>
 
 </div>
 </div>

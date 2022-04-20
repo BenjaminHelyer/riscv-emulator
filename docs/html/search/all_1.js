@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['riscvinstruction_0',['RiscvInstruction',['../classriscv__emulator_1_1_riscv_instruction.html',1,'riscv_emulator']]],
-  ['rtypeinstruction_1',['RTypeInstruction',['../classriscv__emulator_1_1_r_type_instruction.html',1,'riscv_emulator']]]
+  ['get_5fopcode_0',['get_opcode',['../classriscv__emulator_1_1_riscv_instruction.html#a70d6cfa1e3e41cacc907efe72c89633e',1,'riscv_emulator::RiscvInstruction']]]
 ];
