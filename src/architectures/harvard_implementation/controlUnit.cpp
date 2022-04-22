@@ -87,6 +87,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             switch (extend_op) {
                 case 0:
                     // I addi instruction
+                    i_addi(ctrlInstruction);
                     break;
                 case 2:
                     // I slti instruction
@@ -281,8 +282,21 @@ int ControlUnit::get_rd(RiscvInstruction instr) {
     return val;
 }
 
+int ControlUnit::get_rs1(RiscvInstruction instr) {
+    bool rs1_bool_array[5] = { };
+    instr.copy_bits(15, 19, rs1_bool_array);
+
+    int val = 0;
+    for (int i = 0; i < 5; i++) {
+        val += rs1_bool_array[i]*std::pow(2, i);
+    }
+
+    return val;
+}
+
 
 // Begin functions for overall instructions
+
 void ControlUnit::u_lui(RiscvInstruction instr) {
     int rd = 0;
     rd = get_rd(instr);
@@ -301,6 +315,35 @@ void ControlUnit::u_lui(RiscvInstruction instr) {
         index_upper_20_bits++;
     }
 
+    this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
+}
+
+void ControlUnit::i_addi(RiscvInstruction instr) {
+    // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
+    int rd = 0;
+    rd = get_rd(instr);
+
+    int rs1 = 0;
+    rs1 = get_rs1(instr);
+
+    bool upper_12_bits[12] = { };
+    instr.copy_bits(20, 31, upper_12_bits);
+    
+    // convert upper_12_bits to an int so that we can easily increment the array
+    // we can use an int here since we're only using 12 bits
+    int imm_val = 0;
+    for (int i = 0; i < 12; i++) {
+        imm_val += upper_12_bits[i]*std::pow(2, i);
+    }
+
+    // copy the conents of rs1, add the immediate to these contents, then save these contents to the destination register
+    bool updated_reg_contents[32] = { };
+    this->ctrlRegisters[rs1]->copy_contents(updated_reg_contents);
+    
+    add_to_bool(updated_reg_contents, imm_val);
+    // now updated_reg_contents contains the value to be saved to the destination register
+
+    // we don't care what the destination register had in it before, so just store the updated value
     this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 

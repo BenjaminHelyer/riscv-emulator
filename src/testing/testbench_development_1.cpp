@@ -403,6 +403,52 @@ void processor_tests() {
     }
     std::cout << std::endl;
 
+    std::cout << "Adding an instruction and running processor again..." << std::endl;
+
+    bool my_i_addi_1[32] = { };
+    // let's only change the bits to 1 that we need to change to 1
+    // opcode field
+    my_i_addi_1[0] = 1;
+    my_i_addi_1[1] = 1;
+    my_i_addi_1[4] = 1;
+    // rd field = 00100
+    my_i_addi_1[9] = 1;
+    // opcode extend field = 0
+    // rs1 field = 00100
+    my_i_addi_1[17] = 1;
+    // imm field = 0001
+    my_i_addi_1[23] = 1;
+
+    std::cout << "Boolean array my_i_addi_1 is (lsb on left): ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_i_addi_1[i];
+    }
+    std::cout << std::endl;
+
+    riscv_emulator::RiscvInstruction my_i_addi_instr_1;
+    my_i_addi_instr_1.set_contents(my_i_addi_1);
+
+    myProcessor.instrMem.set_instruction(1, my_i_addi_instr_1);
+
+    myProcessor.registers[4].copy_contents(reg_test_array_1);
+
+    std::cout << "Register 4 value before running processor: ";
+    for (int i = 0; i < 32; i ++) {
+        std::cout << reg_test_array_1[i];
+    }
+    std::cout << std::endl;
+
+    // in theory pc should be initialized to zero, so we shouldn't need to do anything to it to run the processor
+    myProcessor.run_processor();
+
+    myProcessor.registers[4].copy_contents(reg_test_array_2);
+
+    std::cout << "Register 4 value after running processor: ";
+    for (int i = 0; i < 32; i ++) {
+        std::cout << reg_test_array_2[i];
+    }
+    std::cout << std::endl;
+
 }
 
 int main() {

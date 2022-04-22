@@ -18,6 +18,13 @@ namespace riscv_emulator {
  * Instead, they should be implemented at the level of the ControlUnit class.
  * Rationale: There is no determination of type made at the RiscvInstruction level.
  * Determining type requires reading the opcode, which is the job of the control unit, not the RiscvInstruction class.
+ * 
+ * Considerations for future updates: Add get_rd, get_rs1, and get_rs2 to the set of functions which are implemented at the level of the
+ * RiscvInstruction class. The register operands do not change from one instruction type to another, when the instruction uses register
+ * operands. In fact, The RISC-V Reader says: "in RISC-V the specifiers of the registers to be read and written are always in the same 
+ * location in all instructions, which means the register accesses can begin before decoding the instruction." (Patterson and Waterman, 2017)
+ * Thus, if this emulator is updated to include performance considerations at a later time, it might be prudent to include these functions
+ * at the RiscvInstruction level, simply ignoring them for the instruction types that do not have them.
  */
 class RiscvInstruction {
     protected:

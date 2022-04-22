@@ -34,13 +34,25 @@ class ControlUnit {
         * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
         */
         int get_rd(RiscvInstruction instr);
+        /*! \brief Gets the source register rs1 for the instructions for which this applies. Returns as an int.
+        *
+        * Destination register lies in bits 15 through 19 in all instructions for which it applies.
+        * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
+        */
+        int get_rs1(RiscvInstruction instr);
 
 
         // Begin functions for overall instructions.
-        /*! \brief Function for U lui instruction.
+        /*! \brief U lui: Loads a 20-bit immediate into the 20 most-significant-bits of the destination register.
         *
+        * Combined with one other 12-bit immediate instruction, the a full 32-bit immediate can be loaded into a register.
+        * Example: U lui followed by I addi has this result
         */
         void u_lui(RiscvInstruction instr);
+        /*! \brief I addi: adds a 12-bit immediate from a source register to a destination register. The immediate is added to the 12 least significant bits.
+        *
+        */
+        void i_addi(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
