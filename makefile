@@ -6,10 +6,10 @@ SRCS = $(wildcard *.CPP)
 
 ODIR=.\src
 
-_DEPS = dataMemory.h riscvInstruction.h rTypeInstruction.h processor.h register.h instructionMemory.h controlUnit.h
+_DEPS = dataMemory.h riscvInstruction.h rTypeInstruction.h processor.h register.h instructionMemory.h controlUnit.h ioPeripheral.h
 DPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o architectures\harvard_implementation\register.o architectures\harvard_implementation\instructionMemory.o architectures\harvard_implementation\controlUnit.o
+_OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o architectures\harvard_implementation\register.o architectures\harvard_implementation\instructionMemory.o architectures\harvard_implementation\controlUnit.o architectures\harvard_implementation\IoPeripheral.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
