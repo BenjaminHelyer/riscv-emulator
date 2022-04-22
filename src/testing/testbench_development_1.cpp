@@ -307,9 +307,107 @@ void control_unit_tests() {
     std::cout << "testPC after incrementing: " << testPC.get_contents() << std::endl;
 }
 
+void processor_tests() {
+    riscv_emulator::Processor myProcessor;
+
+    // do this manually for now, will add I/O later
+    // mostly just want to test LUI instruction for now
+    // this will also test the overall ControlUnit sequence
+    bool my_lui_1[32] = { };
+    // opcode = 1110110
+    my_lui_1[0] = 1;
+    my_lui_1[1] = 1;
+    my_lui_1[2] = 1;
+    my_lui_1[3] = 0;
+    my_lui_1[4] = 1;
+    my_lui_1[5] = 1;
+    my_lui_1[6] = 0;
+    // rd = 00100
+    my_lui_1[7] = 0;
+    my_lui_1[8] = 0;
+    my_lui_1[9] = 1;
+    my_lui_1[10] = 0;
+    my_lui_1[11] = 0;
+    // imm[31:12] = 0110...0
+    my_lui_1[12] = 0;
+    my_lui_1[13] = 1;
+    my_lui_1[14] = 1;
+    my_lui_1[15] = 1;
+    my_lui_1[16] = 0;
+    my_lui_1[17] = 0;
+    my_lui_1[18] = 0;
+    my_lui_1[19] = 0;
+    my_lui_1[20] = 0;
+    my_lui_1[21] = 0;
+    my_lui_1[22] = 0;
+    my_lui_1[23] = 0;
+    my_lui_1[24] = 0;
+    my_lui_1[25] = 0;
+    my_lui_1[26] = 0;
+    my_lui_1[27] = 0;
+    my_lui_1[28] = 0;
+    my_lui_1[29] = 0;
+    my_lui_1[30] = 0;
+    my_lui_1[31] = 0;
+
+    std::cout << "Boolean array my_lui_1 is (lsb on left): ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_lui_1[i];
+    }
+    std::cout << std::endl;
+
+    riscv_emulator::RiscvInstruction my_lui_instr_1;
+    my_lui_instr_1.set_contents(my_lui_1);
+
+    bool inst_test_array_1[32] = { };
+    my_lui_instr_1.copy_contents(inst_test_array_1);
+
+    std::cout << "Instruction my_lui_instr_1 is (lsb on left): ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << inst_test_array_1[i];
+    }
+    std::cout << std::endl;
+
+    myProcessor.instrMem.set_instruction(0, my_lui_instr_1);
+
+    riscv_emulator::RiscvInstruction instr_confirm;
+    instr_confirm = myProcessor.instrMem.get_instruction(0);
+
+    bool inst_test_array_2[32] = { };
+    instr_confirm.copy_contents(inst_test_array_2);
+
+    std::cout << "Instruction at instrMem address 0 is (lsb on left): ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << inst_test_array_2[i];
+    }
+    std::cout << std::endl;
+
+    bool reg_test_array_1[32] = { };
+    myProcessor.registers[4].copy_contents(reg_test_array_1);
+
+    std::cout << "Register 4 value before running processor: ";
+    for (int i = 0; i < 32; i ++) {
+        std::cout << reg_test_array_1[i];
+    }
+    std::cout << std::endl;
+
+    // in theory pc should be initialized to zero, so we shouldn't need to do anything to it to run the processor
+    myProcessor.run_processor();
+
+    bool reg_test_array_2[32] = { };
+    myProcessor.registers[4].copy_contents(reg_test_array_2);
+
+    std::cout << "Register 4 value after running processor: ";
+    for (int i = 0; i < 32; i ++) {
+        std::cout << reg_test_array_2[i];
+    }
+    std::cout << std::endl;
+
+}
+
 int main() {
 
-    instruction_tests();
+    //instruction_tests();
 
     //data_mem_tests();
 
@@ -318,6 +416,8 @@ int main() {
     //instr_mem_tests();
 
     //control_unit_tests();
+
+    processor_tests();
 
     return 0;
 }

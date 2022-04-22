@@ -21,7 +21,6 @@ namespace riscv_emulator {
 */
 class ControlUnit {
     private:
-
         /*! \brief Gets the extended opcode for a boolean array representing an instruction.
         *
         * Not implemented in RiscvInstruction class since not all instructions have an extended opcode.
@@ -29,6 +28,19 @@ class ControlUnit {
         * Similar to other functions, the basis for the interface between this function and the RiscvInstruction object is the copy_bits function.
         */
         int get_opcode_extend(RiscvInstruction instr);
+        /*! \brief Gets the destination register for the instructions for which this applies. Returns as an int.
+        *
+        * Destination register lies in bits 7 through 11 in all instructions for which it applies.
+        * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
+        */
+        int get_rd(RiscvInstruction instr);
+
+
+        // Begin functions for overall instructions.
+        /*! \brief Function for U lui instruction.
+        *
+        */
+        void u_lui(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
