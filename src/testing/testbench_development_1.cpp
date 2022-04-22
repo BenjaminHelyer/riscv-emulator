@@ -64,6 +64,46 @@ void instruction_tests() {
     }
     std::cout << std::endl;
 
+    bool test_array[5] = { };
+
+    int my_size = 0;
+    my_size = 1 + sizeof(test_array) / sizeof(test_array[0]);
+    std::cout << "my_size = " << my_size << std::endl;
+
+    std::cout << "test_array original array seen as: ";
+    for (int i = 0; i < 5; i++) {
+        std::cout << test_array[i];
+    }
+    std::cout << std::endl;
+
+    myInstruction.get_bits(5, 9, test_array);
+
+    std::cout << "Specific get bits function results in array: ";
+    for (int i = 0; i < 5; i++) {
+        std::cout << test_array[i];
+    }
+    std::cout << std::endl;
+
+    bool test_array_2[10] = { };
+    test_array_2[6] = 1;
+
+    my_size = 1 + sizeof(test_array_2) / sizeof(test_array_2[0]);
+    std::cout << "my_size = " << my_size << std::endl;
+
+    std::cout << "test_array_2 original array seen as: ";
+    for (int i = 0; i < 10; i++) {
+        std::cout << test_array_2[i];
+    }
+    std::cout << std::endl;
+
+    myInstruction.get_bits(20, 29, test_array_2);
+
+    std::cout << "Specific get bits function results in array: ";
+    for (int i = 0; i < 10; i++) {
+        std::cout << test_array_2[i];
+    }
+    std::cout << std::endl;
+
 }
 
 void data_mem_tests() {
@@ -271,15 +311,13 @@ int main() {
 
     instruction_tests();
 
-    data_mem_tests();
+    //data_mem_tests();
 
-    reg_tests();
+    //reg_tests();
 
-    instr_mem_tests();
+    //instr_mem_tests();
 
-    control_unit_tests();
-
-    // NEED TO TEST increment_pc()
+    //control_unit_tests();
 
     return 0;
 }

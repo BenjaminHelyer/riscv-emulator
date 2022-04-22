@@ -56,6 +56,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
 
     int extend_op = 0;
 
+    // we don't need to copy the contents of the full instruction here
     bool full_instr[32] = { };
     ctrlInstruction.copy_contents(full_instr);
 

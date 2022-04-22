@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+#include <stdexcept>
+
 namespace riscv_emulator {
 
 void RiscvInstruction::set_opcode() {
@@ -37,6 +39,20 @@ unsigned long RiscvInstruction::get_contents() {
         val += this->contents[i]*std::pow(2,i);
     }
     return val;
+}
+
+void RiscvInstruction::get_bits(int first_bit, int last_bit, bool input_array[]) {
+    int in_array_index = 0;
+    // note that the below loop is *INCLUSIVE* with respect to the last bit
+    for (int i = first_bit; i <= last_bit; i++) {
+        try {
+        input_array[in_array_index] = this->contents[i];
+        in_array_index++;
+        }
+        catch(...) {
+            throw std::invalid_argument("array size and given indices do not match");
+        }
+    }
 }
 
 RiscvInstruction::RiscvInstruction() {

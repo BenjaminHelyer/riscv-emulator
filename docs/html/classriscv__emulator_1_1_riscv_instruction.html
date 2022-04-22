@@ -98,6 +98,9 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>get_contents
 <tr class="memitem:aa626a82fe39d2049148c4f4c5094d35b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">copy_nonopcode_fields</a> (bool input_array[25])</td></tr>
 <tr class="memdesc:aa626a82fe39d2049148c4f4c5094d35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the non-opcode fields of the instruction into an array.  <a href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">More...</a><br /></td></tr>
 <tr class="separator:aa626a82fe39d2049148c4f4c5094d35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5155dd01866845bde6b98dd576d43728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a5155dd01866845bde6b98dd576d43728">get_bits</a> (int first_bit, int last_bit, bool input_array[])</td></tr>
+<tr class="memdesc:a5155dd01866845bde6b98dd576d43728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a5155dd01866845bde6b98dd576d43728">More...</a><br /></td></tr>
+<tr class="separator:a5155dd01866845bde6b98dd576d43728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -157,6 +160,44 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 
 <p>Copies the non-opcode fields of the instruction into an array. </p>
 <p >This may not be used much or at all by the processor, but it's nice to have and minimally difficult to use. </p>
+
+</div>
+</div>
+<a id="a5155dd01866845bde6b98dd576d43728" name="a5155dd01866845bde6b98dd576d43728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5155dd01866845bde6b98dd576d43728">&#9670;&nbsp;</a></span>get_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::RiscvInstruction::get_bits </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>first_bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>last_bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>input_array</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index. </p>
+<p >Meant to serve as an interface between the <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> class and the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> class, in that it provides a set of bits of a <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> without pre-determining what they are supposed to be used for. Other specific functions at the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> level then can call this function for specific uses of these bits.</p>
+<p >Usage example: get_bits(3, 7, my_array[5]) results in my_array containing the following after the instruction: [bit_3, bit_4, bit_5, bit_6, bit_7] </p>
 
 </div>
 </div>

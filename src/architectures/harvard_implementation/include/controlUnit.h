@@ -16,6 +16,10 @@ class ControlUnit {
         * Once the processor sees that this instruction is of a type with an extended opcode, it gets the extended opcode.
         */
         int get_opcode_extend(bool instr_bool[32]);
+        
+        // considered making an arbitrary function for getting the sum of any set of bits in the instruction
+        // however, this would likely mean using an unsigned long or handling overflow
+        // RISC-V includes the possibility for both signed and unsigned functions, so it's not clear how useful such an arbitary function would be
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
         *

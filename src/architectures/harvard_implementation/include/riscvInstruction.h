@@ -47,7 +47,17 @@ class RiscvInstruction {
         * This may not be used much or at all by the processor, but it's nice to have and minimally difficult to use.
         */
        void copy_nonopcode_fields(bool input_array[25]);
-        RiscvInstruction();
+       /*! \brief Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.
+       *
+       * Meant to serve as an interface between the RiscvInstruction class and the ControlUnit class,
+       * in that it provides a set of bits of a RiscvInstruction without pre-determining what they are supposed to be used for.
+       * Other specific functions at the ControlUnit level then can call this function for specific uses of these bits.
+       * 
+       * Usage example: get_bits(3, 7, my_array[5]) results in my_array containing the following after the instruction: [bit_3, bit_4, bit_5, bit_6, bit_7]
+       */
+       void get_bits(int first_bit, int last_bit, bool input_array[]);
+
+       RiscvInstruction();
 };
 
 } // namespace riscv_emulator

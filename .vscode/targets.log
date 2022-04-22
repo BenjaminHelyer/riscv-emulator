@@ -8,10 +8,12 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Apr 20 11:48:54 2022
+# Make data base, printed on Thu Apr 21 17:18:46 2022
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # makefile (from 'makefile', line 13)
@@ -23,7 +25,7 @@ USERPROFILE = C:\Users\Benjamin
 # environment
 LOCALAPPDATA = C:\Users\Benjamin\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-b33d9264-ec41-4d2b-a22a-d6f50ffbf175-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-e7108d3c-4e81-411f-92d4-e91bcea3f3be-sock
 # environment
 VSCODE_CWD = C:\Users\Benjamin\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -39,7 +41,9 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_28704_ZNQDVQLUNVXSZAED
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_25520_XOVAKJCVBURRXKMP
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -101,7 +105,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 28704
+VSCODE_PID = 25520
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -229,7 +233,7 @@ CC = g++
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 # variable set hash-table stats:
-# Load=108/1024=11%, Rehash=0, Collisions=10/141=7%
+# Load=110/1024=11%, Rehash=0, Collisions=11/143=8%
 
 # Pattern-specific Variable Values
 
@@ -237,7 +241,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650473294): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650480798): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -306,7 +310,8 @@ mymake: .\src/testing\testbench_development_1.o .\src/architectures\harvard_impl
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-20 11:48:50
+#  Last modified 2022-04- 
+20 11:48:50
 #  File has been updated.
 #  Successfully updated.
 
@@ -329,8 +334,7 @@ makefile:
 #  File has not been updated.
 
 .PHONY: clean
-#  Implic 
-it rule search has not been done.
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -348,6 +352,6 @@ it rule search has not been done.
 # strcache performance: lookups = 33 / hit rate = 24%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Wed Apr 20 11:48:54 2022
+# Finished Make data base on Thu Apr 21 17:18:46 2022
 
  
