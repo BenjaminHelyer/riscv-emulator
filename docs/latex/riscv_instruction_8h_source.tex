@@ -8,26 +8,26 @@
 \DoxyCodeLine{5 }
 \DoxyCodeLine{6 \textcolor{comment}{// global constant for instruction length is not defined since changing the instruction length would change the essence of the ISA}}
 \DoxyCodeLine{7 }
-\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} \{}
-\DoxyCodeLine{18     \textcolor{keyword}{protected}:}
-\DoxyCodeLine{19         \textcolor{keywordtype}{bool} contents[32] = \{ \}; \textcolor{comment}{// RISC-\/V has no instructions that are entirely zero, which allows for quickly recognizing empty instructions}}
-\DoxyCodeLine{20         \textcolor{keywordtype}{int} opcode; \textcolor{comment}{// make an integer opcode for easy readability, despite the contents being in binary}}
-\DoxyCodeLine{21         }
-\DoxyCodeLine{22         \textcolor{comment}{// don't want to be able to set the opcode or type unless the contents themselves are changed}}
-\DoxyCodeLine{23         \textcolor{keywordtype}{void} set\_opcode(); }
-\DoxyCodeLine{24     \textcolor{keyword}{public}:}
-\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}{set\_contents}}(\textcolor{keywordtype}{bool} updated\_contents[32]);}
-\DoxyCodeLine{40         \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}{get\_opcode}}() \{\textcolor{keywordflow}{return} opcode; \}}
-\DoxyCodeLine{44         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a6ac77abfe9cbe4622955ba07657614a3}{get\_contents}}();}
-\DoxyCodeLine{49         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}{copy\_contents}}(\textcolor{keywordtype}{bool} input\_array[32]);}
-\DoxyCodeLine{54        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}{copy\_nonopcode\_fields}}(\textcolor{keywordtype}{bool} input\_array[25]);}
-\DoxyCodeLine{63        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}{copy\_bits}}(\textcolor{keywordtype}{int} first\_bit, \textcolor{keywordtype}{int} last\_bit, \textcolor{keywordtype}{bool} input\_array[]);}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65        \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}}();}
-\DoxyCodeLine{66 \};}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} \{}
+\DoxyCodeLine{23     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{24         \textcolor{keywordtype}{bool} contents[32] = \{ \}; \textcolor{comment}{// RISC-\/V has no instructions that are entirely zero, which allows for quickly recognizing empty instructions}}
+\DoxyCodeLine{25         \textcolor{keywordtype}{int} opcode; \textcolor{comment}{// make an integer opcode for easy readability, despite the contents being in binary}}
+\DoxyCodeLine{26         }
+\DoxyCodeLine{27         \textcolor{comment}{// don't want to be able to set the opcode or type unless the contents themselves are changed}}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} set\_opcode(); }
+\DoxyCodeLine{29     \textcolor{keyword}{public}:}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}{set\_contents}}(\textcolor{keywordtype}{bool} updated\_contents[32]);}
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}{get\_opcode}}() \{\textcolor{keywordflow}{return} opcode; \}}
+\DoxyCodeLine{49         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a6ac77abfe9cbe4622955ba07657614a3}{get\_contents}}();}
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}{copy\_contents}}(\textcolor{keywordtype}{bool} input\_array[32]);}
+\DoxyCodeLine{59        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}{copy\_nonopcode\_fields}}(\textcolor{keywordtype}{bool} input\_array[25]);}
+\DoxyCodeLine{68        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}{copy\_bits}}(\textcolor{keywordtype}{int} first\_bit, \textcolor{keywordtype}{int} last\_bit, \textcolor{keywordtype}{bool} input\_array[]);}
 \DoxyCodeLine{69 }
-\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{70        \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}}();}
+\DoxyCodeLine{71 \};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

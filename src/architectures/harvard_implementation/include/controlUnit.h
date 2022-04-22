@@ -8,8 +8,20 @@
 
 namespace riscv_emulator {
 
+/*! \brief Class for the control unit, which is the decision-making heart of the processor.
+*
+* This class includes peripherals as pointers rather than members.
+* Rationale: the types of peripherals should be able to be adjusted as part of the overall processor
+* without affecting the control unit.
+*
+* Functions that depend on the type of instruction are implemented here rather than in the RiscvInstruction class.
+* Rationale: Instruction type is determined at the level of the control unit rather than at the level of the instruction itself.
+* Thus, defining functions for all instructions which are only valid for specific instruction types might lead to confusing
+* or outright incorrect results.
+*/
 class ControlUnit {
     private:
+
         /*! \brief Gets the extended opcode for a boolean array representing an instruction.
         *
         * Not implemented in RiscvInstruction class since not all instructions have an extended opcode.

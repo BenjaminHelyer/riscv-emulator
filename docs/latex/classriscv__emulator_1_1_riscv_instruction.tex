@@ -45,7 +45,9 @@ int {\bfseries opcode}
 \doxysubsection{Detailed Description}
 Base class for RISC-\/V instruction. 
 
-The RISC-\/V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.\+g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-\/V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example\+: the processor can be made to halt or raise an error if it encounters a zero instruction. 
+The RISC-\/V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.\+g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-\/V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example\+: the processor can be made to halt or raise an error if it encounters a zero instruction.
+
+Functions that depend on the instruction type should NOT be implemented in this class. Instead, they should be implemented at the level of the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} class. Rationale\+: There is no determination of type made at the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} level. Determining type requires reading the opcode, which is the job of the control unit, not the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} class. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}\label{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}} 

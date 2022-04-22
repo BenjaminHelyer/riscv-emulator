@@ -1,5 +1,14 @@
 \hypertarget{classriscv__emulator_1_1_control_unit}{}\doxysection{riscv\+\_\+emulator\+::Control\+Unit Class Reference}
 \label{classriscv__emulator_1_1_control_unit}\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+
+
+Class for the control unit, which is the decision-\/making heart of the processor.  
+
+
+
+
+{\ttfamily \#include $<$control\+Unit.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,6 +34,13 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046ae
 \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} $\ast$ {\bfseries ctrl\+Registers} \mbox{[}32\mbox{]}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Class for the control unit, which is the decision-\/making heart of the processor. 
+
+This class includes peripherals as pointers rather than members. Rationale\+: the types of peripherals should be able to be adjusted as part of the overall processor without affecting the control unit.
+
+Functions that depend on the type of instruction are implemented here rather than in the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} class. Rationale\+: Instruction type is determined at the level of the control unit rather than at the level of the instruction itself. Thus, defining functions for all instructions which are only valid for specific instruction types might lead to confusing or outright incorrect results. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}\label{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}} 

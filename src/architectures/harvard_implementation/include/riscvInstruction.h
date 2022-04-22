@@ -13,6 +13,11 @@ namespace riscv_emulator {
  * The default value is for the entire contents of the instruction to be zero, since RISC-V has no instructions that are entirely zero.
  * Thus, encountering a zero instruction can be useful for programming.
  * Example: the processor can be made to halt or raise an error if it encounters a zero instruction.
+ * 
+ * Functions that depend on the instruction type should NOT be implemented in this class.
+ * Instead, they should be implemented at the level of the ControlUnit class.
+ * Rationale: There is no determination of type made at the RiscvInstruction level.
+ * Determining type requires reading the opcode, which is the job of the control unit, not the RiscvInstruction class.
  */
 class RiscvInstruction {
     protected:
