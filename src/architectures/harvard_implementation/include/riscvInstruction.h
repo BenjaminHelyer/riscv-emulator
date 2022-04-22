@@ -31,6 +31,11 @@ class RiscvInstruction {
         /*! \brief Gets the opcode of the given instruction as an integer.
         *
         * Returned as an integer for easy comparison purposes. Prevents iterating over an array each time.
+        * The opcode is the only field which is common among all RISC-V instructions.
+        * Thus, this is the only field-wise function (aside from the compelementary get_nonopcode_fields) which we define for the riscvInstruction class.
+        * The rest of the field-wise functions are determined at the level of the ControlUnit class.
+        * This is so these functions can be used only after the type of instruction is determined.
+        * 
         */
         int get_opcode() {return opcode; }
         /*! \brief Gets the contents of the instruction and returns it as an unsigned long.
@@ -47,7 +52,7 @@ class RiscvInstruction {
         * This may not be used much or at all by the processor, but it's nice to have and minimally difficult to use.
         */
        void copy_nonopcode_fields(bool input_array[25]);
-       /*! \brief Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.
+       /*! \brief Copies a set of bits from the instruction into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.
        *
        * Meant to serve as an interface between the RiscvInstruction class and the ControlUnit class,
        * in that it provides a set of bits of a RiscvInstruction without pre-determining what they are supposed to be used for.
@@ -55,7 +60,7 @@ class RiscvInstruction {
        * 
        * Usage example: get_bits(3, 7, my_array[5]) results in my_array containing the following after the instruction: [bit_3, bit_4, bit_5, bit_6, bit_7]
        */
-       void get_bits(int first_bit, int last_bit, bool input_array[]);
+       void copy_bits(int first_bit, int last_bit, bool input_array[]);
 
        RiscvInstruction();
 };

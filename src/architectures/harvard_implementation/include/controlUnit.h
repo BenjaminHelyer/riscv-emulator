@@ -14,12 +14,10 @@ class ControlUnit {
         *
         * Not implemented in RiscvInstruction class since not all instructions have an extended opcode.
         * Once the processor sees that this instruction is of a type with an extended opcode, it gets the extended opcode.
+        * Similar to other functions, the basis for the interface between this function and the RiscvInstruction object is the copy_bits function.
         */
-        int get_opcode_extend(bool instr_bool[32]);
-        
-        // considered making an arbitrary function for getting the sum of any set of bits in the instruction
-        // however, this would likely mean using an unsigned long or handling overflow
-        // RISC-V includes the possibility for both signed and unsigned functions, so it's not clear how useful such an arbitary function would be
+        int get_opcode_extend(RiscvInstruction instr);
+
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
         *

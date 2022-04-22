@@ -76,7 +76,7 @@ void instruction_tests() {
     }
     std::cout << std::endl;
 
-    myInstruction.get_bits(5, 9, test_array);
+    myInstruction.copy_bits(5, 9, test_array);
 
     std::cout << "Specific get bits function results in array: ";
     for (int i = 0; i < 5; i++) {
@@ -96,7 +96,7 @@ void instruction_tests() {
     }
     std::cout << std::endl;
 
-    myInstruction.get_bits(20, 29, test_array_2);
+    myInstruction.copy_bits(20, 29, test_array_2);
 
     std::cout << "Specific get bits function results in array: ";
     for (int i = 0; i < 10; i++) {

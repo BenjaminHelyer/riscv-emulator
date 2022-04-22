@@ -56,14 +56,10 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
 
     int extend_op = 0;
 
-    // we don't need to copy the contents of the full instruction here
-    bool full_instr[32] = { };
-    ctrlInstruction.copy_contents(full_instr);
-
     switch (opcode) {
         case 3:
             // opcode is for some I type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // I lb instruction
@@ -81,7 +77,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 19:
             // opcode is for some I type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // I addi instruction
@@ -101,7 +97,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 35:
             // opcode is for some S type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // S sb instruction
@@ -115,7 +111,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 51:
             // opcode is for some R type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // NEED TO DETERMINE IF ADD OR SUB AFTER THIS
@@ -139,7 +135,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 15:
             // opcode is for some I type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // I fence instruction
@@ -151,7 +147,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 115:
             // opcode is for some I type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // NEED TO DETERMINE DIFFERENCE BETWEEN ECALL AND EBREAK
@@ -173,7 +169,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             }
         case 99:
             // opcode is for some B type instruction
-            extend_op = get_opcode_extend(full_instr);
+            extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
                     // B beq instruction
@@ -211,11 +207,17 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
     this->increment_pc();
 }
 
-int ControlUnit::get_opcode_extend(bool instr_bool[32]) {
+int ControlUnit::get_opcode_extend(RiscvInstruction instr) {
+    // first copy the extended opcode into an array
+    bool op_extend_array[3];
+    instr.copy_bits(12, 14, op_extend_array);
+
     int val = 0;
-    for (int i = 12; i < 15; i++) {
-        val += instr_bool[i]*std::pow(2, i);
+    for (int i = 0; i < 3; i++) {
+        val += op_extend_array[i]*std::pow(2, i);
     }
+
+    return val;
 }
 
 ControlUnit::ControlUnit() {

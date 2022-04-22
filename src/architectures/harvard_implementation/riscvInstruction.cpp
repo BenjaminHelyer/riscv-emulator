@@ -41,7 +41,7 @@ unsigned long RiscvInstruction::get_contents() {
     return val;
 }
 
-void RiscvInstruction::get_bits(int first_bit, int last_bit, bool input_array[]) {
+void RiscvInstruction::copy_bits(int first_bit, int last_bit, bool input_array[]) {
     int in_array_index = 0;
     // note that the below loop is *INCLUSIVE* with respect to the last bit
     for (int i = first_bit; i <= last_bit; i++) {

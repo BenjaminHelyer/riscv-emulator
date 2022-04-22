@@ -98,9 +98,9 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>get_contents
 <tr class="memitem:aa626a82fe39d2049148c4f4c5094d35b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">copy_nonopcode_fields</a> (bool input_array[25])</td></tr>
 <tr class="memdesc:aa626a82fe39d2049148c4f4c5094d35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the non-opcode fields of the instruction into an array.  <a href="classriscv__emulator_1_1_riscv_instruction.html#aa626a82fe39d2049148c4f4c5094d35b">More...</a><br /></td></tr>
 <tr class="separator:aa626a82fe39d2049148c4f4c5094d35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5155dd01866845bde6b98dd576d43728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#a5155dd01866845bde6b98dd576d43728">get_bits</a> (int first_bit, int last_bit, bool input_array[])</td></tr>
-<tr class="memdesc:a5155dd01866845bde6b98dd576d43728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.  <a href="classriscv__emulator_1_1_riscv_instruction.html#a5155dd01866845bde6b98dd576d43728">More...</a><br /></td></tr>
-<tr class="separator:a5155dd01866845bde6b98dd576d43728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae45fb7e2230c04a6666ca83a45f1170a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_riscv_instruction.html#ae45fb7e2230c04a6666ca83a45f1170a">copy_bits</a> (int first_bit, int last_bit, bool input_array[])</td></tr>
+<tr class="memdesc:ae45fb7e2230c04a6666ca83a45f1170a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a set of bits from the instruction into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index.  <a href="classriscv__emulator_1_1_riscv_instruction.html#ae45fb7e2230c04a6666ca83a45f1170a">More...</a><br /></td></tr>
+<tr class="separator:ae45fb7e2230c04a6666ca83a45f1170a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -121,6 +121,44 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 <div class="textblock"><p >Base class for RISC-V instruction. </p>
 <p >The RISC-V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example: the processor can be made to halt or raise an error if it encounters a zero instruction. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae45fb7e2230c04a6666ca83a45f1170a" name="ae45fb7e2230c04a6666ca83a45f1170a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae45fb7e2230c04a6666ca83a45f1170a">&#9670;&nbsp;</a></span>copy_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void riscv_emulator::RiscvInstruction::copy_bits </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>first_bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>last_bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>input_array</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies a set of bits from the instruction into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index. </p>
+<p >Meant to serve as an interface between the <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> class and the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> class, in that it provides a set of bits of a <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> without pre-determining what they are supposed to be used for. Other specific functions at the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> level then can call this function for specific uses of these bits.</p>
+<p >Usage example: get_bits(3, 7, my_array[5]) results in my_array containing the following after the instruction: [bit_3, bit_4, bit_5, bit_6, bit_7] </p>
+
+</div>
+</div>
 <a id="a4e20be297b8fc1053d48b69f966db220" name="a4e20be297b8fc1053d48b69f966db220"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e20be297b8fc1053d48b69f966db220">&#9670;&nbsp;</a></span>copy_contents()</h2>
 
@@ -163,44 +201,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 
 </div>
 </div>
-<a id="a5155dd01866845bde6b98dd576d43728" name="a5155dd01866845bde6b98dd576d43728"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5155dd01866845bde6b98dd576d43728">&#9670;&nbsp;</a></span>get_bits()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void riscv_emulator::RiscvInstruction::get_bits </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>first_bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>last_bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>input_array</em>[]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a set of bits from the instruction and copies them into a given array. Usage: input_array should be of length (last_bit - first_bit + 1). This function is inclusive with respect to the last_bit index. </p>
-<p >Meant to serve as an interface between the <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> class and the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> class, in that it provides a set of bits of a <a class="el" href="classriscv__emulator_1_1_riscv_instruction.html" title="Base class for RISC-V instruction.">RiscvInstruction</a> without pre-determining what they are supposed to be used for. Other specific functions at the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> level then can call this function for specific uses of these bits.</p>
-<p >Usage example: get_bits(3, 7, my_array[5]) results in my_array containing the following after the instruction: [bit_3, bit_4, bit_5, bit_6, bit_7] </p>
-
-</div>
-</div>
 <a id="a70d6cfa1e3e41cacc907efe72c89633e" name="a70d6cfa1e3e41cacc907efe72c89633e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70d6cfa1e3e41cacc907efe72c89633e">&#9670;&nbsp;</a></span>get_opcode()</h2>
 
@@ -225,7 +225,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the opcode of the given instruction as an integer. </p>
-<p >Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. </p>
+<p >Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. The opcode is the only field which is common among all RISC-V instructions. Thus, this is the only field-wise function (aside from the compelementary get_nonopcode_fields) which we define for the riscvInstruction class. The rest of the field-wise functions are determined at the level of the <a class="el" href="classriscv__emulator_1_1_control_unit.html">ControlUnit</a> class. This is so these functions can be used only after the type of instruction is determined. </p>
 
 </div>
 </div>

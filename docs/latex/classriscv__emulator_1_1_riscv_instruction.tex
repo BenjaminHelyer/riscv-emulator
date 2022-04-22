@@ -23,8 +23,8 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1
 \begin{DoxyCompactList}\small\item\em Copies the contents of the instruction into an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_aa626a82fe39d2049148c4f4c5094d35b}{copy\+\_\+nonopcode\+\_\+fields}} (bool input\+\_\+array\mbox{[}25\mbox{]})
 \begin{DoxyCompactList}\small\item\em Copies the non-\/opcode fields of the instruction into an array. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_a5155dd01866845bde6b98dd576d43728}{get\+\_\+bits}} (int first\+\_\+bit, int last\+\_\+bit, bool input\+\_\+array\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Gets a set of bits from the instruction and copies them into a given array. Usage\+: input\+\_\+array should be of length (last\+\_\+bit -\/ first\+\_\+bit + 1). This function is inclusive with respect to the last\+\_\+bit index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}{copy\+\_\+bits}} (int first\+\_\+bit, int last\+\_\+bit, bool input\+\_\+array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies a set of bits from the instruction into a given array. Usage\+: input\+\_\+array should be of length (last\+\_\+bit -\/ first\+\_\+bit + 1). This function is inclusive with respect to the last\+\_\+bit index. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,7 +48,19 @@ Base class for RISC-\/V instruction.
 The RISC-\/V instruction class includes the basic tools needed to operate on an instruction. The instruction contents should only be set as a whole, not by specific parts (e.\+g., should not just set the opcode). The default value is for the entire contents of the instruction to be zero, since RISC-\/V has no instructions that are entirely zero. Thus, encountering a zero instruction can be useful for programming. Example\+: the processor can be made to halt or raise an error if it encounters a zero instruction. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}\label{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}} 
+\mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}\label{classriscv__emulator_1_1_riscv_instruction_ae45fb7e2230c04a6666ca83a45f1170a}} 
+\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!copy\_bits@{copy\_bits}}
+\index{copy\_bits@{copy\_bits}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
+\doxysubsubsection{\texorpdfstring{copy\_bits()}{copy\_bits()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::copy\+\_\+bits (\begin{DoxyParamCaption}\item[{int}]{first\+\_\+bit,  }\item[{int}]{last\+\_\+bit,  }\item[{bool}]{input\+\_\+array\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Copies a set of bits from the instruction into a given array. Usage\+: input\+\_\+array should be of length (last\+\_\+bit -\/ first\+\_\+bit + 1). This function is inclusive with respect to the last\+\_\+bit index. 
+
+Meant to serve as an interface between the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} class and the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} class, in that it provides a set of bits of a \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} without pre-\/determining what they are supposed to be used for. Other specific functions at the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} level then can call this function for specific uses of these bits.
+
+Usage example\+: get\+\_\+bits(3, 7, my\+\_\+array\mbox{[}5\mbox{]}) results in my\+\_\+array containing the following after the instruction\+: \mbox{[}bit\+\_\+3, bit\+\_\+4, bit\+\_\+5, bit\+\_\+6, bit\+\_\+7\mbox{]} \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}\label{classriscv__emulator_1_1_riscv_instruction_a4e20be297b8fc1053d48b69f966db220}} 
 \index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!copy\_contents@{copy\_contents}}
 \index{copy\_contents@{copy\_contents}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
 \doxysubsubsection{\texorpdfstring{copy\_contents()}{copy\_contents()}}
@@ -68,19 +80,7 @@ This is instead of returning the pointer to the private contents array. \mbox{\H
 
 Copies the non-\/opcode fields of the instruction into an array. 
 
-This may not be used much or at all by the processor, but it\textquotesingle{}s nice to have and minimally difficult to use. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a5155dd01866845bde6b98dd576d43728}\label{classriscv__emulator_1_1_riscv_instruction_a5155dd01866845bde6b98dd576d43728}} 
-\index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_bits@{get\_bits}}
-\index{get\_bits@{get\_bits}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
-\doxysubsubsection{\texorpdfstring{get\_bits()}{get\_bits()}}
-{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Riscv\+Instruction\+::get\+\_\+bits (\begin{DoxyParamCaption}\item[{int}]{first\+\_\+bit,  }\item[{int}]{last\+\_\+bit,  }\item[{bool}]{input\+\_\+array\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
-
-
-
-Gets a set of bits from the instruction and copies them into a given array. Usage\+: input\+\_\+array should be of length (last\+\_\+bit -\/ first\+\_\+bit + 1). This function is inclusive with respect to the last\+\_\+bit index. 
-
-Meant to serve as an interface between the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} class and the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} class, in that it provides a set of bits of a \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} without pre-\/determining what they are supposed to be used for. Other specific functions at the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} level then can call this function for specific uses of these bits.
-
-Usage example\+: get\+\_\+bits(3, 7, my\+\_\+array\mbox{[}5\mbox{]}) results in my\+\_\+array containing the following after the instruction\+: \mbox{[}bit\+\_\+3, bit\+\_\+4, bit\+\_\+5, bit\+\_\+6, bit\+\_\+7\mbox{]} \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}\label{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}} 
+This may not be used much or at all by the processor, but it\textquotesingle{}s nice to have and minimally difficult to use. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}\label{classriscv__emulator_1_1_riscv_instruction_a70d6cfa1e3e41cacc907efe72c89633e}} 
 \index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!get\_opcode@{get\_opcode}}
 \index{get\_opcode@{get\_opcode}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
 \doxysubsubsection{\texorpdfstring{get\_opcode()}{get\_opcode()}}
@@ -90,7 +90,7 @@ Usage example\+: get\+\_\+bits(3, 7, my\+\_\+array\mbox{[}5\mbox{]}) results in 
 
 Gets the opcode of the given instruction as an integer. 
 
-Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}\label{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}} 
+Returned as an integer for easy comparison purposes. Prevents iterating over an array each time. The opcode is the only field which is common among all RISC-\/V instructions. Thus, this is the only field-\/wise function (aside from the compelementary get\+\_\+nonopcode\+\_\+fields) which we define for the riscv\+Instruction class. The rest of the field-\/wise functions are determined at the level of the \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{Control\+Unit}} class. This is so these functions can be used only after the type of instruction is determined. \mbox{\Hypertarget{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}\label{classriscv__emulator_1_1_riscv_instruction_aced9adf7bd239f8abc92430197038a15}} 
 \index{riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}!set\_contents@{set\_contents}}
 \index{set\_contents@{set\_contents}!riscv\_emulator::RiscvInstruction@{riscv\_emulator::RiscvInstruction}}
 \doxysubsubsection{\texorpdfstring{set\_contents()}{set\_contents()}}
