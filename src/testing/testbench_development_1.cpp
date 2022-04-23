@@ -309,7 +309,7 @@ void control_unit_tests() {
     std::cout << "testPC after incrementing: " << testPC.get_contents() << std::endl;
 }
 
-void processor_tests() {
+void processor_tests_1() {
     riscv_emulator::Processor myProcessor;
 
     // do this manually for now, will add I/O later
@@ -480,6 +480,25 @@ void io_tests() {
     }
 }
 
+void processor_tests_2() {
+    std::cout << "Beginning processor_tests_2..." << std::endl;
+
+    riscv_emulator::Processor myProcessor;
+    std::string my_file = "src/testing/test_01.txt";
+
+    myProcessor.load_instructions_from_file(my_file);
+    myProcessor.run_processor();
+
+    bool my_reg_contents[32] = { };
+    myProcessor.registers[4].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 4 after running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+}
+
 int main() {
 
     //instruction_tests();
@@ -492,9 +511,11 @@ int main() {
 
     //control_unit_tests();
 
-    //processor_tests();
+    //processor_tests_1();
 
-    io_tests();
+    //io_tests();
+
+    processor_tests_2();
 
     return 0;
 }

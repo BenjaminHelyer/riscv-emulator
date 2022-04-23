@@ -9,26 +9,31 @@
 \DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}riscvInstruction.h"{}}}
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}dataMemory.h"{}}}
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}controlUnit.h"{}}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{keyword}{namespace }riscv\_emulator \{}
-\DoxyCodeLine{11 }
-\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}} \{}
-\DoxyCodeLine{13     \textcolor{comment}{// strictly speaking, a struct should probably be used here since everything is public, but classes have been used for everything else, so we'll stick with a class}}
-\DoxyCodeLine{14     \textcolor{keyword}{public}:}
-\DoxyCodeLine{15         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}} processorCtrl;}
-\DoxyCodeLine{16         \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{InstructionMemory}} instrMem;}
-\DoxyCodeLine{17         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} dataMem;}
-\DoxyCodeLine{18         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} pc;}
-\DoxyCodeLine{19         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} registers[32]; \textcolor{comment}{// holds all registers other than the pc, including the zero register}}
-\DoxyCodeLine{20         \textcolor{comment}{// may want to find a way to hold the zero register value as constant or static at some point}}
-\DoxyCodeLine{21 }
-\DoxyCodeLine{22         \textcolor{keywordtype}{void} run\_processor();}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24         \mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}}();}
-\DoxyCodeLine{25 \};}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27 \} \textcolor{comment}{// namespace riscv\_emulator}}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}ioPeripheral.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}} \{}
+\DoxyCodeLine{16     \textcolor{comment}{// strictly speaking, a struct should probably be used here since everything is public, but classes have been used for everything else, so we'll stick with a class}}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}} processorCtrl;}
+\DoxyCodeLine{19         \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{InstructionMemory}} instrMem;}
+\DoxyCodeLine{20         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} dataMem;}
+\DoxyCodeLine{21         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} pc;}
+\DoxyCodeLine{22         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} registers[32]; \textcolor{comment}{// holds all registers other than the pc, including the zero register}}
+\DoxyCodeLine{23         \textcolor{comment}{// may want to find a way to hold the zero register value as constant or static at some point}}
+\DoxyCodeLine{24         \mbox{\hyperlink{classriscv__emulator_1_1_io_peripheral}{IoPeripheral}} processor\_io;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_processor_a4fc1bede26a0ef35e1da219966a98a7d}{run\_processor}}();}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_processor_a5dd664295d7afd21a7c685ef23e35a70}{load\_instructions\_from\_file}}(std::string filename);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}}();}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

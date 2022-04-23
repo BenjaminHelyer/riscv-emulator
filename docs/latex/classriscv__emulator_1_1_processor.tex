@@ -5,7 +5,10 @@
 \item 
 \mbox{\Hypertarget{classriscv__emulator_1_1_processor_a4fc1bede26a0ef35e1da219966a98a7d}\label{classriscv__emulator_1_1_processor_a4fc1bede26a0ef35e1da219966a98a7d}} 
 void {\bfseries run\+\_\+processor} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fundamental function to run the processor. Starts reading instructions in memory from address 0 onwards. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_processor_a5dd664295d7afd21a7c685ef23e35a70}\label{classriscv__emulator_1_1_processor_a5dd664295d7afd21a7c685ef23e35a70}} 
+void {\bfseries load\+\_\+instructions\+\_\+from\+\_\+file} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Loads instructions into the processor\textquotesingle{}s instruction memory from file. Currently, instructions must be in strings of machine code, one instruction per line, with no skipped lines. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +26,9 @@ void {\bfseries run\+\_\+processor} ()
 \item 
 \mbox{\Hypertarget{classriscv__emulator_1_1_processor_a69580268e76ac9845380432aecaa19f4}\label{classriscv__emulator_1_1_processor_a69580268e76ac9845380432aecaa19f4}} 
 \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} {\bfseries registers} \mbox{[}32\mbox{]}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_processor_ae41d8bdbee7aa03ce7f31cb8ae3db854}\label{classriscv__emulator_1_1_processor_ae41d8bdbee7aa03ce7f31cb8ae3db854}} 
+\mbox{\hyperlink{classriscv__emulator_1_1_io_peripheral}{Io\+Peripheral}} {\bfseries processor\+\_\+io}
 \end{DoxyCompactItemize}
 
 

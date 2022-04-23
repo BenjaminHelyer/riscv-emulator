@@ -12,6 +12,10 @@ void Processor::run_processor() {
     }
 }
 
+void Processor::load_instructions_from_file(std::string filename) {
+    this->processor_io.write_instr_to_mem(filename, this->instrMem);
+}
+
 Processor::Processor() {
     // data memory, instruction memory, and registers were already all set to zero in their default constructors
     // set the correct pointers for the processor's control unit
