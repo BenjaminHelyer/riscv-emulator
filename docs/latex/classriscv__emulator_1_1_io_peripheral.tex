@@ -1,0 +1,32 @@
+\hypertarget{classriscv__emulator_1_1_io_peripheral}{}\doxysection{riscv\+\_\+emulator\+::Io\+Peripheral Class Reference}
+\label{classriscv__emulator_1_1_io_peripheral}\index{riscv\_emulator::IoPeripheral@{riscv\_emulator::IoPeripheral}}
+
+
+Class for io\+Perhipheral(s). This can be attached to the processor to represent streaming instructions and data to the relevent memories.  
+
+
+
+
+{\ttfamily \#include $<$io\+Peripheral.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_io_peripheral_ab1f4dc53d040cb556d0e7708ec155081}\label{classriscv__emulator_1_1_io_peripheral_ab1f4dc53d040cb556d0e7708ec155081}} 
+void {\bfseries write\+\_\+instr\+\_\+to\+\_\+mem} (std\+::string filename, \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{Instruction\+Memory}} \&instr\+\_\+mem)
+\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_io_peripheral_a5dfd292bbee07d19dad658234e4072d4}\label{classriscv__emulator_1_1_io_peripheral_a5dfd292bbee07d19dad658234e4072d4}} 
+void {\bfseries write\+\_\+data\+\_\+to\+\_\+mem} (std\+::string filename, \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{Data\+Memory}} \&data\+\_\+mem)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for io\+Perhipheral(s). This can be attached to the processor to represent streaming instructions and data to the relevent memories. 
+
+Currently, this class writes directly to a given instruction memory or a given data memory. Rationale\+: Straightforward solution right now to expedite testing of the overall system.
+
+Once further use cases are determined, the class can be further refined to include better abstraction. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+io\+Peripheral.\+h\end{DoxyCompactItemize}

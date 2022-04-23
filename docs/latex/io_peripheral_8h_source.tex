@@ -1,0 +1,29 @@
+\hypertarget{io_peripheral_8h_source}{}\doxysection{io\+Peripheral.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IOPERIPHERAL\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IOPERIPHERAL\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}dataMemory.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}instructionMemory.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }riscv\_emulator \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classriscv__emulator_1_1_io_peripheral}{IoPeripheral}} \{}
+\DoxyCodeLine{20     \textcolor{keyword}{private}:}
+\DoxyCodeLine{21         std::ifstream instr\_stream;}
+\DoxyCodeLine{22         std::ifstream data\_stream;}
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} write\_instr\_to\_mem(std::string filename, \mbox{\hyperlink{classriscv__emulator_1_1_instruction_memory}{InstructionMemory}} \&instr\_mem);}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} write\_data\_to\_mem(std::string filename, \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} \&data\_mem);}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}

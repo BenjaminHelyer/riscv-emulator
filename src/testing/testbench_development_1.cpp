@@ -5,8 +5,10 @@
 #include "../architectures/harvard_implementation/include/instructionMemory.h"
 #include "../architectures/harvard_implementation/include/controlUnit.h"
 #include "../architectures/harvard_implementation/include/processor.h"
+#include "../architectures/harvard_implementation/include/ioPeripheral.h"
 
 #include <iostream>
+#include <string>
 
 void instruction_tests() {
     std::cout << "Beginning instruction tests..." << std::endl;
@@ -451,6 +453,33 @@ void processor_tests() {
 
 }
 
+void io_tests() {
+    std::cout << "Beginning I/O tests..." << std::endl;
+
+    riscv_emulator::IoPeripheral my_io;
+    riscv_emulator::InstructionMemory my_instr_mem;
+
+    std::string filename = "src/testing/test_01.txt";
+
+    my_io.write_instr_to_mem(filename, my_instr_mem);
+
+    riscv_emulator::RiscvInstruction curr_instr;
+    int curr_addr = 0;
+    curr_instr = my_instr_mem.get_instruction(curr_addr);
+    while (curr_instr.get_opcode() != 0) {
+        std::cout << "Instruction at address " << curr_addr << " is: ";
+        bool my_out_bool[32] = { };
+        curr_instr.copy_contents(my_out_bool);
+        for (int i = 0; i < 32; i++) {
+            std::cout << my_out_bool[i];
+        }
+        std::cout << std::endl;
+
+        curr_addr++;
+        curr_instr = my_instr_mem.get_instruction(curr_addr);
+    }
+}
+
 int main() {
 
     //instruction_tests();
@@ -463,7 +492,9 @@ int main() {
 
     //control_unit_tests();
 
-    processor_tests();
+    //processor_tests();
+
+    io_tests();
 
     return 0;
 }
