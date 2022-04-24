@@ -70,6 +70,10 @@ class ControlUnit {
         *
         */
         void i_ori(RiscvInstruction instr);
+        /*! \brief I xori: logical XOR operation with a 12-bit immediate.
+        *
+        */
+        void i_xori(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.

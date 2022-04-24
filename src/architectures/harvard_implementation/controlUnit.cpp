@@ -102,6 +102,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 4:
                     // I xori instruction
+                    i_xori(ctrlInstruction);
                     break;
                 case 6:
                     // I ori instruction
@@ -422,6 +423,37 @@ void ControlUnit::i_ori(RiscvInstruction instr) {
     for (int i = 0; i < REGISTER_BITS; i++) {
         if (updated_reg_contents[i] == 1 || upper_12_bits[i] == 1) {
             updated_reg_contents[i] = 1;
+        }
+        else {
+            updated_reg_contents[i] = 0;
+        }
+    }
+}
+
+void ControlUnit::i_xori(RiscvInstruction instr) {
+    // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
+    int rd = 0;
+    rd = get_rd(instr);
+
+    int rs1 = 0;
+    rs1 = get_rs1(instr);
+
+    bool upper_12_bits[12] = { };
+    instr.copy_bits(20, 31, upper_12_bits);
+
+    sign_extend_12_bit(upper_12_bits);
+
+    bool updated_reg_contents[32] = { };
+    this->ctrlRegisters[rs1]->copy_contents(updated_reg_contents);
+
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        if (updated_reg_contents[i] == 1 || upper_12_bits[i] == 1) {
+            if (updated_reg_contents[i] == 1 && upper_12_bits[i] == 1) {
+                updated_reg_contents[i] = 0;
+            }
+            else {
+                updated_reg_contents[i] = 0;
+            }
         }
         else {
             updated_reg_contents[i] = 0;
