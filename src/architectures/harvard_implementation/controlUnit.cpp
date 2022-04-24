@@ -333,11 +333,20 @@ void ControlUnit::i_addi(RiscvInstruction instr) {
 
     bool upper_12_bits[12] = { };
     instr.copy_bits(20, 31, upper_12_bits);
+
+    // define sign-extended behavior for this
+    if (upper_12_bits[11] == 1) {
+        for (int i = 12; i < 31; i++) {
+            upper_12_bits[i] = 1;
+        }
+    }
     
     // convert upper_12_bits to an int so that we can easily increment the array
-    // we can use an int here since we're only using 12 bits
-    int imm_val = 0;
-    for (int i = 0; i < 12; i++) {
+    // run through all bits in case the value was sign-extended
+    // imm_val, if the bool held a sign-extended negative number, will now be > 2^31 - 1,
+    // which means it will act as a negative value in the addition function
+    unsigned int imm_val = 0;
+    for (int i = 0; i < 32; i++) {
         imm_val += upper_12_bits[i]*std::pow(2, i);
     }
 
