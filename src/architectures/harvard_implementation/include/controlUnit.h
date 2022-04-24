@@ -51,8 +51,13 @@ class ControlUnit {
         void u_lui(RiscvInstruction instr);
         /*! \brief I addi: adds a 12-bit immediate from a source register to a destination register. The immediate is added to the 12 least significant bits.
         *
+        * As with all arithmetic instructions, the immediate is sign-extended to a 32-bit signed immediate value.
         */
         void i_addi(RiscvInstruction instr);
+        /*! \brief I andi: logical AND operation with a 12-bit immediate (sign-extended to a 32-bit signed immediate) acting on a source register, saving the result in a destination register.
+        *
+        */
+        void i_andi(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.

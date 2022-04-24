@@ -108,6 +108,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 7:
                     // I andi instruction
+                    i_andi(ctrlInstruction);
                     break;
                 default:
                     throw std::invalid_argument("extended opcode not recognized");
@@ -323,6 +324,8 @@ void ControlUnit::u_lui(RiscvInstruction instr) {
     this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 
+// LIKELY WANT TO REFACTOR THE FIRST LINES OF i_ FUNCTIONS TO SIMPLY CALL A SIGNLE FUNCTION FOR THE FIRST LINES OF EACH (from setting rd to intitializing the updated_contents with the contents of rd)
+
 void ControlUnit::i_addi(RiscvInstruction instr) {
     // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
     int rd = 0;
@@ -359,6 +362,37 @@ void ControlUnit::i_addi(RiscvInstruction instr) {
 
     // we don't care what the destination register had in it before, so just store the updated value
     this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
+}
+
+void ControlUnit::i_andi(RiscvInstruction instr) {
+    // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
+    int rd = 0;
+    rd = get_rd(instr);
+
+    int rs1 = 0;
+    rs1 = get_rs1(instr);
+
+    bool upper_12_bits[12] = { };
+    instr.copy_bits(20, 31, upper_12_bits);
+
+    // define sign-extended behavior for this
+    if (upper_12_bits[11] == 1) {
+        for (int i = 12; i < 31; i++) {
+            upper_12_bits[i] = 1;
+        }
+    }
+
+    bool updated_reg_contents[32] = { };
+    this->ctrlRegisters[rs1]->copy_contents(updated_reg_contents);
+
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        if (updated_reg_contents[i] == 1 && upper_12_bits[i] == 1) {
+            updated_reg_contents[i] = 1;
+        }
+        else {
+            updated_reg_contents[i] = 0;
+        }
+    }
 }
 
 ControlUnit::ControlUnit() {
