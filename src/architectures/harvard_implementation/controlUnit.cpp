@@ -24,7 +24,12 @@ void ControlUnit::increment_bool(bool bool_to_increment[REGISTER_BITS]) {
         index++;
     }
     if (index >= REGISTER_BITS ) {
-        throw std::invalid_argument("boolean array already at it's maximum value!");
+        // case where the bool value is 111...111, i.e, bool = -1 if sign extended
+        // in this case, we don't want to throw an exception (since RISC-V doesn't use overflow)
+        // just set the bool to zero
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            bool_to_increment[i] = 0;
+        }
     }
     else if (index == 0) {
         bool_to_increment[0] = 1;

@@ -61,6 +61,9 @@ class ControlUnit {
         void increment_pc();
         /*! \brief Function for incrementing a boolean array. Note that this function alters the array that is passed to it.
         *
+        * Sign-extended incrementation for a boolean array. Thus, a bool which is the max. positive value will be "incremented" to the max. negative value.
+        * All other incrementations are positive addition except for this sign flip.
+        *
         * Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array.
         * In fact, for converting a boolean array to an int, the runtime would consistently be the length of the array.
         * Thus, the runtime for converting an array to an int and back again would be twice the worst-case runtime for addition in this method.
@@ -68,6 +71,11 @@ class ControlUnit {
         void increment_bool(bool bool_to_increment[REGISTER_BITS]);
         /*! \brief Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it.
         *
+        * Based on the sign-extended incrementation function, this function also works in a sign-extended manner,
+        * assuming that the immediate passed to it is unsigned. Thus, an int value over 2^31 - 1 will act as a negative
+        * value for this function, adding a negative value instead of a positive value.
+        * This behavior makes this function consistent with RISC-V's sign-extended behavior.
+        * 
         * Recursively increments the boolean array rather than converting to an int then converting back again.
         * Implemented in this manner for the same reasons we implemented increment_bool in its manner.
         */

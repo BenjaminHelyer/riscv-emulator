@@ -24,22 +24,22 @@
 \DoxyCodeLine{56 }
 \DoxyCodeLine{57     \textcolor{keyword}{public}:}
 \DoxyCodeLine{61         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}{increment\_pc}}();}
-\DoxyCodeLine{68         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_increment[REGISTER\_BITS]);}
-\DoxyCodeLine{74        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\_to\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_add[REGISTER\_BITS], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} immediate);}
-\DoxyCodeLine{75         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
-\DoxyCodeLine{76         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{77         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{78         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32];}
-\DoxyCodeLine{79         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
-\DoxyCodeLine{80         }
-\DoxyCodeLine{88         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{90         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}}();}
-\DoxyCodeLine{91         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{\string~ControlUnit}}();}
-\DoxyCodeLine{92 \};}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{94 \} \textcolor{comment}{// namespace riscv\_emulator}}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_increment[REGISTER\_BITS]);}
+\DoxyCodeLine{82        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\_to\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_add[REGISTER\_BITS], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} immediate);}
+\DoxyCodeLine{83         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
+\DoxyCodeLine{84         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{85         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{86         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32];}
+\DoxyCodeLine{87         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
+\DoxyCodeLine{88         }
+\DoxyCodeLine{96         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}}();}
+\DoxyCodeLine{99         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{\string~ControlUnit}}();}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

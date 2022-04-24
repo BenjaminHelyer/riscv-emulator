@@ -486,10 +486,18 @@ void processor_tests_2() {
     riscv_emulator::Processor myProcessor;
     std::string my_file = "src/testing/test_01.txt";
 
+    bool my_reg_contents[32] = { };
+    myProcessor.registers[4].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 4 before running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+
     myProcessor.load_instructions_from_file(my_file);
     myProcessor.run_processor();
 
-    bool my_reg_contents[32] = { };
     myProcessor.registers[4].copy_contents(my_reg_contents);
 
     std::cout << "Contents of Reg 4 after running processor: ";
