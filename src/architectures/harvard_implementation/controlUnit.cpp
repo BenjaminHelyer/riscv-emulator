@@ -300,6 +300,33 @@ int ControlUnit::get_rs1(RiscvInstruction instr) {
     return val;
 }
 
+unsigned int ControlUnit::get_upper_12_immediate(RiscvInstruction instr) {
+    bool upper_12_bits[32] = { };
+    instr.copy_bits(20, 31, upper_12_bits);
+
+    // define sign-extended behavior for this
+    sign_extend_12_bit(upper_12_bits);
+
+    // convert upper_12_bits to an int so that we can easily increment the array
+    // run through all bits in case the value was sign-extended
+    // imm_val, if the bool held a sign-extended negative number, will now be > 2^31 - 1,
+    // which means it will act as a negative value in the addition function
+    unsigned int imm_val = 0;
+    for (int i = 0; i < 32; i++) {
+        imm_val += upper_12_bits[i]*std::pow(2, i);
+    }
+
+    return imm_val;
+}
+
+void ControlUnit::sign_extend_12_bit(bool bool_with_12_bit_val[32]) {
+    if (bool_with_12_bit_val[11] == 1) {
+        for (int i = 12; i < 31; i++) {
+            bool_with_12_bit_val[i] = 1;
+        }
+    }
+}
+
 
 // Begin functions for overall instructions
 
@@ -324,8 +351,6 @@ void ControlUnit::u_lui(RiscvInstruction instr) {
     this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 
-// LIKELY WANT TO REFACTOR THE FIRST LINES OF i_ FUNCTIONS TO SIMPLY CALL A SIGNLE FUNCTION FOR THE FIRST LINES OF EACH (from setting rd to intitializing the updated_contents with the contents of rd)
-
 void ControlUnit::i_addi(RiscvInstruction instr) {
     // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
     int rd = 0;
@@ -337,21 +362,8 @@ void ControlUnit::i_addi(RiscvInstruction instr) {
     bool upper_12_bits[12] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
-    // define sign-extended behavior for this
-    if (upper_12_bits[11] == 1) {
-        for (int i = 12; i < 31; i++) {
-            upper_12_bits[i] = 1;
-        }
-    }
-    
-    // convert upper_12_bits to an int so that we can easily increment the array
-    // run through all bits in case the value was sign-extended
-    // imm_val, if the bool held a sign-extended negative number, will now be > 2^31 - 1,
-    // which means it will act as a negative value in the addition function
     unsigned int imm_val = 0;
-    for (int i = 0; i < 32; i++) {
-        imm_val += upper_12_bits[i]*std::pow(2, i);
-    }
+    imm_val = get_upper_12_immediate(instr);
 
     // copy the conents of rs1, add the immediate to these contents, then save these contents to the destination register
     bool updated_reg_contents[32] = { };
@@ -375,12 +387,7 @@ void ControlUnit::i_andi(RiscvInstruction instr) {
     bool upper_12_bits[12] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
-    // define sign-extended behavior for this
-    if (upper_12_bits[11] == 1) {
-        for (int i = 12; i < 31; i++) {
-            upper_12_bits[i] = 1;
-        }
-    }
+    sign_extend_12_bit(upper_12_bits);
 
     bool updated_reg_contents[32] = { };
     this->ctrlRegisters[rs1]->copy_contents(updated_reg_contents);

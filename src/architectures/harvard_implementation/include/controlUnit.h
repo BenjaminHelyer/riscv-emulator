@@ -40,7 +40,15 @@ class ControlUnit {
         * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
         */
         int get_rs1(RiscvInstruction instr);
-
+        /*! \brief Gets an unsigned int representing the 12-bit immediate value in I-type instructions. This value is sign-extended to a 32-bit signed integer.
+        *
+        * Since the value is sign-extended, be careful: a value over 2^31 - 1 means the number is negative and will be operated with as such.
+        */
+        unsigned int get_upper_12_immediate(RiscvInstruction instr);
+        /*! \brief Sign-extends a 32-bit boolean array with a value in its lowest 12 bits. ("upper_12" name comes from the fact that these are the upper 12 bits int he instruction)
+        *
+        */
+        void sign_extend_12_bit(bool bool_with_12_bit_val[32]);
 
         // Begin functions for overall instructions.
         /*! \brief U lui: Loads a 20-bit immediate into the 20 most-significant-bits of the destination register.
