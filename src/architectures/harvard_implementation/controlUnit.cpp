@@ -522,7 +522,7 @@ int ControlUnit::compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[
         // both are negative
         // whichever function has a 0 at a higher index in the negative boolean is greater than the other
         // begin at index REGISTER_BITS - 2, since we've already checked the first index
-        for (int i = REGISTER_BITS - 2; i >= 0; i++) {
+        for (int i = REGISTER_BITS - 2; i >= 0; i--) {
             if (bool0[i] == 0 && bool1[i] == 1) {
                 result = -1;
                 return result;
@@ -540,7 +540,7 @@ int ControlUnit::compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[
         // both are positive
         // whichever function has a 1 at a higher index in the positive boolean is greater than the other
         // begin at index REGISTER_BITS - 2, since we've already checked the first index
-         for (int i = REGISTER_BITS - 2; i >= 0; i++) {
+         for (int i = REGISTER_BITS - 2; i >= 0; i--) {
             if (bool0[i] == 0 && bool1[i] == 1) {
                 result = 1;
                 return result;

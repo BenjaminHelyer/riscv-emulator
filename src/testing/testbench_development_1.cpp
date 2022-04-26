@@ -519,6 +519,22 @@ void processor_tests_2() {
     }
     std::cout << std::endl;
 
+    myProcessor.registers[8].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 8 before running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+
+    myProcessor.registers[9].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 9 before running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+
     myProcessor.load_instructions_from_file(my_file);
     myProcessor.run_processor();
 
@@ -549,6 +565,22 @@ void processor_tests_2() {
     myProcessor.registers[7].copy_contents(my_reg_contents);
 
     std::cout << "Contents of Reg 7 after running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+
+    myProcessor.registers[8].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 8 after running processor: ";
+    for (int i = 0; i < 32; i++) {
+        std::cout << my_reg_contents[i];
+    }
+    std::cout << std::endl;
+
+    myProcessor.registers[9].copy_contents(my_reg_contents);
+
+    std::cout << "Contents of Reg 9 after running processor: ";
     for (int i = 0; i < 32; i++) {
         std::cout << my_reg_contents[i];
     }
