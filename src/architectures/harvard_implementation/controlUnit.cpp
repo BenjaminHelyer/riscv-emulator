@@ -470,7 +470,7 @@ void ControlUnit::i_slti(RiscvInstruction instr) {
     int rs1 = 0;
     rs1 = get_rs1(instr);
 
-    bool upper_12_bits[12] = { };
+    bool upper_12_bits[32] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
     sign_extend_12_bit(upper_12_bits);
@@ -498,7 +498,7 @@ void ControlUnit::i_slti(RiscvInstruction instr) {
     return;
 }
 
-int compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]) {
+int ControlUnit::compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]) {
     // initialize the result to be zero, which represents equality
     int result = 0;
 
