@@ -403,6 +403,8 @@ void ControlUnit::i_andi(RiscvInstruction instr) {
             updated_reg_contents[i] = 0;
         }
     }
+
+    this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 
 void ControlUnit::i_ori(RiscvInstruction instr) {
@@ -429,6 +431,8 @@ void ControlUnit::i_ori(RiscvInstruction instr) {
             updated_reg_contents[i] = 0;
         }
     }
+
+    this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 
 void ControlUnit::i_xori(RiscvInstruction instr) {
@@ -453,13 +457,15 @@ void ControlUnit::i_xori(RiscvInstruction instr) {
                 updated_reg_contents[i] = 0;
             }
             else {
-                updated_reg_contents[i] = 0;
+                updated_reg_contents[i] = 1;
             }
         }
         else {
             updated_reg_contents[i] = 0;
         }
     }
+
+    this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
 }
 
 void ControlUnit::i_slti(RiscvInstruction instr) {

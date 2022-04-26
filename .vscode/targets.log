@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Apr 26 10:32:09 2022
+# Make data base, printed on Tue Apr 26 12:57:25 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\Benjamin
 # environment
 LOCALAPPDATA = C:\Users\Benjamin\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-1128486e-91eb-4129-b1d6-a2ff5e48614f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-1a578490-69a9-4fff-bdfb-adc7e944ad01-sock
 # environment
 VSCODE_CWD = C:\Users\Benjamin\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -41,7 +41,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_61264_IPOFIRICGQLGJJUE
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_73840_YBUDVMUOSFTJZBNM
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -105,7 +105,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 61264
+VSCODE_PID = 73840
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -205,7 +205,8 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 VXIPNPPATH = C:\Program Files (x86)\IVI Foundation\VISA\
 # environment
-COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES( 
+X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
@@ -241,7 +242,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650927457): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650989422): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -357,6 +358,6 @@ makefile:
 # strcache performance: lookups = 34 / hit rate = 23%
 # hash-table stats:
 # Load=26/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Tue Apr 26 10:32:09 2022
+# Finished Make data base on Tue Apr 26 12:57:25 2022
 
  
