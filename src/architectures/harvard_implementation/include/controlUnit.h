@@ -74,6 +74,14 @@ class ControlUnit {
         *
         */
         void i_xori(RiscvInstruction instr);
+        /*! \brief I slti: "set less than immediate," sets the destination register to 1 if rs1 is less than the signed immediate value.
+        *
+        */
+        void i_slti(RiscvInstruction instr);
+        /*! \brief I sltiu: "set less than immediate unsigned," sets the destination register to 1 if rs1 is less than the unsigned immediate value.
+        *
+        */
+        void i_sltiu(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
@@ -101,6 +109,17 @@ class ControlUnit {
         * Implemented in this manner for the same reasons we implemented increment_bool in its manner.
         */
        void add_to_bool(bool bool_to_add[REGISTER_BITS], unsigned int immediate);
+       /*! \brief Function for comparing two boolean arrays which returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal.
+       *
+       * This abstraction is useful for representing any comparison operation, which will allow us to have just one C++ function
+       * for comparing values even when there are multiple RISC-V functions for this. Rationale: ease of implmenetation on the
+       * C++ side. This may be changed later if a more accurate abstraction is desired.
+       * 
+       * The comparison is implemented by beginning at the end of each bool rather than the beginning. This allows quick
+       * determination for numbers that differ in sign. For this reason it seems that on average this implementation has
+       * a faster runtime than starting at the beginning. The worst-case runtime is still the same for both.
+       */
+       int compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]);
         // the control unit has pointers to all these so it can access them directly
         DataMemory *ctrlDataMem = nullptr;
         Register *ctrlPC = nullptr;

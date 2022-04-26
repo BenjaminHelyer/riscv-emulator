@@ -96,6 +96,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 2:
                     // I slti instruction
+                    i_slti(ctrlInstruction);
                     break;
                 case 3:
                     // I sltiu instruction
@@ -459,6 +460,96 @@ void ControlUnit::i_xori(RiscvInstruction instr) {
             updated_reg_contents[i] = 0;
         }
     }
+}
+
+void ControlUnit::i_slti(RiscvInstruction instr) {
+    // get all the relevent values (rd, rs1, and the upper 12 bits for the immediate)
+    int rd = 0;
+    rd = get_rd(instr);
+
+    int rs1 = 0;
+    rs1 = get_rs1(instr);
+
+    bool upper_12_bits[12] = { };
+    instr.copy_bits(20, 31, upper_12_bits);
+
+    sign_extend_12_bit(upper_12_bits);
+
+    bool rs1_contents[32] = { };
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+
+    bool updated_reg_contents[32] = { };
+
+    // comparing CONTENTS[RS1] and the sign-extended immediate value
+    int comparison_result = 0;
+    comparison_result = compare_two_bools_signed(upper_12_bits, rs1_contents);
+
+    // set updated reg contents to 1 or 0 based on the comparison
+    if (comparison_result == -1) {
+        // upper_12_bits was greater so the register contents were less than the immediate
+        updated_reg_contents[0] = 1;
+    }
+    else {
+        // upper_12_bits was equal to or less than the register contents, so do not set the less than flag
+        updated_reg_contents[0] = 0;
+    }
+
+    this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
+    return;
+}
+
+int compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]) {
+    // initialize the result to be zero, which represents equality
+    int result = 0;
+
+    // check the first bit to compare the signs, which has the possiblity of ending the comparison right there
+    // using REGISTER_BITS - 1 to get the length of the array minus 1
+    if (bool0[REGISTER_BITS - 1] == 1 && bool1[REGISTER_BITS - 1] == 0) {
+        // bool0 negative and bool1 positive
+        result = 1;
+    }
+    else if (bool0[REGISTER_BITS - 1] == 0 && bool1[REGISTER_BITS - 1] == 1) {
+        // bool0 positive and bool1 negative
+        result = -1;
+    }
+    else if (bool0[REGISTER_BITS - 1] == 1 && bool1[REGISTER_BITS - 1] == 1) {
+        // both are negative
+        // whichever function has a 0 at a higher index in the negative boolean is greater than the other
+        // begin at index REGISTER_BITS - 2, since we've already checked the first index
+        for (int i = REGISTER_BITS - 2; i >= 0; i++) {
+            if (bool0[i] == 0 && bool1[i] == 1) {
+                result = -1;
+                return result;
+            }
+            else if (bool0[i] == 1 && bool1[i] == 0) {
+                result = 1;
+                return result;
+            }
+            else {
+                // keep cycling through the loop, letting the default return of 0 occur if there is no trigger
+            }
+        }
+    }
+    else {
+        // both are positive
+        // whichever function has a 1 at a higher index in the positive boolean is greater than the other
+        // begin at index REGISTER_BITS - 2, since we've already checked the first index
+         for (int i = REGISTER_BITS - 2; i >= 0; i++) {
+            if (bool0[i] == 0 && bool1[i] == 1) {
+                result = 1;
+                return result;
+            }
+            else if (bool0[i] == 1 && bool1[i] == 0) {
+                result = -1;
+                return result;
+            }
+            else {
+                // keep cycling through the loop, letting the default return of 0 occur if there is no trigger
+            }
+        }
+    }
+
+    return result;
 }
 
 ControlUnit::ControlUnit() {

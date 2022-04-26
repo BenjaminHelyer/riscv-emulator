@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Apr 24 10:47:16 2022
+# Make data base, printed on Tue Apr 26 10:32:09 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\Benjamin
 # environment
 LOCALAPPDATA = C:\Users\Benjamin\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-741f2377-921a-4d31-ad4a-8b11d3c4de0e-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-1128486e-91eb-4129-b1d6-a2ff5e48614f-sock
 # environment
 VSCODE_CWD = C:\Users\Benjamin\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -41,7 +41,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_23468_VPCGPNANZOJGXDHI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_61264_IPOFIRICGQLGJJUE
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -105,7 +105,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 23468
+VSCODE_PID = 61264
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -115,8 +115,7 @@ VSCODE_PID = 23468
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # makefile (from 'makefile', line 2)
-IDIR = src\architectures\ 
-harvard_implementation\include
+IDIR = src\architectures\harvard_implementation\include
 # default
 MAKE_HOST := Windows32
 # environment
@@ -227,8 +226,7 @@ SESSIONNAME = Console
 _OBJ = testing\testbench_development_1.o architectures\harvard_implementation\dataMemory.o  architectures\harvard_implementation\riscvInstruction.o architectures\harvard_implementation\processor.o architectures\harvard_implementation\register.o architectures\harvard_implementation\instructionMemory.o architectures\harvard_implementation\controlUnit.o architectures\harvard_implementation\IoPeripheral.o
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
-# en 
-vironment
+# environment
 PROCESSOR_REVISION = 8d01
 # makefile (from 'makefile', line 1)
 CC = g++
@@ -243,7 +241,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650732058): 10 files, no impossibilities.
+# . (key c:/Users/Benjamin/Documents/GitHub/riscv-emulator, mtime 1650927457): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -304,8 +302,7 @@ all:
 
 # Not a target:
 .\src/testing\testbench_development_1.o:
-#  Implicit rule search  
-has not been done.
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -344,8 +341,7 @@ makefile:
 .PHONY: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
-#  File has 
- not been updated.
+#  File has not been updated.
 
 # files hash-table stats:
 # Load=15/1024=1%, Rehash=0, Collisions=0/35=0%
@@ -361,6 +357,6 @@ makefile:
 # strcache performance: lookups = 34 / hit rate = 23%
 # hash-table stats:
 # Load=26/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Sun Apr 24 10:47:16 2022
+# Finished Make data base on Tue Apr 26 10:32:09 2022
 
  
