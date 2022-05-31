@@ -2,5 +2,6 @@
 *.log
 /vscode
 *.log
+*.exe
 .vscode/dryrun.log
 .vscode/targets.log
