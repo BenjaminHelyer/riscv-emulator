@@ -108,6 +108,11 @@ class ControlUnit {
         * The reason for this is that RISC-V instructions are multiples of two bytes long.
         */
         void b_beq(RiscvInstruction instr);
+        /*! \brief B bne: "branch if not equal," branches to another instruction if the two operand registers are equal.
+        *
+        * The same qualifications as in B beq apply to this instruction.
+        */
+        void b_bne(RiscvInstruction instr); 
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.

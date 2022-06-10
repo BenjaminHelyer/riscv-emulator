@@ -268,19 +268,20 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     return;
                 case 1:
                     // B bne instruction
-                    break;
+                    b_bne(ctrlInstruction);
+                    return;
                 case 4:
                     // B blt instruction
-                    break;
+                    return;
                 case 5:
                     // B bge instruction
-                    break;
+                    return;
                 case 6:
                     // B bltu instruction
-                    break;
+                    return;
                 case 7:
                     // B bgeu instruction
-                    break;
+                    return;
                 default:
                     throw std::invalid_argument("extended opcode not recognized");
                     return;
@@ -624,8 +625,38 @@ void ControlUnit::b_beq(RiscvInstruction instr) {
     return;
 }
 
+void ControlUnit::b_bne(RiscvInstruction instr) {
+    std::cout << "B BNE instr" << std::endl;
+    int rs1 = 0;
+    int rs2 = 0;
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // compare the two operands
+    int comparison_result = 0;
+    comparison_result = compare_two_bools_signed(rs1_contents, rs2_contents);
+    // only if they are not equal do we branch
+    if (comparison_result != 0) {
+        // the immediate is split up in this instruction into a lower 5 bits and an upper 7 bits
+        unsigned int address = 0;
+        address = get_address_b_type(instr);
+        this->adjust_PC_with_address(address);
+    }
+    // if equal, increment the PC as normal, since the execute instruction function returns without incrementing the PC upon seeing a B-type instruction
+    else {
+        this->increment_pc();
+    }
+
+    return;
+}
+
 void ControlUnit::adjust_PC_with_address(unsigned int address) {
-    std::cout << "rel address = " << address << std::endl;
     // TODO: ensure this works correctly for negative addresses; i.e., that the PC "backtracks" correctly
 
     // address is an unsigned int, so we see if it is above 2^31 to determine if it's negative or positive; 2^31 = 2147483648
