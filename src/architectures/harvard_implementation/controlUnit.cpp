@@ -280,9 +280,11 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     return;
                 case 6:
                     // B bltu instruction
+                    b_bltu(ctrlInstruction);
                     return;
                 case 7:
                     // B bgeu instruction
+                    b_bgeu(ctrlInstruction);
                     return;
                 default:
                     throw std::invalid_argument("extended opcode not recognized");
@@ -717,6 +719,66 @@ void ControlUnit::b_bge(RiscvInstruction instr) {
     return;
 }
 
+void ControlUnit::b_bltu(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // compare the two operands
+    int comparison_result = 0;
+    comparison_result = compare_two_bools_unsigned(rs1_contents, rs2_contents);
+    // only if the first operand is less than the second do we branch
+    if (comparison_result == 1) {
+        // the immediate is split up in this instruction into a lower 5 bits and an upper 7 bits
+        unsigned int address = 0;
+        address = get_address_b_type(instr);
+        this->adjust_PC_with_address(address);
+    }
+    // if not less than, increment the PC as normal, since the execute instruction function returns without incrementing the PC upon seeing a B-type instruction
+    else {
+        this->increment_pc();
+    }
+
+    return;
+}
+
+void ControlUnit::b_bgeu(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // compare the two operands
+    int comparison_result = 0;
+    comparison_result = compare_two_bools_unsigned(rs1_contents, rs2_contents);
+    // only if the first operand is greater than or equal to the second do we branch
+    if (comparison_result == -1 || comparison_result == 0) {
+        // the immediate is split up in this instruction into a lower 5 bits and an upper 7 bits
+        unsigned int address = 0;
+        address = get_address_b_type(instr);
+        this->adjust_PC_with_address(address);
+    }
+    // if not greater than or equal to, increment the PC as normal, since the execute instruction function returns without incrementing the PC upon seeing a B-type instruction
+    else {
+        this->increment_pc();
+    }
+
+    return;
+}
+
 void ControlUnit::adjust_PC_with_address(unsigned int address) {
     // TODO: ensure this works correctly for negative addresses; i.e., that the PC "backtracks" correctly
 
@@ -775,7 +837,7 @@ int ControlUnit::compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[
         // both are positive
         // whichever function has a 1 at a higher index in the positive boolean is greater than the other
         // begin at index REGISTER_BITS - 2, since we've already checked the first index
-         for (int i = REGISTER_BITS - 2; i >= 0; i--) {
+        for (int i = REGISTER_BITS - 2; i >= 0; i--) {
             if (bool0[i] == 0 && bool1[i] == 1) {
                 result = 1;
                 return result;
@@ -787,6 +849,28 @@ int ControlUnit::compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[
             else {
                 // keep cycling through the loop, letting the default return of 0 occur if there is no trigger
             }
+        }
+    }
+
+    return result;
+}
+
+int ControlUnit::compare_two_bools_unsigned(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]) {
+    // default is 0, which denotes equality
+    int result = 0;
+
+    // begin at highest index, allowing whichever boolean has a 1 at a higher index trigger as greater
+    for (int i = REGISTER_BITS - 1; i >= 0; i--) {
+        if (bool0[i] == 0 && bool1[i] == 1) {
+            result = 1;
+            return result;
+        }
+        else if (bool0[i] == 1 && bool1[i] == 0) {
+            result = -1;
+            return result;
+        }
+        else {
+            // keep cycling through the loop, letting the default return of 0 occur if there is no trigger
         }
     }
 

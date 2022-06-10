@@ -122,7 +122,18 @@ class ControlUnit {
         *
         * The same qualifications as in B beq apply to this instruction.
         */
-        void b_bge(RiscvInstruction instr); 
+        void b_bge(RiscvInstruction instr);
+        /*! \brief B bltu: "Branch if less than unsigned," same as b_blt but using unsigned values rather than signed.
+        *
+        * The same qualifications as in B beq apply to this instruction.
+        */
+        void b_bltu(RiscvInstruction instr);
+        /*! \brief B bgeu: "Branch if greater than or equal to unsigned," same as b_bge but using unsigned values rather than signed.
+        *
+        * The same qualifications as in B beq apply to this instruction.
+        */
+        void b_bgeu(RiscvInstruction instr);
+
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
@@ -173,6 +184,12 @@ class ControlUnit {
        * a faster runtime than starting at the beginning. The worst-case runtime is still the same for both.
        */
        int compare_two_bools_signed(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]);
+       /*! \brief Function for comparing two boolean arrays in an unsigned manner. Returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal.
+       *
+       * Similar implementation to compare_two_bools_signed, except that the sign bit is simply compared rather than being checked for positive or negative.
+       */
+       int compare_two_bools_unsigned(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]);
+
         // the control unit has pointers to all these so it can access them directly
         DataMemory *ctrlDataMem = nullptr;
         Register *ctrlPC = nullptr;

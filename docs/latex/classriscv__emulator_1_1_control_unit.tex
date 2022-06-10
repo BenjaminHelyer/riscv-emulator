@@ -30,6 +30,8 @@ void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eee
 \begin{DoxyCompactList}\small\item\em Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}{compare\+\_\+two\+\_\+bools\+\_\+signed}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
 \begin{DoxyCompactList}\small\item\em Function for comparing two boolean arrays which returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}{compare\+\_\+two\+\_\+bools\+\_\+unsigned}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function for comparing two boolean arrays in an unsigned manner. Returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\+\_\+instruction}} (\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} ctrl\+Instruction)
 \begin{DoxyCompactList}\small\item\em The function to call by which the control unit executes an instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -78,7 +80,17 @@ Function for comparing two boolean arrays which returns -\/1 if the first argume
 
 This abstraction is useful for representing any comparison operation, which will allow us to have just one C++ function for comparing values even when there are multiple RISC-\/V functions for this. Rationale\+: ease of implmenetation on the C++ side. This may be changed later if a more accurate abstraction is desired.
 
-The comparison is implemented by beginning at the end of each bool rather than the beginning. This allows quick determination for numbers that differ in sign. For this reason it seems that on average this implementation has a faster runtime than starting at the beginning. The worst-\/case runtime is still the same for both. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
+The comparison is implemented by beginning at the end of each bool rather than the beginning. This allows quick determination for numbers that differ in sign. For this reason it seems that on average this implementation has a faster runtime than starting at the beginning. The worst-\/case runtime is still the same for both. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}\label{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}} 
+\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!compare\_two\_bools\_unsigned@{compare\_two\_bools\_unsigned}}
+\index{compare\_two\_bools\_unsigned@{compare\_two\_bools\_unsigned}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+\doxysubsubsection{\texorpdfstring{compare\_two\_bools\_unsigned()}{compare\_two\_bools\_unsigned()}}
+{\footnotesize\ttfamily int riscv\+\_\+emulator\+::\+Control\+Unit\+::compare\+\_\+two\+\_\+bools\+\_\+unsigned (\begin{DoxyParamCaption}\item[{bool}]{bool0\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]},  }\item[{bool}]{bool1\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function for comparing two boolean arrays in an unsigned manner. Returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. 
+
+Similar implementation to compare\+\_\+two\+\_\+bools\+\_\+signed, except that the sign bit is simply compared rather than being checked for positive or negative. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
 \index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!execute\_instruction@{execute\_instruction}}
 \index{execute\_instruction@{execute\_instruction}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
 \doxysubsubsection{\texorpdfstring{execute\_instruction()}{execute\_instruction()}}
