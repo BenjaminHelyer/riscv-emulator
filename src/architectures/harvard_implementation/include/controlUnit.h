@@ -112,7 +112,17 @@ class ControlUnit {
         *
         * The same qualifications as in B beq apply to this instruction.
         */
-        void b_bne(RiscvInstruction instr); 
+        void b_bne(RiscvInstruction instr);
+        /*! \brief B bne: "branch if less than," branches to another instruction if the first operand is less than the second.
+        *
+        * The same qualifications as in B beq apply to this instruction.
+        */
+        void b_blt(RiscvInstruction instr);
+        /*! \brief B bge: "branch if greater than or equal to," branches to another instruction if the first operand is greater than or equal to the second.
+        *
+        * The same qualifications as in B beq apply to this instruction.
+        */
+        void b_bge(RiscvInstruction instr); 
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
