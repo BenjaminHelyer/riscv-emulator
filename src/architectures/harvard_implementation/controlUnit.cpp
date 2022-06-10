@@ -12,14 +12,30 @@ void ControlUnit::increment_pc() {
     // copy the contents of the object pointed to by the ctrlPC pointer
     this->ctrlPC->copy_contents(pc_val);
 
+    // technically, PC should be incremented by 4 to have an accurate model of RISC-V
+    // since this is just an emulation, for now we'll increment the PC by 1 to keep things simple, since the instructions are stored in a simple array
     // now we increment the PC by one
     this->increment_bool(pc_val);
 
     this->ctrlPC->set_contents(pc_val);
 }
 
+void ControlUnit::decrement_pc() {
+    bool pc_val[REGISTER_BITS];
+    // copy the contents of the object pointed to by the ctrlPC pointer
+    this->ctrlPC->copy_contents(pc_val);
+
+    // technically, PC should be incremented by 4 to have an accurate model of RISC-V
+    // since this is just an emulation, for now we'll increment the PC by 1 to keep things simple, since the instructions are stored in a simple array
+    // now we decrement the PC the number of times required by val
+    this->decrement_bool(pc_val);
+
+    this->ctrlPC->set_contents(pc_val);
+}
+
 void ControlUnit::increment_bool(bool bool_to_increment[REGISTER_BITS]) {
     int index = 0;
+    // go to the highest index that isn't equal to zero for addition
     while (bool_to_increment[index] != 0 && index < REGISTER_BITS) {
         index++;
     }
@@ -38,6 +54,33 @@ void ControlUnit::increment_bool(bool bool_to_increment[REGISTER_BITS]) {
         bool_to_increment[index] = 1;
         for (int i = index - 1; i >= 0; i--) {
             bool_to_increment[i] = 0;
+        }
+    }
+}
+
+void ControlUnit::decrement_bool(bool bool_to_decrement[REGISTER_BITS]) {
+    int index = 0;
+    // go to the first index that isn't equal to zero for subtraction
+    while (bool_to_decrement[index] == 0 && index < REGISTER_BITS) {
+        index++;
+    }
+    if (index >= REGISTER_BITS) {
+        // case where the bool value is 000...000, i.e, bool = 0
+        // in this case, we don't want to throw an exception (since RISC-V doesn't use overflow)
+        // just set the bool to 111...111
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            bool_to_decrement[i] = 1;
+        }
+    }
+    else if (index == 0) {
+        // separate case for the zeroth index if that is equal to 1, since we just set that index to zero and do not iterate over lower indices
+        bool_to_decrement[index] = 0;
+    }
+    else {
+        // assign the least significant bit which is 1 to zero, then set all the bits below it to 1
+        bool_to_decrement[index] = 0;
+        for (int i = index - 1; i >= 0; i--) {
+            bool_to_decrement[i] = 1;
         }
     }
 }
@@ -220,7 +263,9 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             switch (extend_op) {
                 case 0:
                     // B beq instruction
-                    break;
+                    b_beq(ctrlInstruction);
+                    // return since we do not want to increment the program counter; the PC is adjusted in the B BEQ instruction
+                    return;
                 case 1:
                     // B bne instruction
                     break;
@@ -303,12 +348,26 @@ int ControlUnit::get_rs1(RiscvInstruction instr) {
     return val;
 }
 
+int ControlUnit::get_rs2(RiscvInstruction instr) {
+    bool rs1_bool_array[5] = { };
+    instr.copy_bits(20, 24, rs1_bool_array);
+
+    int val = 0;
+    for (int i = 0; i < 5; i++) {
+        val += rs1_bool_array[i]*std::pow(2, i);
+    }
+
+    return val;
+}
+
 unsigned int ControlUnit::get_upper_12_immediate(RiscvInstruction instr) {
     bool upper_12_bits[32] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
     // define sign-extended behavior for this
     sign_extend_12_bit(upper_12_bits);
+
+    // TODO: ensure the sign-extended immediate value returned as an int does what it is supposed to do with negative numbers as well.
 
     // convert upper_12_bits to an int so that we can easily increment the array
     // run through all bits in case the value was sign-extended
@@ -317,6 +376,36 @@ unsigned int ControlUnit::get_upper_12_immediate(RiscvInstruction instr) {
     unsigned int imm_val = 0;
     for (int i = 0; i < 32; i++) {
         imm_val += upper_12_bits[i]*std::pow(2, i);
+    }
+
+    return imm_val;
+}
+
+unsigned int ControlUnit::get_address_b_type(RiscvInstruction instr) {
+    bool lower_5_bits[32] = { };
+    instr.copy_bits(7, 11, lower_5_bits);
+
+    bool upper_7_bits[32] = { };
+    instr.copy_bits(25, 32, upper_7_bits);
+
+    // combine the lower 5 bits and the upper 7 bits to get the full 12-bit immediate
+    bool combined_immediate[32] = { };
+    for (int i = 0; i < 5; i++) {
+        combined_immediate[i] = lower_5_bits[i];
+    }
+    for (int i = 0; i < 7; i++) {
+        combined_immediate[i+5] = upper_7_bits[i];
+    }
+
+    // simply sign-extend the 12-bit immediate, since we aren't worrying about indexing the PC by multiples of 4
+    sign_extend_12_bit(combined_immediate);
+
+    // TODO: ensure the sign-extended immediate value returned as an int does what it's supposed to do with negative numbers as well.
+
+    // return the 12-bit immediate value as an integer
+    unsigned int imm_val = 0;
+    for (int i = 0; i < 32; i++) {
+        imm_val += combined_immediate[i]*std::pow(2, i);
     }
 
     return imm_val;
@@ -362,6 +451,7 @@ void ControlUnit::i_addi(RiscvInstruction instr) {
     int rs1 = 0;
     rs1 = get_rs1(instr);
 
+    // CLEANUP: *May* be able to delete these two lines
     bool upper_12_bits[12] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
@@ -501,6 +591,59 @@ void ControlUnit::i_slti(RiscvInstruction instr) {
     }
 
     this->ctrlRegisters[rd]->set_contents(updated_reg_contents);
+    return;
+}
+
+void ControlUnit::b_beq(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // compare the two operands
+    int comparison_result = 0;
+    comparison_result = compare_two_bools_signed(rs1_contents, rs2_contents);
+    // only if they are equal do we branch
+    if (comparison_result == 0) {
+        // the immediate is split up in this instruction into a lower 5 bits and an upper 7 bits
+        unsigned int address = 0;
+        address = get_address_b_type(instr);
+        this->adjust_PC_with_address(address);
+    }
+    // if not equal, increment the PC as normal, since the execute instruction function returns without incrementing the PC upon seeing a B-type instruction
+    else {
+        this->increment_pc();
+    }
+
+    return;
+}
+
+void ControlUnit::adjust_PC_with_address(unsigned int address) {
+    std::cout << "rel address = " << address << std::endl;
+    // TODO: ensure this works correctly for negative addresses; i.e., that the PC "backtracks" correctly
+
+    // address is an unsigned int, so we see if it is above 2^31 to determine if it's negative or positive; 2^31 = 2147483648
+    if (address >= 2147483648) {
+        // address = (2^32 - 1) - address to get the value to go backwards; (2^32 - 1) = 4294967295
+        address = 4294967295 - address;
+        // decrement the PC the number of times needed to reach the PC-relative address
+        for (int i = 0; i < address; i++) {
+            this->decrement_pc();
+        }
+    }
+    else {
+        // increment the PC the number of times needed to reach the PC-relative address
+        for (int i = 0; i < address; i ++) {
+            this->increment_pc();
+        }
+    }
+
     return;
 }
 

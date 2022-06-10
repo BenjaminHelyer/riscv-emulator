@@ -40,11 +40,27 @@ class ControlUnit {
         * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
         */
         int get_rs1(RiscvInstruction instr);
+        /*! \brief Gets the source register rs2 for the instructions for which this applies. Returns as an int.
+        *
+        * Destination register lies in bits 15 through 19 in all instructions for which it applies.
+        * Returns destination register value as an int. Rationale: This value can be later used for indexing the array of registers.
+        */
+        int get_rs2(RiscvInstruction instr);
         /*! \brief Gets an unsigned int representing the 12-bit immediate value in I-type instructions. This value is sign-extended to a 32-bit signed integer.
         *
         * Since the value is sign-extended, be careful: a value over 2^31 - 1 means the number is negative and will be operated with as such.
         */
         unsigned int get_upper_12_immediate(RiscvInstruction instr);
+        /*! \brief Gets the PC-relative address as an integer for B-type instructions. This does NOT work for J instructions, since the address immediate is stored differently in those instructions.
+        *
+        * B-type instructions store the address immediate into a lower 5 bits and an upper 7 bits separated by rs1 and rs2 in the instruction.
+        * This is because B-type instructions use the rs2 space, so there isn't room for a full 12-bit immediate on the upper side of the instruction.
+        * 
+        * The process for getting the address is multiplying the 12-bit immediate by 2 and afterwards sign-extending it.
+        * 
+        * This function does not increment the PC. That is done in the functions for the B-type instructions themselves.
+        */
+        unsigned int get_address_b_type(RiscvInstruction instr); 
         /*! \brief Sign-extends a 32-bit boolean array with a value in its lowest 12 bits. ("upper_12" name comes from the fact that these are the upper 12 bits int he instruction)
         *
         */
@@ -82,12 +98,30 @@ class ControlUnit {
         *
         */
         void i_sltiu(RiscvInstruction instr);
+        /*! \brief B beq: "branch if equal," branches to another instruction if the two operand registers are equal.
+        *
+        * Since we chose to simply increment the PC by units of 1 rather than units of 4 (since we are using an array for instructions,
+        * which already has multiple words per index), in this emulation, the 12-bit immediate used for the address is simply sign-extended
+        * then added to the PC. This may be adjusted in future updates if a more realistic model of RISC-V is needed.
+        * 
+        * In reality, the 12-bit immediate would be multiplied by 2, sign-extended, and after all that, finally added to the PC.
+        * The reason for this is that RISC-V instructions are multiples of two bytes long.
+        */
+        void b_beq(RiscvInstruction instr);
 
     public:
         /*! \brief Increments the PC by copying the contents of the PC then incrementing the resulting boolean array.
         *
         */
         void increment_pc();
+        /*! \brief Decrements the PC by copying the contents of the PC then incrementing the resulting boolean array.
+        *
+        */
+        void decrement_pc();
+        /*! \brief Adjusts the PC based on a given PC-relative address.
+        *
+        */
+        void adjust_PC_with_address(unsigned int address);
         /*! \brief Function for incrementing a boolean array. Note that this function alters the array that is passed to it.
         *
         * Sign-extended incrementation for a boolean array. Thus, a bool which is the max. positive value will be "incremented" to the max. negative value.
@@ -98,6 +132,10 @@ class ControlUnit {
         * Thus, the runtime for converting an array to an int and back again would be twice the worst-case runtime for addition in this method.
         */
         void increment_bool(bool bool_to_increment[REGISTER_BITS]);
+        /*! \brief Function for decrementing a boolean array. Note that this function alters the array that is passed to it.
+        *
+        */
+        void decrement_bool(bool bool_to_decrement[REGISTER_BITS]);
         /*! \brief Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it.
         *
         * Based on the sign-extended incrementation function, this function also works in a sign-extended manner,

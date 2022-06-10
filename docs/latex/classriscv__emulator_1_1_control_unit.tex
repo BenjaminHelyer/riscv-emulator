@@ -15,10 +15,21 @@ Class for the control unit, which is the decision-\/making heart of the processo
 \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}\label{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}} 
 void {\bfseries increment\+\_\+pc} ()
 \begin{DoxyCompactList}\small\item\em Increments the PC by copying the contents of the PC then incrementing the resulting boolean array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a7433eded2bcf9fc0986aac6a04aaed92}\label{classriscv__emulator_1_1_control_unit_a7433eded2bcf9fc0986aac6a04aaed92}} 
+void {\bfseries decrement\+\_\+pc} ()
+\begin{DoxyCompactList}\small\item\em Decrements the PC by copying the contents of the PC then incrementing the resulting boolean array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a170260143d97b4fe1c292f90526c3c88}\label{classriscv__emulator_1_1_control_unit_a170260143d97b4fe1c292f90526c3c88}} 
+void {\bfseries adjust\+\_\+\+PC\+\_\+with\+\_\+address} (unsigned int address)
+\begin{DoxyCompactList}\small\item\em Adjusts the PC based on a given PC-\/relative address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\+\_\+bool}} (bool bool\+\_\+to\+\_\+increment\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
 \begin{DoxyCompactList}\small\item\em Function for incrementing a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a6002d19461636bb6e684560f30fb4ac8}\label{classriscv__emulator_1_1_control_unit_a6002d19461636bb6e684560f30fb4ac8}} 
+void {\bfseries decrement\+\_\+bool} (bool bool\+\_\+to\+\_\+decrement\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function for decrementing a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\+\_\+to\+\_\+bool}} (bool bool\+\_\+to\+\_\+add\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, unsigned int immediate)
 \begin{DoxyCompactList}\small\item\em Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}{compare\+\_\+two\+\_\+bools\+\_\+signed}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function for comparing two boolean arrays which returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\+\_\+instruction}} (\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} ctrl\+Instruction)
 \begin{DoxyCompactList}\small\item\em The function to call by which the control unit executes an instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -55,7 +66,19 @@ Function for adding an immediate value to a boolean array. Note that this functi
 
 Based on the sign-\/extended incrementation function, this function also works in a sign-\/extended manner, assuming that the immediate passed to it is unsigned. Thus, an int value over 2$^\wedge$31 -\/ 1 will act as a negative value for this function, adding a negative value instead of a positive value. This behavior makes this function consistent with RISC-\/V\textquotesingle{}s sign-\/extended behavior.
 
-Recursively increments the boolean array rather than converting to an int then converting back again. Implemented in this manner for the same reasons we implemented increment\+\_\+bool in its manner. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
+Recursively increments the boolean array rather than converting to an int then converting back again. Implemented in this manner for the same reasons we implemented increment\+\_\+bool in its manner. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}\label{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}} 
+\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!compare\_two\_bools\_signed@{compare\_two\_bools\_signed}}
+\index{compare\_two\_bools\_signed@{compare\_two\_bools\_signed}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+\doxysubsubsection{\texorpdfstring{compare\_two\_bools\_signed()}{compare\_two\_bools\_signed()}}
+{\footnotesize\ttfamily int riscv\+\_\+emulator\+::\+Control\+Unit\+::compare\+\_\+two\+\_\+bools\+\_\+signed (\begin{DoxyParamCaption}\item[{bool}]{bool0\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]},  }\item[{bool}]{bool1\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function for comparing two boolean arrays which returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. 
+
+This abstraction is useful for representing any comparison operation, which will allow us to have just one C++ function for comparing values even when there are multiple RISC-\/V functions for this. Rationale\+: ease of implmenetation on the C++ side. This may be changed later if a more accurate abstraction is desired.
+
+The comparison is implemented by beginning at the end of each bool rather than the beginning. This allows quick determination for numbers that differ in sign. For this reason it seems that on average this implementation has a faster runtime than starting at the beginning. The worst-\/case runtime is still the same for both. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}\label{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}} 
 \index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!execute\_instruction@{execute\_instruction}}
 \index{execute\_instruction@{execute\_instruction}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
 \doxysubsubsection{\texorpdfstring{execute\_instruction()}{execute\_instruction()}}

@@ -85,12 +85,27 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>increment_pc</b> ()</td></tr>
 <tr class="memdesc:a6ebe6090821473bb5dc5db224f89c6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the PC by copying the contents of the PC then incrementing the resulting boolean array. <br /></td></tr>
 <tr class="separator:a6ebe6090821473bb5dc5db224f89c6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7433eded2bcf9fc0986aac6a04aaed92"><td class="memItemLeft" align="right" valign="top"><a id="a7433eded2bcf9fc0986aac6a04aaed92" name="a7433eded2bcf9fc0986aac6a04aaed92"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>decrement_pc</b> ()</td></tr>
+<tr class="memdesc:a7433eded2bcf9fc0986aac6a04aaed92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the PC by copying the contents of the PC then incrementing the resulting boolean array. <br /></td></tr>
+<tr class="separator:a7433eded2bcf9fc0986aac6a04aaed92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170260143d97b4fe1c292f90526c3c88"><td class="memItemLeft" align="right" valign="top"><a id="a170260143d97b4fe1c292f90526c3c88" name="a170260143d97b4fe1c292f90526c3c88"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>adjust_PC_with_address</b> (unsigned int address)</td></tr>
+<tr class="memdesc:a170260143d97b4fe1c292f90526c3c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts the PC based on a given PC-relative address. <br /></td></tr>
+<tr class="separator:a170260143d97b4fe1c292f90526c3c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ad9eb3588a84a01c8e5a3edc804036eb0">increment_bool</a> (bool bool_to_increment[REGISTER_BITS])</td></tr>
 <tr class="memdesc:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for incrementing a boolean array. Note that this function alters the array that is passed to it.  <a href="classriscv__emulator_1_1_control_unit.html#ad9eb3588a84a01c8e5a3edc804036eb0">More...</a><br /></td></tr>
 <tr class="separator:ad9eb3588a84a01c8e5a3edc804036eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6002d19461636bb6e684560f30fb4ac8"><td class="memItemLeft" align="right" valign="top"><a id="a6002d19461636bb6e684560f30fb4ac8" name="a6002d19461636bb6e684560f30fb4ac8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>decrement_bool</b> (bool bool_to_decrement[REGISTER_BITS])</td></tr>
+<tr class="memdesc:a6002d19461636bb6e684560f30fb4ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for decrementing a boolean array. Note that this function alters the array that is passed to it. <br /></td></tr>
+<tr class="separator:a6002d19461636bb6e684560f30fb4ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#aa2b9ec244bb6a3b0eeea3102f98a1b57">add_to_bool</a> (bool bool_to_add[REGISTER_BITS], unsigned int immediate)</td></tr>
 <tr class="memdesc:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it.  <a href="classriscv__emulator_1_1_control_unit.html#aa2b9ec244bb6a3b0eeea3102f98a1b57">More...</a><br /></td></tr>
 <tr class="separator:aa2b9ec244bb6a3b0eeea3102f98a1b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a852705dfe821c4b4d568868af12da58e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#a852705dfe821c4b4d568868af12da58e">compare_two_bools_signed</a> (bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS])</td></tr>
+<tr class="memdesc:a852705dfe821c4b4d568868af12da58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for comparing two boolean arrays which returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal.  <a href="classriscv__emulator_1_1_control_unit.html#a852705dfe821c4b4d568868af12da58e">More...</a><br /></td></tr>
+<tr class="separator:a852705dfe821c4b4d568868af12da58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">execute_instruction</a> (<a class="el" href="classriscv__emulator_1_1_riscv_instruction.html">RiscvInstruction</a> ctrlInstruction)</td></tr>
 <tr class="memdesc:ab0ad7748b0c86b046aea42526d31eb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to call by which the control unit executes an instruction.  <a href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">More...</a><br /></td></tr>
 <tr class="separator:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +156,38 @@ Public Attributes</h2></td></tr>
 <p>Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. </p>
 <p >Based on the sign-extended incrementation function, this function also works in a sign-extended manner, assuming that the immediate passed to it is unsigned. Thus, an int value over 2^31 - 1 will act as a negative value for this function, adding a negative value instead of a positive value. This behavior makes this function consistent with RISC-V's sign-extended behavior.</p>
 <p >Recursively increments the boolean array rather than converting to an int then converting back again. Implemented in this manner for the same reasons we implemented increment_bool in its manner. </p>
+
+</div>
+</div>
+<a id="a852705dfe821c4b4d568868af12da58e" name="a852705dfe821c4b4d568868af12da58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a852705dfe821c4b4d568868af12da58e">&#9670;&nbsp;</a></span>compare_two_bools_signed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int riscv_emulator::ControlUnit::compare_two_bools_signed </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool0</em>[REGISTER_BITS], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool1</em>[REGISTER_BITS]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function for comparing two boolean arrays which returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. </p>
+<p >This abstraction is useful for representing any comparison operation, which will allow us to have just one C++ function for comparing values even when there are multiple RISC-V functions for this. Rationale: ease of implmenetation on the C++ side. This may be changed later if a more accurate abstraction is desired.</p>
+<p >The comparison is implemented by beginning at the end of each bool rather than the beginning. This allows quick determination for numbers that differ in sign. For this reason it seems that on average this implementation has a faster runtime than starting at the beginning. The worst-case runtime is still the same for both. </p>
 
 </div>
 </div>

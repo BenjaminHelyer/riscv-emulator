@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['run_5fprocessor_0',['run_processor',['../classriscv__emulator_1_1_processor.html#a4fc1bede26a0ef35e1da219966a98a7d',1,'riscv_emulator::Processor']]]
+  ['load_5finstructions_5ffrom_5ffile_0',['load_instructions_from_file',['../classriscv__emulator_1_1_processor.html#a5dd664295d7afd21a7c685ef23e35a70',1,'riscv_emulator::Processor']]]
 ];
