@@ -188,6 +188,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 1:
                     // R sll instruction
+                    r_sll(ctrlInstruction);
                     break;
                 case 2:
                     // R slt instruction
@@ -775,6 +776,52 @@ void ControlUnit::b_bgeu(RiscvInstruction instr) {
     else {
         this->increment_pc();
     }
+
+    return;
+}
+
+void ControlUnit::r_sll(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // find out how much shift is needed by translating the lower 5 bits of RS2 into an int
+    int shift_amt = 0;
+    for (int i = 0; i < 5; i++) {
+        shift_amt += rs2_contents[i]*pow(2, i);
+    }
+
+    if (shift_amt != 0) {
+        // copy RS1 now into a boolean array
+        this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+
+        // copy all the bits with a shift, zeroing out bits if they are lower
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            if (i - shift_amt < 0) {
+                rd_updated_contents[i] = 0;
+            }
+            else {
+                rd_updated_contents[i] = rs1_contents[i - shift_amt];
+            }
+        }
+    }
+    else {
+        // just copy the conents of RS1 to the array for updating the contents of RD, do not shift
+        this->ctrlRegisters[rs1]->copy_contents(rd_updated_contents);
+    }
+
+    // update the contents of RD
+    this->ctrlRegisters[rd]->set_contents(rd_updated_contents);
 
     return;
 }
