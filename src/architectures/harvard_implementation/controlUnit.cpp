@@ -207,6 +207,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 6:
                     // R or instruction
+                    r_or(ctrlInstruction);
                     break;
                 case 7:
                     // R and instruction
@@ -906,6 +907,33 @@ void ControlUnit::r_xor(RiscvInstruction instr) {
     this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
 
     arraywise_xor(rs1_contents, rs2_contents, rd_updated_vals);
+
+    this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
+
+    return;
+}
+
+void ControlUnit::r_or(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_vals[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        if (rs1_contents[i] || rs2_contents[i]) {
+            rd_updated_vals[i] = 1;
+        }
+    }
 
     this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
 

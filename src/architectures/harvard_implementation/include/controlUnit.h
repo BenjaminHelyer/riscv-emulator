@@ -150,6 +150,10 @@ class ControlUnit {
         *
         */
         void r_xor(RiscvInstruction instr);
+        /*! \brief R or: "OR," performs the logical OR operation across rs1 and rs2, saving the result in rd.
+        *
+        */
+        void r_or(RiscvInstruction instr);
 
 
     public:
