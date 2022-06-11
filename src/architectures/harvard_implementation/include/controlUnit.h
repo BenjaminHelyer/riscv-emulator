@@ -133,11 +133,15 @@ class ControlUnit {
         * The same qualifications as in B beq apply to this instruction.
         */
         void b_bgeu(RiscvInstruction instr);
-        /*! \brief R SLL: "Shift left logical," shifts the first operand left by the number of positions specified in the second operand.
+        /*! \brief R sll: "Shift left logical," shifts the first operand left by the number of positions specified in the second operand.
         *
         * Fills vacant bits with zeroes after the shift. Ignores upper bits of the second operand, utilizing only the lowest five bits.
         */
         void r_sll(RiscvInstruction instr);
+        /* \brief R slt: "Set less than," sets rd to 1 if the first operand is smaller than the second as a signed number.
+        *
+        */
+        void r_slt(RiscvInstruction instr);
 
 
     public:

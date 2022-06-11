@@ -192,6 +192,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 2:
                     // R slt instruction
+                    r_slt(ctrlInstruction);
                     break;
                 case 3:
                     // R sltu instruction
@@ -822,6 +823,36 @@ void ControlUnit::r_sll(RiscvInstruction instr) {
 
     // update the contents of RD
     this->ctrlRegisters[rd]->set_contents(rd_updated_contents);
+
+    return;
+}
+
+void ControlUnit::r_slt(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    int comparison_val = 0;
+    bool rd_updated_vals[REGISTER_BITS] = { };
+    comparison_val = compare_two_bools_signed(rs1_contents, rs2_contents);
+    // compare_two_bools_signed returns -1 if the first operand is greater, so we use that as the conditional
+    // if the first operand in the instruction (RS1) is greater than the second operand (RS2), the destination register (RD) is set to 1.
+    if (comparison_val == -1) {
+        rd_updated_vals[0] = 1;
+    }
+    // else, the destination register is set to 0
+
+    this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
 
     return;
 }
