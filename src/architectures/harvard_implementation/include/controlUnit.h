@@ -28,6 +28,11 @@ class ControlUnit {
         * Similar to other functions, the basis for the interface between this function and the RiscvInstruction object is the copy_bits function.
         */
         int get_opcode_extend(RiscvInstruction instr);
+        /*! \brief Gets the highest seven bits for a boolean array representing an instruction.
+        *
+        * These bits are used to differentiate some instructions, such as R ADD and R SUB.
+        */
+        int get_highest_seven_bits(RiscvInstruction instr);
         /*! \brief Gets the destination register for the instructions for which this applies. Returns as an int.
         *
         * Destination register lies in bits 7 through 11 in all instructions for which it applies.
@@ -158,6 +163,14 @@ class ControlUnit {
         *
         */
         void r_and(RiscvInstruction instr);
+        /*! \brief R add: "ADD," adds the contents of rs2 to the contents of rs1, saving the result in rd.
+        *
+        */
+        void r_add(RiscvInstruction instr);
+        /*! \brief R sub: "SUB", subtracts the contents of rs2 from the contents of rs1, saving the result in rd.
+        *
+        */
+       void r_sub(RiscvInstruction instr);
 
 
     public:
@@ -198,6 +211,11 @@ class ControlUnit {
         * Implemented in this manner for the same reasons we implemented increment_bool in its manner.
         */
        void add_to_bool(bool bool_to_add[REGISTER_BITS], unsigned int immediate);
+       /*! \brief Function for adding two boolean arrays together, saving the result to the third array. Note that this function alters the third array passed to it.
+        *
+        * This function also works in a sign-extended manner, making it consistent with RISC-V's sign-extended behavior.
+        */
+       void add_boolean_arrays(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_to_update[REGISTER_BITS]);
        /*! \brief Function for comparing two boolean arrays which returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal.
        *
        * This abstraction is useful for representing any comparison operation, which will allow us to have just one C++ function

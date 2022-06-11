@@ -28,6 +28,8 @@ void {\bfseries decrement\+\_\+bool} (bool bool\+\_\+to\+\_\+decrement\mbox{[}RE
 \begin{DoxyCompactList}\small\item\em Function for decrementing a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\+\_\+to\+\_\+bool}} (bool bool\+\_\+to\+\_\+add\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, unsigned int immediate)
 \begin{DoxyCompactList}\small\item\em Function for adding an immediate value to a boolean array. Note that this function alters the array that is passed to it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ae9b77566fc9c08650040dfa90e11ed66}{add\+\_\+boolean\+\_\+arrays}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool array\+\_\+to\+\_\+update\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function for adding two boolean arrays together, saving the result to the third array. Note that this function alters the third array passed to it. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}{compare\+\_\+two\+\_\+bools\+\_\+signed}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
 \begin{DoxyCompactList}\small\item\em Function for comparing two boolean arrays which returns -\/1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}{compare\+\_\+two\+\_\+bools\+\_\+unsigned}} (bool bool0\mbox{[}REGISTER\+\_\+\+BITS\mbox{]}, bool bool1\mbox{[}REGISTER\+\_\+\+BITS\mbox{]})
@@ -61,7 +63,17 @@ This class includes peripherals as pointers rather than members. Rationale\+: th
 Functions that depend on the type of instruction are implemented here rather than in the \mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{Riscv\+Instruction}} class. Rationale\+: Instruction type is determined at the level of the control unit rather than at the level of the instruction itself. Thus, defining functions for all instructions which are only valid for specific instruction types might lead to confusing or outright incorrect results. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}\label{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}} 
+\mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_ae9b77566fc9c08650040dfa90e11ed66}\label{classriscv__emulator_1_1_control_unit_ae9b77566fc9c08650040dfa90e11ed66}} 
+\index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!add\_boolean\_arrays@{add\_boolean\_arrays}}
+\index{add\_boolean\_arrays@{add\_boolean\_arrays}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
+\doxysubsubsection{\texorpdfstring{add\_boolean\_arrays()}{add\_boolean\_arrays()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Control\+Unit\+::add\+\_\+boolean\+\_\+arrays (\begin{DoxyParamCaption}\item[{bool}]{bool0\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]},  }\item[{bool}]{bool1\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]},  }\item[{bool}]{array\+\_\+to\+\_\+update\mbox{[}\+REGISTER\+\_\+\+BITS\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function for adding two boolean arrays together, saving the result to the third array. Note that this function alters the third array passed to it. 
+
+This function also works in a sign-\/extended manner, making it consistent with RISC-\/V\textquotesingle{}s sign-\/extended behavior. \mbox{\Hypertarget{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}\label{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}} 
 \index{riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}!add\_to\_bool@{add\_to\_bool}}
 \index{add\_to\_bool@{add\_to\_bool}!riscv\_emulator::ControlUnit@{riscv\_emulator::ControlUnit}}
 \doxysubsubsection{\texorpdfstring{add\_to\_bool()}{add\_to\_bool()}}

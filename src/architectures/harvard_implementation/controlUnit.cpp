@@ -98,11 +98,20 @@ void ControlUnit::add_to_bool(bool bool_to_add[REGISTER_BITS], unsigned int imme
     }
 }
 
+void ControlUnit::add_boolean_arrays(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_to_update[REGISTER_BITS]) {
+    bool carry = 0;
+
+    // update this later
+
+    return;
+}
+
 void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
     int opcode = 0;
     opcode = ctrlInstruction.get_opcode();
 
     int extend_op = 0;
+    int highest_seven = 0;
 
     switch (opcode) {
         case 3:
@@ -184,7 +193,21 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
             extend_op = get_opcode_extend(ctrlInstruction);
             switch (extend_op) {
                 case 0:
-                    // NEED TO DETERMINE IF ADD OR SUB AFTER THIS
+                    // ADD or SUB determined by highest seven bits
+                    highest_seven = get_highest_seven_bits(ctrlInstruction);
+                    switch (highest_seven) {
+                        case 0:
+                            // R add instruction
+                            r_add(ctrlInstruction);
+                            break;
+                        case 32:
+                            // R sub instruction
+                            r_sub(ctrlInstruction);
+                            break;
+                        default:
+                            throw std::invalid_argument("highest seven bits not recognized");
+                            return;
+                    }
                     break;
                 case 1:
                     // R sll instruction
@@ -334,6 +357,19 @@ int ControlUnit::get_opcode_extend(RiscvInstruction instr) {
     return val;
 }
 
+int ControlUnit::get_highest_seven_bits(RiscvInstruction instr) {
+    int val = 0;
+    bool highest_seven_array[7] = { };
+
+    instr.copy_bits(25, 31, highest_seven_array);
+
+    for (int i = 0; i < 7; i++) {
+        val += highest_seven_array[i]*std::pow(2, i);
+    }
+
+    return val;
+}
+
 int ControlUnit::get_rd(RiscvInstruction instr) {
     // first copy the rd value into an array
     bool rd_bool_array[5] = { };
@@ -462,7 +498,7 @@ void ControlUnit::i_addi(RiscvInstruction instr) {
     int rs1 = 0;
     rs1 = get_rs1(instr);
 
-    // CLEANUP: *May* be able to delete these two lines
+    // TODO: *May* be able to delete these two lines
     bool upper_12_bits[12] = { };
     instr.copy_bits(20, 31, upper_12_bits);
 
@@ -965,6 +1001,35 @@ void ControlUnit::r_and(RiscvInstruction instr) {
 
     this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
 
+    return;
+}
+
+void ControlUnit::r_add(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_vals[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    add_boolean_arrays(rs1_contents, rs2_contents, rd_updated_vals);
+
+    this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
+
+    return;
+
+    return;
+}
+
+void ControlUnit::r_sub(RiscvInstruction instr) {
     return;
 }
 
