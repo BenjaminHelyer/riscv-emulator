@@ -138,10 +138,14 @@ class ControlUnit {
         * Fills vacant bits with zeroes after the shift. Ignores upper bits of the second operand, utilizing only the lowest five bits.
         */
         void r_sll(RiscvInstruction instr);
-        /* \brief R slt: "Set less than," sets rd to 1 if the first operand is smaller than the second as a signed number.
+        /*! \brief R slt: "Set less than," sets rd to 1 if the first operand is smaller than the second as a signed number.
         *
         */
         void r_slt(RiscvInstruction instr);
+        /*! \brief R sltu: "Set less than unsigned," sets rd to 1 if the first operand is smaller than the second as an unsigned number.
+        *
+        */
+        void r_sltu(RiscvInstruction instr);
 
 
     public:
