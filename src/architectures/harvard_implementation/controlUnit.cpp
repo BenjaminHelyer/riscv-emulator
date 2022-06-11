@@ -200,6 +200,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     break;
                 case 4:
                     // R xor instruction
+                    r_xor(ctrlInstruction);
                     break;
                 case 5:
                     // NEED TO DETERMINE IF SRA OR SRL AFTER THIS
@@ -888,6 +889,29 @@ void ControlUnit::r_sltu(RiscvInstruction instr) {
     return;
 }
 
+void ControlUnit::r_xor(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_vals[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    arraywise_xor(rs1_contents, rs2_contents, rd_updated_vals);
+
+    this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
+
+    return;
+}
+
 void ControlUnit::adjust_PC_with_address(unsigned int address) {
     // TODO: ensure this works correctly for negative addresses; i.e., that the PC "backtracks" correctly
 
@@ -984,6 +1008,28 @@ int ControlUnit::compare_two_bools_unsigned(bool bool0[REGISTER_BITS], bool bool
     }
 
     return result;
+}
+
+bool ControlUnit::logical_xor(bool bool0, bool bool1) {
+    bool result = 0;
+
+    if (bool0 && bool1) {
+        result = 0;
+    }
+    else if (bool0 || bool1) {
+        result = 1;
+    }
+    else {
+        result = 0;
+    }
+
+    return result;
+}
+
+void ControlUnit::arraywise_xor(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_for_result[REGISTER_BITS]) {
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        array_for_result[i] = logical_xor(bool0[i], bool1[i]);
+    }
 }
 
 ControlUnit::ControlUnit() {

@@ -146,6 +146,10 @@ class ControlUnit {
         *
         */
         void r_sltu(RiscvInstruction instr);
+        /*! \brief R xor: "Exclusive OR," compares each bit of rs1 and rs2 and sets the result of the XOR operation in rd.
+        *
+        */
+        void r_xor(RiscvInstruction instr);
 
 
     public:
@@ -202,6 +206,15 @@ class ControlUnit {
        * Similar implementation to compare_two_bools_signed, except that the sign bit is simply compared rather than being checked for positive or negative.
        */
        int compare_two_bools_unsigned(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS]);
+       /*! \brief Logical function for computing XOR on two bits.
+       *
+       * Made public since this might be useful to other classes and doesn't affect anything in the control unit class directly.
+       */
+       bool logical_xor(bool bool0, bool bool1);
+       /*! \brief Applies the XOR function across two boolean arrays, bit by bit.
+       *
+       */
+       void arraywise_xor(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_for_result[REGISTER_BITS]);
 
         // the control unit has pointers to all these so it can access them directly
         DataMemory *ctrlDataMem = nullptr;

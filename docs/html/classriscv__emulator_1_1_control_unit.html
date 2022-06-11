@@ -109,6 +109,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>decrement_bool</b> (b
 <tr class="memitem:ac357775cfc25410ab12e545c63592d20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ac357775cfc25410ab12e545c63592d20">compare_two_bools_unsigned</a> (bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS])</td></tr>
 <tr class="memdesc:ac357775cfc25410ab12e545c63592d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for comparing two boolean arrays in an unsigned manner. Returns -1 if the first argument is greater, 1 if the second argument is greater, and 0 if the bools are equal.  <a href="classriscv__emulator_1_1_control_unit.html#ac357775cfc25410ab12e545c63592d20">More...</a><br /></td></tr>
 <tr class="separator:ac357775cfc25410ab12e545c63592d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82cf958ef9754410bfb691056eed645"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ad82cf958ef9754410bfb691056eed645">logical_xor</a> (bool bool0, bool bool1)</td></tr>
+<tr class="memdesc:ad82cf958ef9754410bfb691056eed645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical function for computing XOR on two bits.  <a href="classriscv__emulator_1_1_control_unit.html#ad82cf958ef9754410bfb691056eed645">More...</a><br /></td></tr>
+<tr class="separator:ad82cf958ef9754410bfb691056eed645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b0ed882d4c3a4f3feb32ef09ada207"><td class="memItemLeft" align="right" valign="top"><a id="a34b0ed882d4c3a4f3feb32ef09ada207" name="a34b0ed882d4c3a4f3feb32ef09ada207"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>arraywise_xor</b> (bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_for_result[REGISTER_BITS])</td></tr>
+<tr class="memdesc:a34b0ed882d4c3a4f3feb32ef09ada207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the XOR function across two boolean arrays, bit by bit. <br /></td></tr>
+<tr class="separator:a34b0ed882d4c3a4f3feb32ef09ada207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">execute_instruction</a> (<a class="el" href="classriscv__emulator_1_1_riscv_instruction.html">RiscvInstruction</a> ctrlInstruction)</td></tr>
 <tr class="memdesc:ab0ad7748b0c86b046aea42526d31eb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to call by which the control unit executes an instruction.  <a href="classriscv__emulator_1_1_control_unit.html#ab0ad7748b0c86b046aea42526d31eb6f">More...</a><br /></td></tr>
 <tr class="separator:ab0ad7748b0c86b046aea42526d31eb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,6 +272,37 @@ Public Attributes</h2></td></tr>
 <p>Function for incrementing a boolean array. Note that this function alters the array that is passed to it. </p>
 <p >Sign-extended incrementation for a boolean array. Thus, a bool which is the max. positive value will be "incremented" to the max. negative value. All other incrementations are positive addition except for this sign flip.</p>
 <p >Implemented addition in this way because the average runtime for incrementing an array in this way is better than converting a boolean array to an int then converting the int back into an array. In fact, for converting a boolean array to an int, the runtime would consistently be the length of the array. Thus, the runtime for converting an array to an int and back again would be twice the worst-case runtime for addition in this method. </p>
+
+</div>
+</div>
+<a id="ad82cf958ef9754410bfb691056eed645" name="ad82cf958ef9754410bfb691056eed645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad82cf958ef9754410bfb691056eed645">&#9670;&nbsp;</a></span>logical_xor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool riscv_emulator::ControlUnit::logical_xor </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bool1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logical function for computing XOR on two bits. </p>
+<p >Made public since this might be useful to other classes and doesn't affect anything in the control unit class directly. </p>
 
 </div>
 </div>
