@@ -154,6 +154,10 @@ class ControlUnit {
         *
         */
         void r_or(RiscvInstruction instr);
+        /*! \brief R and: "AND," performs the logical AND operation across rs1 and rs2, saving the result in rd.
+        *
+        */
+        void r_and(RiscvInstruction instr);
 
 
     public:
