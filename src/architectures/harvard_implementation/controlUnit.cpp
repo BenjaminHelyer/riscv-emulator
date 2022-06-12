@@ -101,7 +101,57 @@ void ControlUnit::add_to_bool(bool bool_to_add[REGISTER_BITS], unsigned int imme
 void ControlUnit::add_boolean_arrays(bool bool0[REGISTER_BITS], bool bool1[REGISTER_BITS], bool array_to_update[REGISTER_BITS]) {
     bool carry = 0;
 
-    // update this later
+    // TODO: ensure above behavior works for negative integers and for a combination of a negative integer and positive integer
+    // only go up to REGISTER_BITS - 1 so we keep sign-extended behavior for negative numbers
+    // cases for a sign flip are covered below
+    for (int i = 0; i < REGISTER_BITS - 1; i++) {
+        if (bool0[i] && bool1[i]) {
+            // determination of value of array index based on carry
+            if (carry) {
+                // 1 + 1 + 1 = 1 carry 1
+                array_to_update[i] = 1;
+            }
+            else {
+                // 1 + 1 + 0 = 0 carry 1
+                array_to_update[i] = 0;
+            }
+            // updated carry always 1 if both are 1
+            carry = 1;
+        }
+        else if (bool0[i] || bool1[i]) { 
+            if (carry) {
+                // 0 + 1 + 1 = 0 carry 1
+                array_to_update[i] = 0;
+                carry = 1;
+            }
+            else {
+                // 0 + 1 + 0 = 1 carry 0
+                array_to_update[i] = 1;
+                carry = 0;
+            }
+        }
+        else {
+            if (carry) {
+                // 0 + 0 + 1 = 1 carry 0
+                array_to_update[i] = 1;
+            }
+            else {
+                // 0 + 0 + 0 = 0 carry 0
+                array_to_update[i] = 0;
+            }
+            // if both zero, updated carry always zero
+            carry = 0;
+        }
+    }
+
+    // TODO: check that this behavior is correct
+    // if finished traversing the array and still have a carry bit, we need to take the two's complement of the resulting number in the array
+    if (carry) {
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            array_to_update[i] = !(array_to_update[i]);
+            increment_bool(array_to_update);
+        }
+    }
 
     return;
 }
