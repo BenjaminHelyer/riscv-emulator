@@ -171,6 +171,10 @@ class ControlUnit {
         *
         */
        void r_sub(RiscvInstruction instr);
+       /*! \brief J jal: "Jump and link," jumps to the address given by the upper immediate and links to the next instruction by saving the address in rd.
+       *
+       */
+       void j_jal(RiscvInstruction instr);
 
 
     public:

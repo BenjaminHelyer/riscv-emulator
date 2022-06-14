@@ -144,14 +144,7 @@ void ControlUnit::add_boolean_arrays(bool bool0[REGISTER_BITS], bool bool1[REGIS
         }
     }
 
-    // TODO: check that this behavior is correct
-    // if finished traversing the array and still have a carry bit, we need to take the two's complement of the resulting number in the array
-    if (carry) {
-        for (int i = 0; i < REGISTER_BITS; i++) {
-            array_to_update[i] = !(array_to_update[i]);
-            increment_bool(array_to_update);
-        }
-    }
+    // TODO: add two's complement behavior if necessary
 
     return;
 }
@@ -370,11 +363,12 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     return;
             }
             break;
-        case 239:
+        case 111:
             // opcode is for J jal
+            j_jal(ctrlInstruction);
             // return after jump and do not increment program counter
             return;
-        case 231:
+        case 103:
             // opcode is for I jalr
             break;
         case 23:
@@ -1075,11 +1069,47 @@ void ControlUnit::r_add(RiscvInstruction instr) {
     this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
 
     return;
+}
+
+void ControlUnit::r_sub(RiscvInstruction instr) {
+    // TODO: implement this instruction
 
     return;
 }
 
-void ControlUnit::r_sub(RiscvInstruction instr) {
+void ControlUnit::j_jal(RiscvInstruction instr) {
+    // TODO: test this instruction
+    int rd = 0;
+
+    bool rd_updated_vals[REGISTER_BITS] = { };
+
+    // first copy the contents of the next address of the PC
+    // TODO: confirm this behavior works for assuming rd = x1 by default. Wouldn't no rd = 0...0 = x0, which is useful for unconditional jump?
+    // need to confirm that the RISC-V manual's statement of the above is correct
+    rd = get_rd(instr);
+    this->ctrlPC->copy_contents(rd_updated_vals);
+    increment_bool(rd_updated_vals);
+    this->ctrlRegisters[rd]->set_contents(rd_updated_vals);
+
+    // next adjust the PC address with the immediate
+    bool upper_20_bits[REGISTER_BITS] = { };
+    instr.copy_bits(12, 31, upper_20_bits);
+
+    // sign-extend the immediate
+    for (int i = 20; i < REGISTER_BITS; i++) {
+        upper_20_bits[i] = upper_20_bits[19];
+    }
+
+    // turn the sign-extended immediate into an unsigned bool
+    unsigned int updated_addr = 0;
+    for (int i = 0; i < REGISTER_BITS; i++) {
+        updated_addr += upper_20_bits[i]*pow(2, i);
+    }
+
+    // update the PC with the unsigned immediate value
+    this->adjust_PC_with_address(updated_addr);
+
+
     return;
 }
 
