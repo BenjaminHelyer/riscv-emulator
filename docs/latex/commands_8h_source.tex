@@ -18,17 +18,21 @@
 \DoxyCodeLine{17         \mbox{\hyperlink{classriscv__emulator_1_1_processor}{Processor}} emuProcessor;}
 \DoxyCodeLine{18         \textcolor{keywordtype}{bool} stop\_process = 0;}
 \DoxyCodeLine{23         \textcolor{keywordtype}{void} load\_machine\_code\_from\_txt\_file(std::string filename);}
-\DoxyCodeLine{27         \textcolor{keywordtype}{void} display\_register\_contents(\mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} reg);}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{keyword}{public}:}
-\DoxyCodeLine{34         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}{run\_interface}}();}
-\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_commands_a82ba2a4be76d2a0f545418b6fbfc796c}{stop\_interface}}();}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40         \mbox{\hyperlink{classriscv__emulator_1_1_commands}{Commands}}();}
-\DoxyCodeLine{41 \};}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} print\_register\_contents(\mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} reg);}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} print\_all\_regs();}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} process\_user\_command(std::string in\_command);}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} print\_command\_list();}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} stop\_emu();}
 \DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{45     \textcolor{keyword}{public}:}
+\DoxyCodeLine{50         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}{run\_interface}}();}
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_commands_a82ba2a4be76d2a0f545418b6fbfc796c}{stop\_interface}}();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \mbox{\hyperlink{classriscv__emulator_1_1_commands}{Commands}}();}
+\DoxyCodeLine{57 \};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

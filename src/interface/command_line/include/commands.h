@@ -24,7 +24,23 @@ class Commands {
         /*! \brief Displays the register contents to the command line for a given register.
         *
         */
-        void display_register_contents(Register reg);
+        void print_register_contents(Register reg);
+        /*! \brief Displays all register contents to the command line.
+        *
+        */
+        void print_all_regs();
+        /*! \brief Function for processing a command typed by the user into the interface.
+        *
+        */
+        void process_user_command(std::string in_command);
+        /*! \brief Prints the list of commands to the console.
+        *
+        */
+        void print_command_list();
+        /*! \brief Stops the emulator safely. Added in case more is needed later to stop the emulator than simply stopping the interface process.
+        *
+        */
+        void stop_emu();
 
     public:
         /*! \brief Function for running the commnand-line interface. Called to generate a user-interactive interface in the command line.
