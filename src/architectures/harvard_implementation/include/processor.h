@@ -12,6 +12,9 @@
 
 namespace riscv_emulator {
 
+/*! \brief The essense of the emulator. The processor is the basic unit which this project strives to mimic.
+*
+*/
 class Processor {
     // strictly speaking, a struct should probably be used here since everything is public, but classes have been used for everything else, so we'll stick with a class
     public:
@@ -19,8 +22,8 @@ class Processor {
         InstructionMemory instrMem;
         DataMemory dataMem;
         Register pc;
+        // TODO: find a way to hold the zero register value as a hardwired zero. Simple solution would be to drive the contents to zero at the beginning and end of each processor cycle.
         Register registers[32]; // holds all registers other than the pc, including the zero register
-        // may want to find a way to hold the zero register value as constant or static at some point
         IoPeripheral processor_io;
 
         /*! \brief Fundamental function to run the processor. Starts reading instructions in memory from address 0 onwards.

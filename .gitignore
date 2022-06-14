@@ -1,6 +1,6 @@
 *.o
 *.log
-/vscode
+/.vscode
 *.log
 *.exe
 .vscode/dryrun.log

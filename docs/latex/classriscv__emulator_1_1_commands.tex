@@ -1,0 +1,41 @@
+\hypertarget{classriscv__emulator_1_1_commands}{}\doxysection{riscv\+\_\+emulator\+::Commands Class Reference}
+\label{classriscv__emulator_1_1_commands}\index{riscv\_emulator::Commands@{riscv\_emulator::Commands}}
+
+
+Basic class for the command line interface, holding the necessary objects and functions for running an interface.  
+
+
+
+
+{\ttfamily \#include $<$commands.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}{run\+\_\+interface}} ()
+\begin{DoxyCompactList}\small\item\em Function for running the commnand-\/line interface. Called to generate a user-\/interactive interface in the command line. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classriscv__emulator_1_1_commands_a82ba2a4be76d2a0f545418b6fbfc796c}\label{classriscv__emulator_1_1_commands_a82ba2a4be76d2a0f545418b6fbfc796c}} 
+void {\bfseries stop\+\_\+interface} ()
+\begin{DoxyCompactList}\small\item\em Function to stop the interface. Generally doesn\textquotesingle{}t need to be used, since this is implemented internally in \mbox{\hyperlink{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}{run\+\_\+interface()}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic class for the command line interface, holding the necessary objects and functions for running an interface. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}\label{classriscv__emulator_1_1_commands_aae9d744ae06f6cf57b1ea6e1574969f7}} 
+\index{riscv\_emulator::Commands@{riscv\_emulator::Commands}!run\_interface@{run\_interface}}
+\index{run\_interface@{run\_interface}!riscv\_emulator::Commands@{riscv\_emulator::Commands}}
+\doxysubsubsection{\texorpdfstring{run\_interface()}{run\_interface()}}
+{\footnotesize\ttfamily void riscv\+\_\+emulator\+::\+Commands\+::run\+\_\+interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function for running the commnand-\/line interface. Called to generate a user-\/interactive interface in the command line. 
+
+Example usage\+: In main(), simply call \char`\"{}run\+\_\+interface();\char`\"{}, this will enter into a loop of running the interface. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+interface/command\+\_\+line/include/commands.\+h\item 
+interface/command\+\_\+line/commands.\+cpp\end{DoxyCompactItemize}
