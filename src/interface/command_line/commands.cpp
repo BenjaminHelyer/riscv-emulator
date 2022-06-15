@@ -34,8 +34,25 @@ void Commands::process_user_command(std::string in_command) {
         this->stop_process = 1;
         std::cout << "Emulator stopped. Stopping command interface..." << std::endl;
     }
-    else if (in_command == "PRINT_ALL_REGS") {
-        this->print_all_regs();
+    // TODO: cover the edge case where a user *only* enters the first segment of words for a valid command, currently just waits for more input without giving an error prompt
+    // could have it print out a statement like "What would you like to print?" to cover this case
+    else if (in_command == "PRINT") {
+        // grab the second word from the string following a print command
+        std::string second_word = "";
+        std::cin >> second_word;
+        if (second_word == "REG") {
+            std::string third_word = "";
+            std::cin >> third_word;
+            if (third_word == "*") {
+                this->print_all_regs();
+            }
+            else {
+                std::cout << "Command not recognized. Please try again or enter 'HELP' for help (without the quotation marks)." << std::endl;
+            }
+        }
+        else {
+            std::cout << "Command not recognized. Please try again or enter 'HELP' for help (without the quotation marks)." << std::endl;
+        }
     }
     else {
         std::cout << "Command not recognized. Please try again or enter 'HELP' for help (without the quotation marks)." << std::endl;
@@ -48,7 +65,7 @@ void Commands::print_command_list() {
     std::cout << "List of commands:" << std::endl;
     std::cout << "STOP -- Stops the emulator and prints out a confirmation message once stopped." << std::endl;
     std::cout << "HELP -- Prints out a list of commands." << std::endl;
-    std::cout << "PRINT_ALL_REGS -- Prints out the contents of all the registers." << std::endl;
+    std::cout << "PRINT REG * -- Prints out the contents of all the registers." << std::endl;
 
     return;
 }
