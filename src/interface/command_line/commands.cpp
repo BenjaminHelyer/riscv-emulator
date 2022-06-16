@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 namespace riscv_emulator {
 
@@ -54,6 +55,11 @@ void Commands::process_user_command(std::string in_command) {
             std::cout << "Command not recognized. Please try again or enter 'HELP' for help (without the quotation marks)." << std::endl;
         }
     }
+    else if (in_command == "RUN") {
+        std::string filepath = "";
+        std::cin >> filepath;
+        this->run_machine_code_from_txt_file(filepath);
+    }
     else {
         std::cout << "Command not recognized. Please try again or enter 'HELP' for help (without the quotation marks)." << std::endl;
     }
@@ -66,6 +72,7 @@ void Commands::print_command_list() {
     std::cout << "STOP -- Stops the emulator and prints out a confirmation message once stopped." << std::endl;
     std::cout << "HELP -- Prints out a list of commands." << std::endl;
     std::cout << "PRINT REG * -- Prints out the contents of all the registers." << std::endl;
+    std::cout << "RUN <FILEPATH> -- Runs a file at the given filepath containing assembled machine code. Currently, only .txt files with instructions delimited by newlines." << std::endl;
 
     return;
 }
@@ -94,6 +101,19 @@ void Commands::print_all_regs() {
         std::cout << std::endl;
     }
 
+    return;
+}
+
+void Commands::run_machine_code_from_txt_file(std::string filepath) {
+    try {
+        this->emuProcessor.load_instructions_from_file(filepath);
+        this->emuProcessor.run_processor();
+    }
+    catch (std::invalid_argument& e) {
+        std::cout << "Error encoutered: ";
+        std::cerr << e.what() << std::endl;
+    }
+    
     return;
 }
 

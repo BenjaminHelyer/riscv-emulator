@@ -16,11 +16,11 @@ class Commands {
     private:
         Processor emuProcessor;
         bool stop_process = 0;
-        /*! \brief Loads machine code from a text file. Instructions should be delimited by newlines, and only one instruction is allowed per line.
+        /*! \brief Loads and runs machine code from a text file. Instructions should be delimited by newlines, and only one instruction is allowed per line.
         *
         * Upon hitting a zero instruction, the processor will stop the task from this file.
         */
-        void load_machine_code_from_txt_file(std::string filename);
+        void run_machine_code_from_txt_file(std::string filepath);
         /*! \brief Displays the register contents to the command line for a given register.
         *
         */
