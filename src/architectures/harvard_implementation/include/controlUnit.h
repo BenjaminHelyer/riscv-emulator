@@ -70,6 +70,10 @@ class ControlUnit {
         *
         */
         void sign_extend_12_bit(bool bool_with_12_bit_val[32]);
+        /*! \brief Gets the shift amount for R SLL, R SRL, and R SRA instructions.
+        *
+        */
+        int get_shift_amount_five_bits(bool rs2_contents[32]);
 
         // Begin functions for overall instructions.
         /*! \brief U lui: Loads a 20-bit immediate into the 20 most-significant-bits of the destination register.
@@ -175,6 +179,19 @@ class ControlUnit {
        *
        */
        void j_jal(RiscvInstruction instr);
+       /*! \brief R srl: "Shift right logical," shifts the bits in rs1 right by the number of times indicated in rs2, filling the now-vacated upper bits with zeroes. Saves result in rd.
+       *
+       */
+       void r_srl(RiscvInstruction instr);
+       /*! \brief R sra: "Shift right arithmetic," similar behavior to R SRL, but fills the now-vacant highest bits with the highest bit of RS1, preserving the sign.
+       *
+       * We only have R SRA, and not R SLA, likely since it's unclear how sign-preservation would be defined for a leftward logical shift.
+       * In a right logical shift, it's clear how this is the case: we have vacant high bits. But in a left logical shift, we have
+       * vacant low bits. We can't fill these with anything without performing an additive (not multiplicative) operation, 
+       * and likewise, we can't change the sign of, say, the highest bit without performing an additive (not multiplicative) operation.
+       * This makes the complications associated with a potential "R SLA" instruction evident.
+       */
+       void r_sra(RiscvInstruction instr);
 
 
     public:

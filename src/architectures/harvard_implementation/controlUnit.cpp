@@ -248,7 +248,7 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                             r_sub(ctrlInstruction);
                             break;
                         default:
-                            throw std::invalid_argument("highest seven bits not recognized");
+                            throw std::invalid_argument("highest seven opcode bits not recognized");
                             return;
                     }
                     break;
@@ -269,7 +269,21 @@ void ControlUnit::execute_instruction(RiscvInstruction ctrlInstruction) {
                     r_xor(ctrlInstruction);
                     break;
                 case 5:
-                    // NEED TO DETERMINE IF SRA OR SRL AFTER THIS
+                    // SRA or SRL determined by highest seven bits
+                    highest_seven = get_highest_seven_bits(ctrlInstruction);
+                    switch (highest_seven) {
+                        case 0:
+                            // R srl instruction
+                            r_srl(ctrlInstruction);
+                            break;
+                        case 32:
+                            // R sra instruction
+                            r_sra(ctrlInstruction);
+                            break;
+                        default:
+                            throw std::invalid_argument("highest seven opcode bits not recognized");
+                            return;
+                    }
                     break;
                 case 6:
                     // R or instruction
@@ -510,6 +524,14 @@ void ControlUnit::sign_extend_12_bit(bool bool_with_12_bit_val[32]) {
     }
 }
 
+int ControlUnit::get_shift_amount_five_bits(bool rs2_contents[32]) {
+    int shift_amt = 0;
+    for (int i = 0; i < 5; i++) {
+        shift_amt += rs2_contents[i]*pow(2, i);
+    }
+
+    return shift_amt;
+}
 
 // Begin functions for overall instructions
 
@@ -881,10 +903,7 @@ void ControlUnit::r_sll(RiscvInstruction instr) {
     this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
 
     // find out how much shift is needed by translating the lower 5 bits of RS2 into an int
-    int shift_amt = 0;
-    for (int i = 0; i < 5; i++) {
-        shift_amt += rs2_contents[i]*pow(2, i);
-    }
+    int shift_amt = this->get_shift_amount_five_bits(rs2_contents);
 
     if (shift_amt != 0) {
         // copy RS1 now into a boolean array
@@ -893,6 +912,8 @@ void ControlUnit::r_sll(RiscvInstruction instr) {
         // copy all the bits with a shift, zeroing out bits if they are lower
         for (int i = 0; i < REGISTER_BITS; i++) {
             if (i - shift_amt < 0) {
+                // we can zero them out here since this doesn't affect the original array
+                // i.e., we aren't shifting in place
                 rd_updated_contents[i] = 0;
             }
             else {
@@ -1109,6 +1130,97 @@ void ControlUnit::j_jal(RiscvInstruction instr) {
     // update the PC with the unsigned immediate value
     this->adjust_PC_with_address(updated_addr);
 
+
+    return;
+}
+
+void ControlUnit::r_srl(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // find out how much shift is needed by translating the lower 5 bits of RS2 into an int
+    int shift_amt = this->get_shift_amount_five_bits(rs2_contents);
+
+    if (shift_amt != 0) {
+        // copy RS1 now into a boolean array
+        this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+
+        // logic below is *similar*, but not identical to, R SLL and R SRA. Not refactored into a common function because of this.
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            if (i + shift_amt >= REGISTER_BITS) {
+                // we can zero them out here since this doesn't affect the original array
+                // i.e., we aren't shifting in place
+                rd_updated_contents[i] = 0;
+            }
+            else {
+                rd_updated_contents[i] = rs1_contents[i + shift_amt];
+            }
+        }
+    }
+    else {
+        // just copy the conents of RS1 to the array for updating the contents of RD, do not shift
+        this->ctrlRegisters[rs1]->copy_contents(rd_updated_contents);
+    }
+
+    // update the contents of RD
+    this->ctrlRegisters[rd]->set_contents(rd_updated_contents);
+
+    return;
+}
+
+void ControlUnit::r_sra(RiscvInstruction instr) {
+    int rs1 = 0;
+    int rs2 = 0;
+    int rd = 0;
+
+    bool rs1_contents[REGISTER_BITS] = { };
+    bool rs2_contents[REGISTER_BITS] = { };
+    bool rd_updated_contents[REGISTER_BITS] = { };
+
+    rs1 = get_rs1(instr);
+    rs2 = get_rs2(instr);
+    rd = get_rd(instr);
+
+    this->ctrlRegisters[rs2]->copy_contents(rs2_contents);
+
+    // find out how much shift is needed by translating the lower 5 bits of RS2 into an int
+    int shift_amt = this->get_shift_amount_five_bits(rs2_contents);
+
+    if (shift_amt != 0) {
+        // copy RS1 now into a boolean array
+        this->ctrlRegisters[rs1]->copy_contents(rs1_contents);
+
+        // logic below is *similar*, but not identical to, R SLL and R SRA. Not refactored into a common function because of this.
+        for (int i = 0; i < REGISTER_BITS; i++) {
+            if (i + shift_amt >= REGISTER_BITS) {
+                // we can zero them out here since this doesn't affect the original array
+                // i.e., we aren't shifting in place
+                // for R SRA, set to the highest bit of RS1, not a predetermined 1 or 0
+                rd_updated_contents[i] = rs1_contents[REGISTER_BITS - 1];
+            }
+            else {
+                rd_updated_contents[i] = rs1_contents[i + shift_amt];
+            }
+        }
+    }
+    else {
+        // just copy the conents of RS1 to the array for updating the contents of RD, do not shift
+        this->ctrlRegisters[rs1]->copy_contents(rd_updated_contents);
+    }
+
+    // update the contents of RD
+    this->ctrlRegisters[rd]->set_contents(rd_updated_contents);
 
     return;
 }

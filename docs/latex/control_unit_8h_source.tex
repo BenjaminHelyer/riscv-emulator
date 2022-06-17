@@ -22,59 +22,62 @@
 \DoxyCodeLine{58         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} get\_upper\_12\_immediate(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
 \DoxyCodeLine{68         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} get\_address\_b\_type(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr); }
 \DoxyCodeLine{72         \textcolor{keywordtype}{void} sign\_extend\_12\_bit(\textcolor{keywordtype}{bool} bool\_with\_12\_bit\_val[32]);}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{74         \textcolor{comment}{// Begin functions for overall instructions.}}
-\DoxyCodeLine{80 \textcolor{comment}{}        \textcolor{keywordtype}{void} u\_lui(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{85         \textcolor{keywordtype}{void} i\_addi(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{89         \textcolor{keywordtype}{void} i\_andi(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{93         \textcolor{keywordtype}{void} i\_ori(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{97         \textcolor{keywordtype}{void} i\_xori(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{101         \textcolor{keywordtype}{void} i\_slti(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{105         \textcolor{keywordtype}{void} i\_sltiu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{115         \textcolor{keywordtype}{void} b\_beq(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{120         \textcolor{keywordtype}{void} b\_bne(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{125         \textcolor{keywordtype}{void} b\_blt(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{130         \textcolor{keywordtype}{void} b\_bge(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{135         \textcolor{keywordtype}{void} b\_bltu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{140         \textcolor{keywordtype}{void} b\_bgeu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{145         \textcolor{keywordtype}{void} r\_sll(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{149         \textcolor{keywordtype}{void} r\_slt(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{153         \textcolor{keywordtype}{void} r\_sltu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{157         \textcolor{keywordtype}{void} r\_xor(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{161         \textcolor{keywordtype}{void} r\_or(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{165         \textcolor{keywordtype}{void} r\_and(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{169         \textcolor{keywordtype}{void} r\_add(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{173        \textcolor{keywordtype}{void} r\_sub(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{177        \textcolor{keywordtype}{void} j\_jal(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
-\DoxyCodeLine{178 }
-\DoxyCodeLine{179 }
-\DoxyCodeLine{180     \textcolor{keyword}{public}:}
-\DoxyCodeLine{184         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}{increment\_pc}}();}
-\DoxyCodeLine{188         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a7433eded2bcf9fc0986aac6a04aaed92}{decrement\_pc}}();}
-\DoxyCodeLine{192         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a170260143d97b4fe1c292f90526c3c88}{adjust\_PC\_with\_address}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} address);}
-\DoxyCodeLine{202         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_increment[REGISTER\_BITS]);}
-\DoxyCodeLine{206         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6002d19461636bb6e684560f30fb4ac8}{decrement\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_decrement[REGISTER\_BITS]);}
-\DoxyCodeLine{217        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\_to\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_add[REGISTER\_BITS], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} immediate);}
-\DoxyCodeLine{222        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ae9b77566fc9c08650040dfa90e11ed66}{add\_boolean\_arrays}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS], \textcolor{keywordtype}{bool} array\_to\_update[REGISTER\_BITS]);}
-\DoxyCodeLine{233        \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}{compare\_two\_bools\_signed}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS]);}
-\DoxyCodeLine{238        \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}{compare\_two\_bools\_unsigned}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS]);}
-\DoxyCodeLine{243        \textcolor{keywordtype}{bool} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad82cf958ef9754410bfb691056eed645}{logical\_xor}}(\textcolor{keywordtype}{bool} bool0, \textcolor{keywordtype}{bool} bool1);}
-\DoxyCodeLine{247        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a34b0ed882d4c3a4f3feb32ef09ada207}{arraywise\_xor}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS], \textcolor{keywordtype}{bool} array\_for\_result[REGISTER\_BITS]);}
-\DoxyCodeLine{248 }
-\DoxyCodeLine{249         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
-\DoxyCodeLine{250         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{251         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{252         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32];}
-\DoxyCodeLine{253         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
-\DoxyCodeLine{254         }
-\DoxyCodeLine{262         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
-\DoxyCodeLine{263 }
-\DoxyCodeLine{264         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}}();}
-\DoxyCodeLine{265         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{\string~ControlUnit}}();}
-\DoxyCodeLine{266 \};}
-\DoxyCodeLine{267 }
-\DoxyCodeLine{268 \} \textcolor{comment}{// namespace riscv\_emulator}}
-\DoxyCodeLine{269 }
-\DoxyCodeLine{270 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{76         \textcolor{keywordtype}{int} get\_shift\_amount\_five\_bits(\textcolor{keywordtype}{bool} rs2\_contents[32]);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78         \textcolor{comment}{// Begin functions for overall instructions.}}
+\DoxyCodeLine{84 \textcolor{comment}{}        \textcolor{keywordtype}{void} u\_lui(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{89         \textcolor{keywordtype}{void} i\_addi(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{93         \textcolor{keywordtype}{void} i\_andi(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{97         \textcolor{keywordtype}{void} i\_ori(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{101         \textcolor{keywordtype}{void} i\_xori(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{105         \textcolor{keywordtype}{void} i\_slti(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{109         \textcolor{keywordtype}{void} i\_sltiu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{119         \textcolor{keywordtype}{void} b\_beq(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{124         \textcolor{keywordtype}{void} b\_bne(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{129         \textcolor{keywordtype}{void} b\_blt(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{134         \textcolor{keywordtype}{void} b\_bge(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{139         \textcolor{keywordtype}{void} b\_bltu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{144         \textcolor{keywordtype}{void} b\_bgeu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{149         \textcolor{keywordtype}{void} r\_sll(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{153         \textcolor{keywordtype}{void} r\_slt(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{157         \textcolor{keywordtype}{void} r\_sltu(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{161         \textcolor{keywordtype}{void} r\_xor(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{165         \textcolor{keywordtype}{void} r\_or(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{169         \textcolor{keywordtype}{void} r\_and(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{173         \textcolor{keywordtype}{void} r\_add(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{177        \textcolor{keywordtype}{void} r\_sub(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{181        \textcolor{keywordtype}{void} j\_jal(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{185        \textcolor{keywordtype}{void} r\_srl(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{194        \textcolor{keywordtype}{void} r\_sra(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} instr);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197     \textcolor{keyword}{public}:}
+\DoxyCodeLine{201         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6ebe6090821473bb5dc5db224f89c6a0}{increment\_pc}}();}
+\DoxyCodeLine{205         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a7433eded2bcf9fc0986aac6a04aaed92}{decrement\_pc}}();}
+\DoxyCodeLine{209         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a170260143d97b4fe1c292f90526c3c88}{adjust\_PC\_with\_address}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} address);}
+\DoxyCodeLine{219         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad9eb3588a84a01c8e5a3edc804036eb0}{increment\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_increment[REGISTER\_BITS]);}
+\DoxyCodeLine{223         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a6002d19461636bb6e684560f30fb4ac8}{decrement\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_decrement[REGISTER\_BITS]);}
+\DoxyCodeLine{234        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_aa2b9ec244bb6a3b0eeea3102f98a1b57}{add\_to\_bool}}(\textcolor{keywordtype}{bool} bool\_to\_add[REGISTER\_BITS], \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} immediate);}
+\DoxyCodeLine{239        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ae9b77566fc9c08650040dfa90e11ed66}{add\_boolean\_arrays}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS], \textcolor{keywordtype}{bool} array\_to\_update[REGISTER\_BITS]);}
+\DoxyCodeLine{250        \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a852705dfe821c4b4d568868af12da58e}{compare\_two\_bools\_signed}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS]);}
+\DoxyCodeLine{255        \textcolor{keywordtype}{int} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ac357775cfc25410ab12e545c63592d20}{compare\_two\_bools\_unsigned}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS]);}
+\DoxyCodeLine{260        \textcolor{keywordtype}{bool} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ad82cf958ef9754410bfb691056eed645}{logical\_xor}}(\textcolor{keywordtype}{bool} bool0, \textcolor{keywordtype}{bool} bool1);}
+\DoxyCodeLine{264        \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_a34b0ed882d4c3a4f3feb32ef09ada207}{arraywise\_xor}}(\textcolor{keywordtype}{bool} bool0[REGISTER\_BITS], \textcolor{keywordtype}{bool} bool1[REGISTER\_BITS], \textcolor{keywordtype}{bool} array\_for\_result[REGISTER\_BITS]);}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266         \textcolor{comment}{// the control unit has pointers to all these so it can access them directly}}
+\DoxyCodeLine{267         \mbox{\hyperlink{classriscv__emulator_1_1_data_memory}{DataMemory}} *ctrlDataMem = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{268         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlPC = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{269         \mbox{\hyperlink{classriscv__emulator_1_1_register}{Register}} *ctrlRegisters[32];}
+\DoxyCodeLine{270         \textcolor{comment}{// the control unit doesn't need to access the instruction memory since it won't be messing with instructions, only with the program counter}}
+\DoxyCodeLine{271         }
+\DoxyCodeLine{279         \textcolor{keywordtype}{void} \mbox{\hyperlink{classriscv__emulator_1_1_control_unit_ab0ad7748b0c86b046aea42526d31eb6f}{execute\_instruction}}(\mbox{\hyperlink{classriscv__emulator_1_1_riscv_instruction}{RiscvInstruction}} ctrlInstruction);}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{ControlUnit}}();}
+\DoxyCodeLine{282         \mbox{\hyperlink{classriscv__emulator_1_1_control_unit}{\string~ControlUnit}}();}
+\DoxyCodeLine{283 \};}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 \} \textcolor{comment}{// namespace riscv\_emulator}}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
