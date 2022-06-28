@@ -5,3 +5,4 @@
 *.exe
 .vscode/dryrun.log
 .vscode/targets.log
+src/Doxyfile
